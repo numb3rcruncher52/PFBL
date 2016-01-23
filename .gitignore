@@ -1,3 +1,20 @@
 .Rproj.user
 .Rhistory
 .RData
+Batters_2013.csv
+Batters_2014.csv
+BattingRAA.csv
+DefPlayers.csv
+FinalWorksheet2.xlsx
+PFBL.Rproj
+Player Value Study 2014.xlsx
+SavedObjects
+data
+rawdata
+offense.csv
+total.csv
+wRAAPitchers.csv
+finalwRAA.csv
+load.R
+main.R
+Player Value Study Script.R
