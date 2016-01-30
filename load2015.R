@@ -89,5 +89,7 @@ fielders$RAA_throw[is.na(fielders$RAA_throw)] <- 0
 ## Calculate final values
 fielders$RAA <- fielders$RAA_low + (fielders$Err_real - fielders$Err_low)*(fielders$RAA_high - fielders$RAA_low)/25 + fielders$RAA_throw
 
+fielders$Team[is.na(fielders$Team)] <- "FA"
+
 fielders <- select(fielders,Name, Team, Age, POS, RANGE, Err_real, Arm, RAA) %>% arrange(-RAA)
 rm(coef_arm, coef_Carm, coef_OFarm, coef_def)
