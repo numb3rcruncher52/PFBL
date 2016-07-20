@@ -56,4 +56,4 @@ all_players <- batters_final %>% select(Name:POS,RAA, min = minPA, maxPAvsL,maxP
   bind_rows(select(pitchers_final2,Name:Team, POS = P, Age, min = minINN, maxPAvsL,maxPAvsR, LH_wOBA = LHB_wOBA, RH_wOBA = RHB_wOBA, LH_Runs = LHB_Runs, RH_Runs = RHB_Runs,Total_Runs, BestRuns)) %>%
   arrange(-BestRuns)
 
-
+write.csv(all_players, "~/Dropbox/PFBL/Player Values/playerValues_2016.csv",row.names = FALSE)
