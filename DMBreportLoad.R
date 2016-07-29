@@ -8,6 +8,7 @@ readDMBfile <- function(file_path) {
   file <- file[5:length(file) - 1]
   headers <- file[1]
   data <- file[file != headers]
+  data <- data[-grep("\f",data)]
   
   ## Figure out how to split the rest of the lines
   max_length <- nchar(headers)
@@ -21,8 +22,9 @@ readDMBfile <- function(file_path) {
   close(file_con)
   
   ## Read in final data frame
-  output <- read.fwf("temp_output.txt", widths = field_lengths, stringsAsFactors = FALSE)
-  names(output) <- output[1,]
+  output <- read.fwf("temp_output.txt", widths = field_lengths, stringsAsFactors = FALSE, strip.white = T)
+  output <- output[!((is.na(output$V1) | (output$V1 == ""))),]
+  names(output) <- trimws(output[1,])
   output <- output[-1,]
   
   ## Clean up unnecessary file
@@ -38,5 +40,8 @@ readRosterStatus <- function(directory_location = "C:\\dmb11\\PFBL 2016\\reports
   pitcher_roster <- readDMBfile(pitcher_roster)
   
   final_roster <- rbind(batter_roster, pitcher_roster)
+  # Change the type of fields as necessary
+  final_roster$ID <- as.numeric(final_roster$ID)
+  
   return(final_roster)
 }
