@@ -2,10 +2,6 @@
 
 ## Takes any .txt file report from DMB and returns a clean dataframe
 
-report_path <- "C:\\dmb11\\PFBL 2016\\reports\\"
-report_name <- "BatterRoster.txt"
-file_path <- paste(report_path,report_name,sep = "")
-
 readDMBfile <- function(file_path) {
   ## Read in file and separate header information from data
   file <- readLines(file_path, warn = FALSE)
@@ -32,4 +28,15 @@ readDMBfile <- function(file_path) {
   ## Clean up unnecessary file
   file.remove("temp_output.txt")
   return(output)
+}
+
+readRosterStatus <- function(directory_location = "C:\\dmb11\\PFBL 2016\\reports\\") {
+  batter_roster <- paste(directory_location, "BatterRoster.txt", sep = "")
+  pitcher_roster <- paste(directory_location, "PitcherRoster.txt", sep = "")
+  
+  batter_roster <- readDMBfile(batter_roster)
+  pitcher_roster <- readDMBfile(pitcher_roster)
+  
+  final_roster <- rbind(batter_roster, pitcher_roster)
+  return(final_roster)
 }
