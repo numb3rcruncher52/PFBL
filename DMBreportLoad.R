@@ -1,5 +1,6 @@
 ### DMBreportLoad.R
 
+library(dplyr)
 ## Takes any .txt file report from DMB and returns a clean dataframe
 
 readDMBfile <- function(file_path) {
@@ -32,9 +33,9 @@ readDMBfile <- function(file_path) {
   return(output)
 }
 
-readRosterStatus <- function(directory_location = "C:\\dmb11\\PFBL 2016\\reports\\") {
-  batter_roster <- paste(directory_location, "BatterRoster.txt", sep = "")
-  pitcher_roster <- paste(directory_location, "PitcherRoster.txt", sep = "")
+readRosterStatus <- function(directory = "C:\\dmb11\\PFBL 2016\\reports\\") {
+  batter_roster <- paste(directory, "BatterRoster.txt", sep = "")
+  pitcher_roster <- paste(directory, "PitcherRoster.txt", sep = "")
   
   batter_roster <- readDMBfile(batter_roster)
   pitcher_roster <- readDMBfile(pitcher_roster)
@@ -44,4 +45,43 @@ readRosterStatus <- function(directory_location = "C:\\dmb11\\PFBL 2016\\reports
   final_roster$ID <- as.numeric(final_roster$ID)
   
   return(final_roster)
+}
+
+readPlayerStats <- function(directory = "C:\\dmb11\\PFBL 2016\\reports\\") {
+  batter_lhp <- paste0(directory, "BatterProfileVsLHP.txt")
+  batter_rhp <- paste0(directory, "BatterProfileVsRHP.txt")
+  
+  pitcher_lhb <- paste0(directory, "PitcherProfileVsLHB.txt")
+  pitcher_rhb <- paste0(directory, "PitcherProfileVsRHB.txt")
+  
+  batter_lhp <- readDMBfile(batter_lhp) %>%
+    mutate(split = "LHP")
+  batter_rhp <- readDMBfile(batter_rhp) %>%
+    mutate(split = "RHP")
+  pitcher_lhb <- readDMBfile(pitcher_lhb) %>%
+    mutate(split = "LHB")
+  pitcher_rhb <- readDMBfile(pitcher_rhb) %>%
+    mutate(split = "RHB")
+  
+  final_stats <- bind_rows(batter_lhp, batter_rhp,
+                       pitcher_lhb, pitcher_rhb)
+  
+  # Change the type of fields as necessary
+  #final_roster$ID <- as.numeric(final_roster$ID)
+  
+  return(final_stats)
+}
+
+readBatterRatings <- function(directory = "C:\\dmb11\\PFBL 2016\\reports\\") {
+  batter_ratings <- paste0(directory, "BatterProfileRatings.txt")
+  batter_ratings <- readDMBfile(batter_ratings)
+  
+  return(batter_ratings)
+}
+
+readPitcherRatings <- function(directory = "C:\\dmb11\\PFBL 2016\\reports\\") {
+  pitcher_ratings <- paste0(directory, "PitcherProfileRatings.txt")
+  pitcher_ratings <- readDMBfile(pitcher_ratings)
+  
+  return(pitcher_ratings)
 }
