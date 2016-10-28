@@ -1,10 +1,32 @@
 ## Functions for analysis
 
-calcWOBA <- function(season,AB,SNG,DBL,TRI,HR,UBB,HBP,SF)
-{
-  coef <- coef_wOBA[coef_wOBA$Season==season,]
+add_wOBA <- function(stats, seasonal_constants) {
+  ## Take a list of stats and calculate the wOBA for every player split
   
-  wOBA <- (coef[,'wBB']*UBB + coef[,'wHBP']*HBP + coef[,'w1B']*SNG + coef[,'w2B']*DBL + coef[,'w3B']*TRI + coef[,'wHR']*HR)/(AB + UBB + HBP + SF)
+  stats <- stats %>%
+    left_join(seasonal_constants, by = c('Season' = 'Season')) %>%
+    mutate(wOBA = calcWOBA(PA, SNG, DBL, TRI, HR, UBB, HBP, wBB, wHBP, w1B,
+                           w2B, w3B, wHR),
+           wRAA = calcWRAA(wOBA, lg_wOBA, wOBAScale, 1)) %>%
+    select(ID:wRAA)
+    
+  
+  stats
+}
+
+add_PA <- function(df, AB, UBB, HBP, SF) {
+  ## Calculates plate appearances and adds them to a df
+  
+  df %>% 
+    mutate(PA = AB + UBB + HBP + SF)
+}
+
+
+calcWOBA <- function(PA,SNG,DBL,TRI,HR,UBB,HBP,wBB,wHBP,w1B,w2B,w3B,wHR) {
+  ## Takes counting statistics and league run values and returns a wOBA value
+  
+  wOBA <- (wBB*UBB + wHBP*HBP + w1B*SNG + w2B*DBL + w3B*TRI + wHR*HR)/PA
+  
   return(round(wOBA,3))
 }
 
