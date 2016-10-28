@@ -13,7 +13,7 @@ readDMBfile <- function(file_path) {
   
   ## Figure out how to split the rest of the lines
   max_length <- nchar(headers)
-  field_name_matches <- gregexpr(" [A-Z]",headers)[[1]]
+  field_name_matches <- gregexpr(" [A-Za-z0-9]",headers)[[1]]
   field_lengths <- append(field_name_matches - 1, max_length)
   field_lengths <- field_lengths - 
     append(0, field_lengths[-length(field_lengths)])
@@ -81,6 +81,11 @@ readPlayerStats <- function(directory = "C:\\dmb11\\PFBL 2016\\reports\\") {
 readBatterRatings <- function(directory = "C:\\dmb11\\PFBL 2016\\reports\\") {
   batter_ratings <- paste0(directory, "BatterProfileRatings.txt")
   batter_ratings <- readDMBfile(batter_ratings)
+
+  # Change the type of fields as necessary
+  batter_ratings$ID <- as.numeric(batter_ratings$ID)
+  batter_ratings$Birth <- as.Date(batter_ratings$Birth,
+                                   format = "%m/%d/%Y")
   
   return(batter_ratings)
 }
