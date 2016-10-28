@@ -71,9 +71,9 @@ readPlayerStats <- function(directory = "C:\\dmb11\\PFBL 2016\\reports\\") {
                        pitcher_lhb, pitcher_rhb)
   
   # Change the type of fields as necessary
-  #cols.num <- c("ID", "AVG", "OBP", "SLG", "OPS", "AB", "SNG", "DBL", "TRI",
-  #              "HR", "UBB", "HBP", "SF")
-  #final_stats[cols.num] <- sapply(final_stats[cols.num],as.numeric)
+  cols.num <- c("ID", "AVG", "OBP", "SLG", "OPS", "AB", "SNG", "DBL", "TRI",
+               "HR", "UBB", "HBP", "SF")
+  final_stats[cols.num] <- sapply(final_stats[cols.num],as.numeric)
   
   return(final_stats)
 }
@@ -88,6 +88,12 @@ readBatterRatings <- function(directory = "C:\\dmb11\\PFBL 2016\\reports\\") {
 readPitcherRatings <- function(directory = "C:\\dmb11\\PFBL 2016\\reports\\") {
   pitcher_ratings <- paste0(directory, "PitcherProfileRatings.txt")
   pitcher_ratings <- readDMBfile(pitcher_ratings)
+  
+  # Change the type of fields as necessary
+  cols.num <- c("ID", "G", "GS", "INN", "BF")
+  pitcher_ratings[cols.num] <- sapply(pitcher_ratings[cols.num],as.numeric)
+  pitcher_ratings$Birth <- as.Date(pitcher_ratings$Birth,
+                                   format = "%m/%d/%Y")
   
   return(pitcher_ratings)
 }
