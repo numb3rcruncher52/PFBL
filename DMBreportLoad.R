@@ -14,8 +14,9 @@ readDMBfile <- function(file_path) {
   ## Figure out how to split the rest of the lines
   max_length <- nchar(headers)
   field_name_matches <- gregexpr(" [A-Z]",headers)[[1]]
-  field_lengths <- append(field_name_matches[-1] - 1, max_length)
-  field_lengths <- field_lengths - append(0, field_lengths[-length(field_lengths)])
+  field_lengths <- append(field_name_matches - 1, max_length)
+  field_lengths <- field_lengths - 
+    append(0, field_lengths[-length(field_lengths)])
   
   ## Create temporary file for ease in reading back in as fixed-width
   file_con <- file("temp_output.txt")
@@ -23,7 +24,10 @@ readDMBfile <- function(file_path) {
   close(file_con)
   
   ## Read in final data frame
-  output <- read.fwf("temp_output.txt", widths = field_lengths, stringsAsFactors = FALSE, strip.white = T)
+  output <- read.fwf("temp_output.txt", 
+                     widths = field_lengths, 
+                     stringsAsFactors = FALSE, 
+                     strip.white = T)
   output <- output[!((is.na(output$V1) | (output$V1 == ""))),]
   names(output) <- trimws(output[1,])
   output <- output[-1,]
@@ -67,7 +71,9 @@ readPlayerStats <- function(directory = "C:\\dmb11\\PFBL 2016\\reports\\") {
                        pitcher_lhb, pitcher_rhb)
   
   # Change the type of fields as necessary
-  #final_roster$ID <- as.numeric(final_roster$ID)
+  #cols.num <- c("ID", "AVG", "OBP", "SLG", "OPS", "AB", "SNG", "DBL", "TRI",
+  #              "HR", "UBB", "HBP", "SF")
+  #final_stats[cols.num] <- sapply(final_stats[cols.num],as.numeric)
   
   return(final_stats)
 }
