@@ -8,8 +8,7 @@ add_wOBA <- function(stats, seasonal_constants) {
     mutate(wOBA = calcWOBA(PA, SNG, DBL, TRI, HR, UBB, HBP, wBB, wHBP, w1B,
                            w2B, w3B, wHR),
            wRAA = calcWRAA(wOBA, lg_wOBA, wOBAScale, 1)) %>%
-    select(ID:wRAA)
-    
+    select(Season, split, ID:OPS, PA, wOBA, wRAA)
   
   stats
 }
