@@ -59,13 +59,17 @@ readPlayerStats <- function(directory = "C:\\dmb11\\PFBL 2016\\reports\\") {
   pitcher_rhb <- paste0(directory, "PitcherProfileVsRHB.txt")
   
   batter_lhp <- readDMBfile(batter_lhp) %>%
-    mutate(split = "LHP")
+    mutate(split = "LHP",
+           role = "batter")
   batter_rhp <- readDMBfile(batter_rhp) %>%
-    mutate(split = "RHP")
+    mutate(split = "RHP",
+           role = "batter")
   pitcher_lhb <- readDMBfile(pitcher_lhb) %>%
-    mutate(split = "LHB")
+    mutate(split = "LHB",
+           role = "pitcher")
   pitcher_rhb <- readDMBfile(pitcher_rhb) %>%
-    mutate(split = "RHB")
+    mutate(split = "RHB",
+           role = "pitcher")
   
   final_stats <- bind_rows(batter_lhp, batter_rhp,
                        pitcher_lhb, pitcher_rhb)

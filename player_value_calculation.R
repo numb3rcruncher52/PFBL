@@ -2,10 +2,14 @@ source("DMBreportLoad.R")
 source("BaseballCoefficientsLoad.R")
 source("functions.R")
 
-rosters <- readRosterStatus()
-stats <- readPlayerStats()
-batter_ratings <- readBatterRatings()
-pitcher_ratings <- readPitcherRatings()
+directory <- "C:\\dmb11\\sd2016_v11\\reports\\"
+roster_directory <- "C:\\dmb11\\PFBL 2016\\reports\\"
+SEASON <- 2016
+
+rosters <- readRosterStatus(roster_directory)
+stats <- readPlayerStats(directory)
+batter_ratings <- readBatterRatings(directory)
+pitcher_ratings <- readPitcherRatings(directory)
 
 fieldingValue <- function(batter_ratings) {
   fielding <- batter_ratings %>%
@@ -33,13 +37,20 @@ fieldingValue <- function(batter_ratings) {
   return(fielding)
 }
 
+fielding <- fieldingValue(batter_ratings)
+
 stats2 <- stats %>%
-  mutate(Season = 2016) %>%
-  add_PA(AB, UBB, HBP, SF) %>%
-  add_wOBA(coef_wOBA) %>%
-  gather(stat_name,stat_value,AVG:wRAA) %>% 
-  mutate(Category = paste(split,"_",stat_name,sep="")) %>% 
-  select(-stat_name)
+  mutate(Season = SEASON) %>%
+  left_join(seasonal_constants) %>%
+  mutate(PA = calcPA(AB, UBB, HBP, SF),
+         wOBA = calcWOBA(PA, SNG, DBL, TRI, HR, UBB, HBP, 
+                         wBB, wHBP, w1B, w2B, w3B, wHR)) %>%
+  select(ID:OPS, split:Season, PA, wOBA)
+
+  # add_wOBA(coef_wOBA) %>%
+  # gather(stat_name,stat_value,AVG:wRAA) %>% 
+  # mutate(Category = paste(split,"_",stat_name,sep="")) %>% 
+  # select(-stat_name)
 
 batters <- stats2 %>%
   filter(split %in% c("LHP", "RHP")) %>%

@@ -27,7 +27,8 @@ coef_baserunning <- read_csv("DATA/RunCoef.csv", col_types = "ci")
 fg_guts <- read_html("http://www.fangraphs.com/guts.aspx?type=cn")
 seasonal_constants <- fg_guts %>% 
   html_node(css = "#GutsBoard1_dg1_ctl00") %>%
-  html_table()
+  html_table() %>%
+  select(Season, lg_wOBA = wOBA, wOBAScale:wHR)
 
 
 # Tidy coefficient data ---------------------------------------------------
