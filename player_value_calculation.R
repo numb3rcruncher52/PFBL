@@ -2,8 +2,8 @@ source("DMBreportLoad.R")
 source("BaseballCoefficientsLoad.R")
 source("functions.R")
 
-directory <- "C:\\dmb11\\sd2016_v11\\reports\\"
-roster_directory <- "C:\\dmb11\\PFBL 2016\\reports\\"
+directory <- "C:\\dmb11\\PFBL 2017\\reports\\"
+roster_directory <- "C:\\dmb11\\PFBL 2017\\reports\\"
 SEASON <- 2016
 
 rosters <- readRosterStatus(roster_directory)
@@ -39,23 +39,54 @@ fieldingValue <- function(batter_ratings) {
 
 fielding <- fieldingValue(batter_ratings)
 
+fielding_join <- fielding %>%
+  select(ID, Name, POS, RAA) %>%
+  spread(POS, RAA)
+
 stats2 <- stats %>%
   mutate(Season = SEASON) %>%
   left_join(seasonal_constants) %>%
   mutate(PA = calcPA(AB, UBB, HBP, SF),
          wOBA = calcWOBA(PA, SNG, DBL, TRI, HR, UBB, HBP, 
                          wBB, wHBP, w1B, w2B, w3B, wHR)) %>%
-  select(ID:OPS, split:Season, PA, wOBA)
+  select(ID:OPS, split:Season, PA, wOBA) %>%
+  gather(stat_name,stat_value,AVG:OPS, PA, wOBA) %>%
+  mutate(stat_name = paste(split,"_",stat_name,sep="")) %>%
+  select(-split)
 
-  # add_wOBA(coef_wOBA) %>%
-  # gather(stat_name,stat_value,AVG:wRAA) %>% 
-  # mutate(Category = paste(split,"_",stat_name,sep="")) %>% 
-  # select(-stat_name)
+LH_PA_FULL <- 166
+RH_PA_FULL <- 472
 
 batters <- stats2 %>%
-  filter(split %in% c("LHP", "RHP")) %>%
-  select(-split) %>%
-  spread(Category,stat_value)
+  filter(role == "batter") %>%
+  spread(stat_name,stat_value) %>%
+  left_join(coef_wOBA) %>%
+  mutate(total_PA = LHP_PA + RHP_PA,
+         min_PA=ifelse(total_PA < 200, 0, 0.7 * total_PA), 
+         maxPAvsL=ifelse(total_PA >= 502 | 
+                           LHP_OPS <= .650,LH_PA_FULL,pmin(LHP_PA*1.33,LH_PA_FULL)), 
+         maxPAvsR=ifelse(total_PA >= 502 | 
+                           RHP_OPS <= .650, RH_PA_FULL, pmin(RHP_PA*1.33,RH_PA_FULL)),
+         max_PA = maxPAvsR + maxPAvsL,
+         LHP_wRAA = calcWRAA(role, LHP_wOBA, lg_wOBA, wOBAScale, 1), 
+         RHP_wRAA = calcWRAA(role, RHP_wOBA, lg_wOBA, wOBAScale, 1),
+         LHP_Runs = maxPAvsL*LHP_wRAA, 
+         RHP_Runs = maxPAvsR*RHP_wRAA, 
+         Bat_Runs = LHP_Runs + RHP_Runs) %>% 
+  arrange(-Bat_Runs)
+
+batters_full <- batters %>%
+  left_join(fielding_join)
+
+write_csv(batters_full, "batters_2016.csv")
+
+batters_full <- batters %>%
+  select(ID, Name, min_PA, max_PA) %>%
+  right_join(fielding_join) %>%
+  mutate(RAA_min = min_PA / (LH_PA_FULL + RH_PA_FULL) * RAA,
+         RAA_max = max_PA / (LH_PA_FULL + RH_PA_FULL) * RAA)
+  left_join(fielding_join) %>%
+  muta
 
 pitchers <- stats2 %>%
   filter(split %in% c("LHB", "RHB")) %>%
@@ -63,8 +94,4 @@ pitchers <- stats2 %>%
   spread(Category,stat_value)
 
 
-batters2 <- batters %>% 
-  mutate(LHP_wRAA = calcWRAA(LHP_wOBA, LG_WOBA, WOBA_SCALE, 1), RHP_wRAA = calcWRAA(RHP_wOBA, LG_WOBA, WOBA_SCALE, 1),totPA = LHP_PA + RHP_PA) %>% 
-  mutate(minPA=ifelse(totPA <200,0,0.7*totPA), maxPAvsL=ifelse(totPA >= 502 | LHP_OPS <= .65,160,pmin(LHP_PA*1.33,160)), maxPAvsR=ifelse(totPA >= 502 | RHP_OPS <= .65, 545, pmin(RHP_PA*1.33,545))) %>% 
-  mutate(LHP_Runs = maxPAvsL*LHP_wRAA, RHP_Runs = maxPAvsR*RHP_wRAA, Bat_Runs = LHP_Runs + RHP_Runs) %>% 
-  arrange(-Bat_Runs)
+
