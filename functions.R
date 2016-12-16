@@ -21,8 +21,9 @@ calcPA <- function(AB, UBB, HBP, SF) {
 calcWOBA <- function(PA,SNG,DBL,TRI,HR,UBB,HBP,wBB,wHBP,w1B,w2B,w3B,wHR) {
   ## Takes counting statistics and league run values and returns a wOBA value
   
-  wOBA <- (wBB*UBB + wHBP*HBP + w1B*SNG + w2B*DBL + w3B*TRI + wHR*HR)/PA
-  
+  wOBA <- ifelse(PA == 0, 
+                 0, 
+                 (wBB*UBB + wHBP*HBP + w1B*SNG + w2B*DBL + w3B*TRI + wHR*HR)/PA)
   round(wOBA,3)
 }
 
