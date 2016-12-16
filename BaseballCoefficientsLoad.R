@@ -48,8 +48,7 @@ coef_arm <- coef_OFarm %>%
 rm(coef_OFarm, coef_Carm)
 
 coef_wOBA <- seasonal_constants %>%
-  select(Season:wHR) %>%
-  rename(lg_wOBA = wOBA)
+  select(Season:wOBAScale)
 
 
 
