@@ -37,54 +37,55 @@ readDMBfile <- function(file_path) {
   return(output)
 }
 
-readRosterStatus <- function(directory = "C:\\dmb11\\PFBL 2016\\reports\\") {
+readRosterStatus <- function(directory, season) {
   batter_roster <- paste(directory, "BatterRoster.txt", sep = "")
   pitcher_roster <- paste(directory, "PitcherRoster.txt", sep = "")
   
   batter_roster <- readDMBfile(batter_roster)
   pitcher_roster <- readDMBfile(pitcher_roster)
   
-  final_roster <- rbind(batter_roster, pitcher_roster)
+  final_roster <- rbind(batter_roster, pitcher_roster) %>%
+    mutate(season = season)
   # Change the type of fields as necessary
   final_roster$ID <- as.numeric(final_roster$ID)
   
   return(final_roster)
 }
 
-readPlayerStats <- function(directory = "C:\\dmb11\\PFBL 2016\\reports\\") {
-  batter_lhp <- paste0(directory, "BatterProfileVsLHP.txt")
-  batter_rhp <- paste0(directory, "BatterProfileVsRHP.txt")
+readPlayerStatsSplit <- function(directory, season, type = 'Profile', split) {
   
-  pitcher_lhb <- paste0(directory, "PitcherProfileVsLHB.txt")
-  pitcher_rhb <- paste0(directory, "PitcherProfileVsRHB.txt")
+  ## Define file names
+  batter <- paste0(directory, "Batter",type,"Vs",split,"P.txt")
+  pitcher <- paste0(directory, "Pitcher",type,"Vs",split,"B.txt")
   
-  batter_lhp <- readDMBfile(batter_lhp) %>%
-    mutate(split = "LHP",
-           role = "batter")
-  batter_rhp <- readDMBfile(batter_rhp) %>%
-    mutate(split = "RHP",
-           role = "batter")
-  pitcher_lhb <- readDMBfile(pitcher_lhb) %>%
-    mutate(split = "LHB",
-           role = "pitcher")
-  pitcher_rhb <- readDMBfile(pitcher_rhb) %>%
-    mutate(split = "RHB",
-           role = "pitcher")
+  batter <- readDMBfile(batter) %>%
+    mutate(role = "batter")
+  pitcher <- readDMBfile(pitcher) %>%
+    mutate(role = "pitcher")
   
-  final_stats <- bind_rows(batter_lhp, batter_rhp,
-                       pitcher_lhb, pitcher_rhb)
+  final_stats <- bind_rows(batter, pitcher) %>%
+    mutate(split = split,
+           season = season)
   
   # Change the type of fields as necessary
   cols.num <- c("ID", "AVG", "OBP", "SLG", "OPS", "AB", "SNG", "DBL", "TRI",
-               "HR", "UBB", "HBP", "SF")
+                "HR", "UBB", "HBP", "SF")
   final_stats[cols.num] <- sapply(final_stats[cols.num],as.numeric)
   
   return(final_stats)
 }
 
-readBatterRatings <- function(directory = "C:\\dmb11\\PFBL 2016\\reports\\") {
+readPlayerStats <- function(directory, season, type = 'Profile') {
+  lh <- readPlayerStatsSplit(directory, season, type, "LH")
+  rh <- readPlayerStatsSplit(directory, season, type, "RH")
+  
+  bind_rows(lh, rh)
+}
+
+readBatterRatings <- function(directory, season) {
   batter_ratings <- paste0(directory, "BatterProfileRatings.txt")
-  batter_ratings <- readDMBfile(batter_ratings)
+  batter_ratings <- readDMBfile(batter_ratings) %>%
+    mutate(season = season)
 
   # Change the type of fields as necessary
   batter_ratings$ID <- as.numeric(batter_ratings$ID)
@@ -94,9 +95,10 @@ readBatterRatings <- function(directory = "C:\\dmb11\\PFBL 2016\\reports\\") {
   return(batter_ratings)
 }
 
-readPitcherRatings <- function(directory = "C:\\dmb11\\PFBL 2016\\reports\\") {
+readPitcherRatings <- function(directory, season) {
   pitcher_ratings <- paste0(directory, "PitcherProfileRatings.txt")
-  pitcher_ratings <- readDMBfile(pitcher_ratings)
+  pitcher_ratings <- readDMBfile(pitcher_ratings) %>%
+    mutate(season = season)
   
   # Change the type of fields as necessary
   cols.num <- c("ID", "G", "GS", "INN", "BF")
