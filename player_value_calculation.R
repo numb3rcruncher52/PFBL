@@ -6,18 +6,27 @@ directory <- "C:\\dmb11\\PFBL 2017\\reports\\"
 roster_directory <- "C:\\dmb11\\PFBL 2017\\reports\\"
 
 SEASON <- 2016
-LH_PA_FULL <- 166
-RH_PA_FULL <- 472
-TOTAL_PA_FULL <- LH_PA_FULL + RH_PA_FULL
 
-rosters <- readRosterStatus(roster_directory)
-stats <- readPlayerStats(directory)
-batter_ratings <- readBatterRatings(directory)
-pitcher_ratings <- readPitcherRatings(directory)
+## The following benchmarks are calculated from 2016 Total Reports
+LH_PA_FULL <- 179
+RH_PA_FULL <- 510
+TOTAL_PA_FULL <- LH_PA_FULL + RH_PA_FULL
+PA_INN <- 4.277
+PITCH_LH_SPLIT <- 0.4357984 
+
+# Load data for season in question ----------------------------------------
+
+rosters <- readRosterStatus(roster_directory, SEASON)
+stats <- readPlayerStats(directory, SEASON, 'Profile')
+batter_ratings <- readBatterRatings(directory, SEASON)
+pitcher_ratings <- readPitcherRatings(directory, SEASON)
 
 
 # Get Fielding Value ------------------------------------------------------
 
+## All below fielding value is full a full game schedule for any particular
+## player. It also represents a specific era where a baseline team would
+## score 782 runs in 6382 PA
 fieldingValue <- function(batter_ratings) {
   fielding <- batter_ratings %>%
     select(ID, Name, c:C) %>%
@@ -40,29 +49,51 @@ fieldingValue <- function(batter_ratings) {
     rename(RAA_low = RAA.x, RAA_high = RAA.y) %>%
     left_join(coef_arm) %>%
     mutate(RAA_throw = ifelse(is.na(RAA_throw),0,RAA_throw),
-           RAA = RAA_low + (Err - Err_low)*(RAA_high - RAA_low)/25 + RAA_throw)
+           RAA = RAA_low + (Err - Err_low)*(RAA_high - RAA_low)/25 + 
+             RAA_throw,
+           RAA_PA = RAA / TOTAL_PA_FULL) %>%
+    select(ID, Name, POS, RANGE, Err, Arm, RAA, RAA_PA)
+  
   return(fielding)
 }
 
 fielding <- fieldingValue(batter_ratings)
 
-fielding_join <- fielding %>%
-  select(ID, Name, POS, RAA) %>%
-  mutate(RAA_PA = RAA / TOTAL_PA_FULL)
+# fielding_join <- fielding %>%
+#   select(ID, Name, POS, RAA) %>%
+#   mutate(RAA_PA = RAA / TOTAL_PA_FULL)
 
 
 # Calculate Batting Value -------------------------------------------------
 
-stats2 <- stats %>%
+runValue <- function(stats) {
+  stats %>%
+    left_join(seasonal_constants) %>%
+    mutate(PA = calcPA(AB, UBB, HBP, SF),
+           wOBA = calcWOBA(PA, SNG, DBL, TRI, HR, UBB, HBP, 
+                           wBB, wHBP, w1B, w2B, w3B, wHR),
+           wRAA = calcWRAA(role, wOBA, lg_wOBA, wOBAScale, 1)) %>%
+    select(ID, Name, role, Season, split, OPS, PA, wOBA, wRAA)
+}
+
+
+stats_final <- stats %>%
   mutate(Season = SEASON) %>%
   left_join(seasonal_constants) %>%
   mutate(PA = calcPA(AB, UBB, HBP, SF),
          wOBA = calcWOBA(PA, SNG, DBL, TRI, HR, UBB, HBP, 
-                         wBB, wHBP, w1B, w2B, w3B, wHR)) %>%
-  select(ID:OPS, split:Season, PA, wOBA) %>%
-  gather(stat_name,stat_value,AVG:OPS, PA, wOBA) %>%
+                         wBB, wHBP, w1B, w2B, w3B, wHR),
+         wRAA = calcWRAA(role, wOBA, lg_wOBA, wOBAScale, 1)) %>%
+  select(ID, Name, role, Season, split, OPS, PA, wOBA, wRAA) %>%
+  gather(stat_name,stat_value,OPS:wRAA) %>%
   mutate(stat_name = paste(split,"_",stat_name,sep="")) %>%
-  select(-split)
+  select(-split) %>%
+  spread(stat_name, stat_value)
+
+## Need to put all these on a common scale of one of the following:
+# PA
+# G
+# INN
 
 
 batters <- stats2 %>%
