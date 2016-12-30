@@ -33,6 +33,9 @@ calcWRAA <- function(role, wOBA, lg_wOBA, scale, PA) {
   ifelse(role == "batter", wRAA, -wRAA)
 }
 
+calcRuns <- function(PA, wRAA, RAA_def = 0) {
+  PA * (wRAA + RAA_def)
+}
 
 splitErrorRating <- function(fielders, colName)
 {
@@ -80,3 +83,4 @@ optimalUsage <- function(team)
   
   return(s)
 }
+
