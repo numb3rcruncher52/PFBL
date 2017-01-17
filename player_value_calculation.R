@@ -4,11 +4,6 @@ source("Fielding_Value.R")
 source("Calculate_Player_Stats.R")
 source("functions.R")
 
-directory <- "C:\\dmb11\\PFBL 2017\\reports\\"
-roster_directory <- "C:\\dmb11\\PFBL 2017\\reports\\"
-
-SEASON <- 2016
-
 ## The following benchmarks are calculated from 2016 Total Reports
 LH_PA_FULL <- 179
 RH_PA_FULL <- 510
@@ -19,11 +14,15 @@ PITCH_LH_SPLIT <- 0.4357984
 
 # Load data for season in question ----------------------------------------
 
-rosters <- readRosterStatus(roster_directory, SEASON)
-stats <- readPlayerStats(directory, SEASON, 'Profile')
-batter_ratings <- readBatterRatings(directory, SEASON)
-pitcher_ratings <- readPitcherRatings(directory, SEASON)
+season_folders <- c("PFBL 2015", "PFBL 2016", "PFBL 2017")
+seasons <- seq(2014, 2016, 1)
 
+args2 <- list(directory = paste0("C:\\dmb11\\",season_folders,"\\reports\\"),
+              season = seasons)
+
+stats <- args2 %>% pmap(.f = readPlayerStats, type = 'Profile') %>% bind_rows()
+batter_ratings <- args2 %>% pmap(readBatterRatings) %>% bind_rows()
+pitcher_ratings <- args2 %>% pmap(readPitcherRatings) %>% bind_rows()
 
 # Get Fielding Value ------------------------------------------------------
 
@@ -33,17 +32,11 @@ fielding <- fieldingValue(batter_ratings)
 
 stats_final <- calcPlayerStats(stats)
 
-## Need to put all these on a common scale of one of the following:
-# PA
-# G
-# INN
-
-
-# Pitcher Value Calculation -----------------------------------------------
+# Basic Player Value with Playtime Rules ----------------------------------
 
 pitchers <- stats_final %>%
   filter(role == "pitcher") %>%
-  left_join(pitcher_ratings, by = c("ID", "Name", "Season"="season")) %>%
+  left_join(pitcher_ratings, by = c("ID", "Name", "season")) %>%
   filter(!is.na(INN),
          INN >= 20) %>%
   mutate(wRAA_INN = (PITCH_LH_SPLIT * LH_wRAA + 
@@ -56,32 +49,8 @@ pitchers <- stats_final %>%
                                max_GS),
          value = round(max_INN * wRAA_INN,2)) %>%
   arrange(desc(value)) %>%
-  left_join(rosters, by = c("ID", "Name", "Season"="season"))
-
-rotations <- pitchers %>%
-  filter(realistic_GS > 0) %>%
-  arrange(desc(wRAA_INN)) %>%
-  group_by(TeamName) %>%
-  mutate(cumulative_GS = cumsum(realistic_GS),
-         make_starts = ifelse(cumulative_GS > 162, 
-                              pmax(162 - (cumulative_GS - realistic_GS), 0),
-                              realistic_GS),
-         make_value = round(make_starts * INN_START_MAX * wRAA_INN,2),
-         missing_starts = make_starts - realistic_GS)
-
-pitchers_new <- pitchers %>%
-  left_join(rotations %>% ungroup %>% select(ID, make_starts, missing_starts, make_value))
-
-rotations_sum <- rotations %>%
-  summarise(make_starts = sum(make_starts),
-            missing_starts = sum(missing_starts),
-            value = sum(make_value)) %>%
-  arrange(desc(value))
-
-## Still need ERA to get the accurate INN doubled and such
-
-
-# Batter/Fielder Evaluation -----------------------------------------------
+  select(ID, Name, season, POS = P, LH_wOBA, LH_wRAA, RH_wOBA, RH_wRAA,
+         wRAA_INN, min_INN, max_INN, max_GS, realistic_GS, value)
 
 batters <- stats_final %>%
   filter(role == "batter") %>%
@@ -96,10 +65,10 @@ batters <- stats_final %>%
          RH_value = round(maxPAvsR * RH_wRAA,2),
          value = LH_value + RH_value) %>%
   arrange(desc(value)) %>%
-  left_join(rosters, by = c("ID", "Name", "Season" = "season"))
+  select(ID, Name, season, LH_wOBA, LH_wRAA, RH_wOBA, RH_wRAA,
+         min_PA, maxPAvsL, maxPAvsR, LH_value, RH_value, value)
 
 fielding_value <- batters %>%
-  select(ID, Name, maxPAvsL, maxPAvsR, LH_value, RH_value) %>%
   right_join(fielding) %>%
   mutate(LH_value = RAA_PA * maxPAvsL + LH_value,
          RH_value = RAA_PA * maxPAvsR + RH_value,
@@ -107,21 +76,59 @@ fielding_value <- batters %>%
   group_by(ID, Name) %>%
   mutate(pos_rank = min_rank(-total_value))
 
-fielding_dh <- batters %>%
-  select(ID, Name, maxPAvsL, maxPAvsR, LH_value, RH_value, total_value = value) %>%
-  mutate(POS = "DH") %>%
-  bind_rows(fielding_value) %>%
-  arrange(desc(total_value)) %>%
-  group_by(ID, Name) %>%
-  left_join(rosters, by = c("ID", "Name")) %>%
-  group_by(POS, pos_rank) %>%
-  mutate(cum_PA = cumsum(maxPAvsR + maxPAvsL),
-         starter_PA = ifelse(cum_PA > (TOTAL_PA_FULL * 28), 
-                             pmax(TOTAL_PA_FULL * 28 - (cum_PA - (maxPAvsL + maxPAvsR)), 0),
-                             maxPAvsR + maxPAvsL),
-         starter_value = ifelse(starter_PA == 0, NA, starter_PA / (maxPAvsR + maxPAvsL) * total_value),
-         position_index = ifelse(pos_rank == 1, percent_rank(starter_value), NA))
 
+# Write all cleaned data to output folder ---------------------------------
 
-write_csv(pitchers_new, "pitchers_2017.csv")
-write_csv(fielding_dh, "batters_2017.csv")
+write_csv(pitchers, "Output/pitchers_clean.csv")
+write_csv(fielding_value, "Output/batters_clean.csv")
+write_csv(batter_ratings, "Output/batter_ratings_clean.csv")
+write_csv(pitcher_ratings, "Output/pitcher_ratings_clean.csv")
+
+## Additional information for evaluating teams
+# 
+# fielding_dh <- batters %>%
+#   mutate(POS = "DH", total_value = value) %>%
+#   bind_rows(fielding_value) %>%
+#   arrange(desc(total_value)) %>%
+#   group_by(ID, Name) %>%
+#   left_join(rosters, by = c("ID", "Name")) %>%
+#   group_by(POS, pos_rank) %>%
+#   mutate(cum_PA = cumsum(maxPAvsR + maxPAvsL),
+#          starter_PA = ifelse(cum_PA > (TOTAL_PA_FULL * 28), 
+#                              pmax(TOTAL_PA_FULL * 28 - (cum_PA - (maxPAvsL + maxPAvsR)), 0),
+#                              maxPAvsR + maxPAvsL),
+#          starter_value = ifelse(starter_PA == 0, NA, starter_PA / (maxPAvsR + maxPAvsL) * total_value),
+#          position_index = ifelse(pos_rank == 1, percent_rank(starter_value), NA))
+# 
+# rotations <- pitchers %>%
+#   filter(realistic_GS > 0) %>%
+#   arrange(desc(wRAA_INN)) %>%
+#   group_by(TeamName) %>%
+#   mutate(cumulative_GS = cumsum(realistic_GS),
+#          make_starts = ifelse(cumulative_GS > 162, 
+#                               pmax(162 - (cumulative_GS - realistic_GS), 0),
+#                               realistic_GS),
+#          make_value = round(make_starts * INN_START_MAX * wRAA_INN,2),
+#          missing_starts = make_starts - realistic_GS)
+# 
+# pitchers_new <- pitchers %>%
+#   left_join(rotations %>% ungroup %>% select(ID, make_starts, missing_starts, make_value))
+# 
+# rotations_sum <- rotations %>%
+#   summarise(make_starts = sum(make_starts),
+#             missing_starts = sum(missing_starts),
+#             value = sum(make_value)) %>%
+#   arrange(desc(value))
+# 
+# ## Still need ERA to get the accurate INN doubled and such
+# 
+# 
+# # Batter/Fielder Evaluation -----------------------------------------------
+# 
+# 
+# 
+# 
+# 
+# 
+# write_csv(pitchers_new, "pitchers_2017.csv")
+# write_csv(fielding_dh, "batters_2017.csv")
