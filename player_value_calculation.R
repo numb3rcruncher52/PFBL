@@ -1,6 +1,7 @@
 source("DMBreportLoad.R")
 source("BaseballCoefficientsLoad.R")
 source("Fielding_Value.R")
+source("Calculate_Player_Stats.R")
 source("functions.R")
 
 directory <- "C:\\dmb11\\PFBL 2017\\reports\\"
@@ -28,31 +29,9 @@ pitcher_ratings <- readPitcherRatings(directory, SEASON)
 
 fielding <- fieldingValue(batter_ratings)
 
-# Calculate Batting Value -------------------------------------------------
+# Calculate Split Run Values ----------------------------------------------
 
-runValue <- function(stats) {
-  stats %>%
-    left_join(seasonal_constants) %>%
-    mutate(PA = calcPA(AB, UBB, HBP, SF),
-           wOBA = calcWOBA(PA, SNG, DBL, TRI, HR, UBB, HBP, 
-                           wBB, wHBP, w1B, w2B, w3B, wHR),
-           wRAA = calcWRAA(role, wOBA, lg_wOBA, wOBAScale, 1)) %>%
-    select(ID, Name, role, Season, split, OPS, PA, wOBA, wRAA)
-}
-
-
-stats_final <- stats %>%
-  mutate(Season = SEASON) %>%
-  left_join(seasonal_constants) %>%
-  mutate(PA = calcPA(AB, UBB, HBP, SF),
-         wOBA = calcWOBA(PA, SNG, DBL, TRI, HR, UBB, HBP, 
-                         wBB, wHBP, w1B, w2B, w3B, wHR),
-         wRAA = calcWRAA(role, wOBA, lg_wOBA, wOBAScale, 1)) %>%
-  select(ID, Name, role, Season, split, OPS, PA, wOBA, wRAA) %>%
-  gather(stat_name,stat_value,OPS:wRAA) %>%
-  mutate(stat_name = paste(split,"_",stat_name,sep="")) %>%
-  select(-split) %>%
-  spread(stat_name, stat_value)
+stats_final <- calcPlayerStats(stats)
 
 ## Need to put all these on a common scale of one of the following:
 # PA
@@ -146,33 +125,3 @@ fielding_dh <- batters %>%
 
 write_csv(pitchers_new, "pitchers_2017.csv")
 write_csv(fielding_dh, "batters_2017.csv")
-
-# Combine for Overall Value -----------------------------------------------
-
-batters_full <- batters %>%
-  left_join(fielding_join) %>%
-  left_join(rosters) %>%
-  mutate(LHP_Runs = calcRuns(maxPAvsL, LHP_wRAA, RAA_PA), 
-         RHP_Runs = calcRuns(maxPAvsR, RHP_wRAA, RAA_PA), 
-         Bat_Runs = LHP_Runs + RHP_Runs) %>%
-  select(ID, Name, TeamName, Season, POS, total_PA, min_PA, maxPAvsL, maxPAvsR,
-         LHP_wOBA, RHP_wOBA, RAA, RAA_PA, LHP_Runs, RHP_Runs, Bat_Runs) %>%
-  arrange(desc(Bat_Runs))
-
-write_csv(batters_full, "batters_2016.csv")
-# 
-# batters_full <- batters %>%
-#   select(ID, Name, min_PA, max_PA) %>%
-#   right_join(fielding_join) %>%
-#   mutate(RAA_min = min_PA / (LH_PA_FULL + RH_PA_FULL) * RAA,
-#          RAA_max = max_PA / (LH_PA_FULL + RH_PA_FULL) * RAA)
-#   left_join(fielding_join) %>%
-#   muta
-# 
-# pitchers <- stats2 %>%
-#   filter(split %in% c("LHB", "RHB")) %>%
-#   select(-split) %>%
-#   spread(Category,stat_value)
-# 
-
-
