@@ -16,7 +16,7 @@ fieldingValue <- function(batter_ratings) {
   ## Find the upper and lower rating benchmarks for all rated
   ## defensive positions
   fielding <- batter_ratings %>%
-    select(ID, Name, c:C) %>%
+    select(ID, Name, season, c:C) %>%
     gather(POS, Range, c:rf) %>%
     filter(Range != "") %>%
     separate(Range, c("Range", "Err"), convert = TRUE) %>%
@@ -55,9 +55,9 @@ fieldingValue <- function(batter_ratings) {
            RAA = RAA_low + (Err - Err_low)*(RAA_high - RAA_low)/25 + 
              RAA_throw,
            RAA_PA = RAA / TOTAL_PA_FULL) %>%
-    select(ID, Name, POS, rated, RANGE, Err, Arm, RAA, RAA_PA) %>%
-    arrange(ID, Name, POS, rated, desc(RAA)) %>%
-    distinct(ID, Name, POS, .keep_all = TRUE) %>%
+    select(ID, Name, season, POS, rated, RANGE, Err, Arm, RAA, RAA_PA) %>%
+    arrange(ID, Name, season, POS, rated, desc(RAA)) %>%
+    distinct(ID, Name, season, POS, .keep_all = TRUE) %>%
     filter(!is.na(POS))
   
   return(fielding_value)
