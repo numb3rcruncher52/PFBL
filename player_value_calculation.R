@@ -4,6 +4,8 @@ source("Fielding_Value.R")
 source("Calculate_Player_Stats.R")
 source("functions.R")
 
+library(tidyverse)
+
 ## The following benchmarks are calculated from 2016 Total Reports
 LH_PA_FULL <- 179
 RH_PA_FULL <- 510
@@ -72,9 +74,10 @@ fielding_value <- batters %>%
   right_join(fielding) %>%
   mutate(LH_value = RAA_PA * maxPAvsL + LH_value,
          RH_value = RAA_PA * maxPAvsR + RH_value,
-         total_value = LH_value + RH_value) %>%
+         value = LH_value + RH_value) %>%
   group_by(ID, Name) %>%
-  mutate(pos_rank = min_rank(-total_value))
+  bind_rows(batters %>% mutate(POS = "DH"))
+  
 
 
 # Write all cleaned data to output folder ---------------------------------
@@ -84,6 +87,24 @@ write_csv(fielding_value, "Output/batters_clean.csv")
 write_csv(batter_ratings, "Output/batter_ratings_clean.csv")
 write_csv(pitcher_ratings, "Output/pitcher_ratings_clean.csv")
 
+## Final master spreadsheet
+rosters <- readRosterStatus(directory = paste0("C:\\dmb11\\",season_folders[length(season_folders)],"\\reports\\"),
+                            season = seasons[length(seasons)])
+
+final_pitch <- pitcher_ratings %>%
+  select(ID, Name, season, hand = Throws, Birth, INN) %>%
+  left_join(pitchers) %>%
+  filter(INN >= 20)
+
+final_bat <- batter_ratings %>%
+  select(ID, Name, season, hand = Bats, Birth, Run, Stl, Jmp) %>%
+  left_join(fielding_value)
+
+final <- final_pitch %>%
+  bind_rows(final_bat) %>%
+  left_join(rosters)
+
+write_csv(final, "Output/final_values_2016.csv")
 ## Additional information for evaluating teams
 # 
 # fielding_dh <- batters %>%
