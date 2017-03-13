@@ -104,7 +104,7 @@ final <- final_pitch %>%
   bind_rows(final_bat) %>%
   left_join(rosters)
 
-write_csv(final, "Output/final_values_2016.csv")
+write_csv(final, "Output/final_values_2016_postdraft.csv")
 ## Additional information for evaluating teams
 # 
 # fielding_dh <- batters %>%
