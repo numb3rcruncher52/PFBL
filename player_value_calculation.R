@@ -105,6 +105,76 @@ final <- final_pitch %>%
   left_join(rosters)
 
 write_csv(final, "Output/final_values_2016_postdraft.csv")
+
+
+# Redefine value based on positional scarcity -----------------------------
+
+POS_PA <- 19190
+
+findStarters <- function(data, position) {
+  
+  data %>%
+    arrange(desc(value)) %>%
+    group_by(season, POS) %>%
+    mutate(cum_value = cumsum(value),
+           cum_pa = cumsum(maxPAvsL + maxPAvsR),
+           prev_cum_pa = lag(cum_pa),
+           starter = ifelse(is.na(prev_cum_pa) | prev_cum_pa < POS_PA, "YES", "NO")) %>%
+    filter(POS == position,
+           starter == "YES")
+  
+  
+}
+
+positional_hierarchy <- c('C'
+                          ,'SS'
+                          ,'CF'
+                          ,'3B'
+                          , 'RF'
+                          , '2B'
+                          , 'LF'
+                          , '1B'
+                          , 'DH'
+                          )
+
+
+removeStarters <- function(all_players, current_starters) {
+  
+  all_players %>%
+    anti_join(current_starters, by = c('ID', 'Name', 'season'))
+}
+
+
+remaining_players <- fielding_value %>% 
+  filter(is.na(rated) | rated == "rated")
+
+starter_list <- vector(mode = 'list'
+                       , length = length(positional_hierarchy))
+
+for (i in seq_along(positional_hierarchy)) {
+  starter_list[[i]] <- findStarters(remaining_players, positional_hierarchy[i])
+  
+  remaining_players <- removeStarters(remaining_players, starter_list[[i]])
+}
+
+starters <- bind_rows(starter_list)
+
+View(
+starters %>%
+  group_by(season
+           , POS) %>%
+  summarise(min_value = min(value),
+            max_value = max(value),
+            total_value = sum(value),
+            total_pa = sum(maxPAvsL + maxPAvsR))  %>%
+  mutate(avg_value = total_value / total_pa * 685)
+)
+
+ss_starters <- findStarters(fielding_value, "SS")
+
+remaining_players <- removeStarters(fielding_value, ss_starters)
+
+
 ## Additional information for evaluating teams
 # 
 # fielding_dh <- batters %>%

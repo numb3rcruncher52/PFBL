@@ -1,8 +1,8 @@
 ### DMBreportLoad.R
 
 library(dplyr)
-## Takes any .txt file report from DMB and returns a clean dataframe
 
+## Takes any .txt file report from DMB and returns a clean dataframe
 readDMBfile <- function(file_path) {
   ## Read in file and separate header information from data
   file <- readLines(file_path, warn = FALSE)
