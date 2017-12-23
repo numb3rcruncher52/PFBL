@@ -12,14 +12,15 @@ library(tidyr)
 
 # Load in Coefficients ----------------------------------------------------
 
-coef_def <- read_csv("DATA/DefCoef.csv", col_types = "cciiiiiiiii")
+coef_def <- read_csv("DATA/DefCoef.csv", col_types = "ccii")
+#coef_def <- read_csv("DATA/DefCoef.csv", col_types = "cciiiiiiiii")
 
 coef_OFarm <- read_csv("DATA/OFArm.csv", col_types = "ciii")
 
 coef_Carm <- read_csv("DATA/CArm.csv", col_types = "cci")
 names(coef_Carm) <- c("Arm","POS","RAA_throw")
 
-coef_oop_def <- read_csv("DATA/DMBOOPCoef.csv", col_types = "ccciiiiiiiii")
+coef_oop_def <- read_csv("DATA/DMBOOPCoef.csv", col_types = "cccii")
 
 coef_baserunning <- read_csv("DATA/RunCoef.csv", col_types = "ci")
 
@@ -33,13 +34,13 @@ seasonal_constants <- fg_guts %>%
 
 # Tidy coefficient data ---------------------------------------------------
 
-coef_def <- coef_def %>% 
-  gather(Err,RAA,`0`:`200`) %>% 
-  mutate(Err = as.numeric(Err))
+# coef_def <- coef_def %>% 
+#   gather(Err,RAA,`0`:`200`) %>% 
+#   mutate(Err = as.numeric(Err))
 
 ## Clean up out of position coefficients
-coef_oop_def <- coef_oop_def %>% 
-  gather(Err,RAA,`0`:`200`,convert = TRUE)
+# coef_oop_def <- coef_oop_def %>% 
+#   gather(Err,RAA,`0`:`200`,convert = TRUE)
 
 ### Clean up the outfield arm coefficients
 coef_arm <- coef_OFarm %>% 
@@ -51,5 +52,10 @@ coef_wOBA <- seasonal_constants %>%
   select(Season:wOBAScale)
 
 
+# Model Defensive Data ----------------------------------------------------
 
+#Make a model for every Position/Range combination based on Error as the 
+#X variable and ensuring the model goes through the origin
+#def_model <- lm(RAA ~ POS:RANGE + Err - 1, data = coef_def)
 
+def_model <- lm(RAA ~ (POS:RANGE)*Err - 1, data = coef_def)
