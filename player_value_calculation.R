@@ -1,3 +1,4 @@
+rm(list=ls())
 source("DMBreportLoad.R")
 source("BaseballCoefficientsLoad.R")
 source("Fielding_Value.R")
@@ -16,8 +17,8 @@ PITCH_LH_SPLIT <- 0.4357984
 
 # Load data for season in question ----------------------------------------
 
-season_folders <- c("PFBL 2015", "PFBL 2016", "PFBL 2017")
-seasons <- seq(2014, 2016, 1)
+season_folders <- c("PFBL 2015", "PFBL 2016", "PFBL 2017", "PFBL 2018")
+seasons <- seq(2014, 2017, 1)
 
 args2 <- list(directory = paste0("C:\\dmb11\\",season_folders,"\\reports\\"),
               season = seasons)
@@ -59,9 +60,9 @@ batters <- stats_final %>%
   mutate(total_PA = LH_PA + RH_PA,
          min_PA=ifelse(total_PA < 200, 0, 0.7 * total_PA), 
          maxPAvsL=round(ifelse(total_PA >= 502 | 
-                                 LH_OPS <= .650,LH_PA_FULL,pmin(LH_PA*1.33,LH_PA_FULL)),0), 
+                                 LH_OPS < .650,LH_PA_FULL,pmin(LH_PA*1.33,LH_PA_FULL)),0), 
          maxPAvsR=round(ifelse(total_PA >= 502 | 
-                                 RH_OPS <= .650, RH_PA_FULL, pmin(RH_PA*1.33,RH_PA_FULL)),0),
+                                 RH_OPS < .650, RH_PA_FULL, pmin(RH_PA*1.33,RH_PA_FULL)),0),
          max_PA = maxPAvsR + maxPAvsL,
          LH_value = round(maxPAvsL * LH_wRAA,2),
          RH_value = round(maxPAvsR * RH_wRAA,2),
@@ -104,7 +105,7 @@ final <- final_pitch %>%
   bind_rows(final_bat) %>%
   left_join(rosters)
 
-write_csv(final, "Output/final_values_2016_postdraft.csv")
+write_csv(final, "Output/final_values_2017.csv")
 
 
 # Redefine value based on positional scarcity -----------------------------
