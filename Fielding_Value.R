@@ -13,9 +13,8 @@
 
 fieldingValue <- function(batter_ratings) {
   
-  ## Find the upper and lower rating benchmarks for all rated
-  ## defensive positions
-  fielding <- batter_ratings %>%
+  ## Reshape player ratings so we have a record for every player,position-rating
+  player_pos_ratings <- batter_ratings %>%
     select(ID, Name, season, c:C) %>%
     gather(POS, Range, c:rf) %>%
     filter(Range != "") %>%
@@ -23,15 +22,23 @@ fieldingValue <- function(batter_ratings) {
     mutate(POS = toupper(POS), 
            RANGE = toupper(Range),
            Arm = ifelse(POS=='C',C,ifelse(POS %in% c('LF','CF','RF'),OF,NA))) %>%
-    select(-Range, -OF, -C) %>%
-    mutate(Err_low = pmin(plyr::round_any(Err, 25, f = floor),175),
-           Err_high = pmin(plyr::round_any(Err, 25, f = ceiling),200)) %>%
+    select(-Range, -OF, -C)
+  
+    ## Use linear defensive model to predict defensive value
+    raa_values <- predict(def_model, newdata = player_pos_ratings)
+    fielding <- player_pos_ratings %>%
+    mutate(RAA = raa_values) %>%
     left_join(coef_arm)
+    
+    ## Find the upper and lower rating benchmarks for all rated
+    ## defensive positions
+    # mutate(Err_low = pmin(plyr::round_any(Err, 25, f = floor),175),
+    #        Err_high = pmin(plyr::round_any(Err, 25, f = ceiling),200)) 
   
   ## Join rated position information with out of position coefficients
   fielding_unrated <- fielding %>%
     left_join(coef_oop_def, 
-              by = c("POS"="OPOS", "RANGE"="RANGE", "Err_low"="Err")) %>%
+              by = c("POS"="OPOS", "RANGE"="RANGE")) %>%
     left_join(coef_oop_def, 
               by = c("POS"="OPOS", "RANGE"="RANGE", "Err_high"="Err")) %>%
     mutate(POS = NPOS.x, rated = "unrated") %>%
