@@ -5,24 +5,24 @@
 #
 #######################################
 
-library(readr)
-library(rvest)
-library(dplyr)
-library(tidyr)
+#library(readr)
+#library(rvest)
+#library(dplyr)
+#library(tidyr)
 
 # Load in Coefficients ----------------------------------------------------
 
-coef_def <- read_csv("DATA/DefCoef.csv", col_types = "ccii")
+coef_def <- read_csv(paste0(REPORT_DIR,"MAPPINGS\\DefCoef.csv"), col_types = "ccii")
 #coef_def <- read_csv("DATA/DefCoef.csv", col_types = "cciiiiiiiii")
 
-coef_OFarm <- read_csv("DATA/OFArm.csv", col_types = "ciii")
+coef_OFarm <- read_csv(paste0(REPORT_DIR,"MAPPINGS\\OFArm.csv"), col_types = "ciii")
 
-coef_Carm <- read_csv("DATA/CArm.csv", col_types = "cci")
+coef_Carm <- read_csv(paste0(REPORT_DIR,"MAPPINGS\\CArm.csv"), col_types = "cci")
 names(coef_Carm) <- c("Arm","POS","RAA_throw")
 
-coef_oop_def <- read_csv("DATA/DMBOOPCoef.csv", col_types = "cccii")
+coef_oop_def <- read_csv(paste0(REPORT_DIR,"MAPPINGS\\DMBOOPCoef.csv"), col_types = "cccii")
 
-coef_baserunning <- read_csv("DATA/RunCoef.csv", col_types = "ci")
+coef_baserunning <- read_csv(paste0(REPORT_DIR,"MAPPINGS\\RunCoef.csv"), col_types = "ci")
 
 ## Pull seasonal constants from fangraphs
 fg_guts <- read_html("http://www.fangraphs.com/guts.aspx?type=cn")

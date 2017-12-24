@@ -1,9 +1,4 @@
 rm(list=ls())
-source("DMBreportLoad.R")
-source("BaseballCoefficientsLoad.R")
-source("Fielding_Value.R")
-source("Calculate_Player_Stats.R")
-source("functions.R")
 
 library(tidyverse)
 
@@ -13,14 +8,24 @@ RH_PA_FULL <- 510
 TOTAL_PA_FULL <- LH_PA_FULL + RH_PA_FULL
 PA_INN <- 4.277
 INN_START_MAX <- 7
-PITCH_LH_SPLIT <- 0.4357984 
+PITCH_LH_SPLIT <- 0.4357984
+
+REPORT_DIR <- "C:\\Users\\mwlyo\\Dropbox\\PFBL\\Reports - DMB\\"
+
+# Source Helper functions -------------------------------------------------
+
+source("DMBreportLoad.R")
+source("BaseballCoefficientsLoad.R")
+source("Fielding_Value.R")
+source("Calculate_Player_Stats.R")
+source("functions.R")
 
 # Load data for season in question ----------------------------------------
 
 season_folders <- c("reports_2015", "reports_2016", "reports_2017", "reports_2018")
 seasons <- seq(2014, 2017, 1)
 
-args2 <- list(directory = paste0("C:\\Users\\mwlyo\\Dropbox\\PFBL\\Reports - DMB\\",season_folders,"\\"),
+args2 <- list(directory = paste0(REPORT_DIR,season_folders,"\\"),
               season = seasons)
 
 stats <- args2 %>% pmap(.f = readPlayerStats, type = 'Profile') %>% bind_rows()
