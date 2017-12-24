@@ -17,10 +17,10 @@ PITCH_LH_SPLIT <- 0.4357984
 
 # Load data for season in question ----------------------------------------
 
-season_folders <- c("PFBL 2015", "PFBL 2016", "PFBL 2017", "PFBL 2018")
+season_folders <- c("reports_2015", "reports_2016", "reports_2017", "reports_2018")
 seasons <- seq(2014, 2017, 1)
 
-args2 <- list(directory = paste0("C:\\dmb11\\",season_folders,"\\reports\\"),
+args2 <- list(directory = paste0("C:\\Users\\mwlyo\\Dropbox\\PFBL\\Reports - DMB\\",season_folders,"\\"),
               season = seasons)
 
 stats <- args2 %>% pmap(.f = readPlayerStats, type = 'Profile') %>% bind_rows()
