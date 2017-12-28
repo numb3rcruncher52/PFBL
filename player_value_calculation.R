@@ -11,6 +11,7 @@ INN_START_MAX <- 7
 PITCH_LH_SPLIT <- 0.4357984
 
 REPORT_DIR <- "C:\\Users\\mwlyo\\Dropbox\\PFBL\\Reports - DMB\\"
+REPORT_DIR <- "C:\\Users\\maxl\\Dropbox (Personal)\\PFBL\\Reports - DMB\\"
 
 # Source Helper functions -------------------------------------------------
 
@@ -88,14 +89,17 @@ fielding_value <- batters %>%
 
 # Write all cleaned data to output folder ---------------------------------
 
-write_csv(pitchers, "Output/pitchers_clean.csv")
-write_csv(fielding_value, "Output/batters_clean.csv")
-write_csv(batter_ratings, "Output/batter_ratings_clean.csv")
-write_csv(pitcher_ratings, "Output/pitcher_ratings_clean.csv")
+write_csv(pitchers, paste0(REPORT_DIR,"OUTPUTS/pitchers_clean.csv"))
+write_csv(batters, paste0(REPORT_DIR,"OUTPUTS/batters_clean.csv"))
+write_csv(fielding_value, paste0(REPORT_DIR,"OUTPUTS/fielding_clean.csv"))
+write_csv(batter_ratings, paste0(REPORT_DIR,"OUTPUTS/batter_ratings_clean.csv"))
+write_csv(pitcher_ratings, paste0(REPORT_DIR,"OUTPUTS/pitcher_ratings_clean.csv"))
 
 ## Final master spreadsheet
-rosters <- readRosterStatus(directory = paste0("C:\\dmb11\\",season_folders[length(season_folders)],"\\reports\\"),
+rosters <- readRosterStatus(directory = paste0(REPORT_DIR,season_folders[length(season_folders)],"\\"),
                             season = seasons[length(seasons)])
+
+write_csv(rosters, paste0(REPORT_DIR,"OUTPUTS/rosters.csv"))
 
 final_pitch <- pitcher_ratings %>%
   select(ID, Name, season, hand = Throws, Birth, INN) %>%
@@ -152,7 +156,7 @@ removeStarters <- function(all_players, current_starters) {
 
 
 remaining_players <- fielding_value %>% 
-  filter(is.na(rated) | rated == "rated")
+  filter(is.na(rated) | rated == "YES")
 
 starter_list <- vector(mode = 'list'
                        , length = length(positional_hierarchy))
