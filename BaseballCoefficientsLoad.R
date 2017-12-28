@@ -6,7 +6,7 @@
 #######################################
 
 #library(readr)
-#library(rvest)
+library(rvest)
 #library(dplyr)
 #library(tidyr)
 
