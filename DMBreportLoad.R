@@ -43,9 +43,10 @@ readRosterStatus <- function(directory, season) {
   pitcher_roster <- readDMBfile(pitcher_roster)
   
   final_roster <- rbind(batter_roster, pitcher_roster) %>%
-    mutate(season = season)
-  # Change the type of fields as necessary
-  final_roster$ID <- as.numeric(final_roster$ID)
+    mutate(season = season
+           , ID = as.numeric(ID)) %>%
+    arrange(ID, Team) %>%
+    distinct(ID, .keep_all = TRUE)
   
   return(final_roster)
 }
@@ -63,7 +64,9 @@ readPlayerStatsSplit <- function(directory, season, type = 'Profile', split) {
   
   final_stats <- bind_rows(batter, pitcher) %>%
     mutate(split = split,
-           season = season)
+           season = season) %>%
+    arrange(ID, desc(AB)) %>%
+    distinct(ID, .keep_all = TRUE)
   
   # Change the type of fields as necessary
   cols.num <- c("ID", "AVG", "OBP", "SLG", "OPS", "AB", "SNG", "DBL", "TRI",
@@ -83,7 +86,9 @@ readPlayerStats <- function(directory, season, type = 'Profile') {
 readBatterRatings <- function(directory, season) {
   batter_ratings <- paste0(directory, "BatterProfileRatings.txt")
   batter_ratings <- readDMBfile(batter_ratings) %>%
-    mutate(season = season)
+    mutate(season = season) %>%
+    arrange(ID, desc(G)) %>%
+    distinct(ID, .keep_all = TRUE)
 
   # Change the type of fields as necessary
   batter_ratings$ID <- as.numeric(batter_ratings$ID)
@@ -96,7 +101,9 @@ readBatterRatings <- function(directory, season) {
 readPitcherRatings <- function(directory, season) {
   pitcher_ratings <- paste0(directory, "PitcherProfileRatings.txt")
   pitcher_ratings <- readDMBfile(pitcher_ratings) %>%
-    mutate(season = season)
+    mutate(season = season) %>%
+    arrange(ID, desc(BF)) %>%
+    distinct(ID, .keep_all = TRUE)
   
   # Change the type of fields as necessary
   cols.num <- c("ID", "G", "GS", "INN", "BF")
