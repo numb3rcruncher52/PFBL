@@ -5,10 +5,7 @@
 #
 #######################################
 
-#library(readr)
 library(rvest)
-#library(dplyr)
-#library(tidyr)
 
 # Load in Coefficients ----------------------------------------------------
 
@@ -24,13 +21,17 @@ coef_oop_def <- read_csv(paste0(REPORT_DIR,"MAPPINGS\\DMBOOPCoef.csv"), col_type
 
 coef_baserunning <- read_csv(paste0(REPORT_DIR,"MAPPINGS\\RunCoef.csv"), col_types = "ci")
 
-## Pull seasonal constants from fangraphs
-fg_guts <- read_html("http://www.fangraphs.com/guts.aspx?type=cn")
-seasonal_constants <- fg_guts %>% 
-  html_node(css = "#GutsBoard1_dg1_ctl00") %>%
-  html_table() %>%
-  select(Season, lg_wOBA = wOBA, wOBAScale:wHR)
+coef_wOBA <- read_csv(paste0(REPORT_DIR,"MAPPINGS\\wOBACoef.csv"), col_types = "idd")
 
+## Pull seasonal constants from fangraphs
+if (max(coef_wOBA$Season) < LATEST_SEASON) {
+  fg_guts <- read_html("http://www.fangraphs.com/guts.aspx?type=cn")
+  coef_wOBA <- fg_guts %>% 
+    html_node(css = "#GutsBoard1_dg1_ctl00") %>%
+    html_table() %>%
+    select(Season, lg_wOBA = wOBA, wOBAScale) #:wHR previously
+  write_csv(coef_wOBA, paste0(REPORT_DIR,"MAPPINGS\\wOBACoef.csv"))
+}
 
 # Tidy coefficient data ---------------------------------------------------
 
@@ -47,10 +48,6 @@ coef_arm <- coef_OFarm %>%
   gather(POS,RAA_throw,-Arm) %>%
   rbind(coef_Carm)
 rm(coef_OFarm, coef_Carm)
-
-coef_wOBA <- seasonal_constants %>%
-  select(Season:wOBAScale)
-
 
 # Model Defensive Data ----------------------------------------------------
 
