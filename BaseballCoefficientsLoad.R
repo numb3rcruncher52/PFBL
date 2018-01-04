@@ -21,7 +21,7 @@ coef_oop_def <- read_csv(paste0(REPORT_DIR,"MAPPINGS\\DMBOOPCoef.csv"), col_type
 
 coef_baserunning <- read_csv(paste0(REPORT_DIR,"MAPPINGS\\RunCoef.csv"), col_types = "ci")
 
-coef_wOBA <- read_csv(paste0(REPORT_DIR,"MAPPINGS\\wOBACoef.csv"), col_types = "idd")
+coef_wOBA <- read_csv(paste0(REPORT_DIR,"MAPPINGS\\wOBACoef.csv"), col_types = "idddddddd")
 
 ## Pull seasonal constants from fangraphs
 if (max(coef_wOBA$Season) < LATEST_SEASON) {
@@ -29,7 +29,7 @@ if (max(coef_wOBA$Season) < LATEST_SEASON) {
   coef_wOBA <- fg_guts %>% 
     html_node(css = "#GutsBoard1_dg1_ctl00") %>%
     html_table() %>%
-    select(Season, lg_wOBA = wOBA, wOBAScale) #:wHR previously
+    select(Season, lg_wOBA = wOBA, wOBAScale:wHR) # previously
   write_csv(coef_wOBA, paste0(REPORT_DIR,"MAPPINGS\\wOBACoef.csv"))
 }
 
