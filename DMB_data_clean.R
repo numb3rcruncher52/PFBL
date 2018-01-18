@@ -20,7 +20,7 @@ PITCH_LH_SPLIT <- 0.4357984
 LATEST_SEASON <- 2017
 
 REPORT_DIR <- "C:\\Users\\mwlyo\\Dropbox\\PFBL\\Reports - DMB\\"
-REPORT_DIR <- "C:\\Users\\maxl\\Dropbox (Personal)\\PFBL\\Reports - DMB\\"
+#REPORT_DIR <- "C:\\Users\\maxl\\Dropbox (Personal)\\PFBL\\Reports - DMB\\"
 
 # Source Helper functions -------------------------------------------------
 
@@ -49,3 +49,11 @@ fielding <- fieldingValue(batter_ratings)
 # Calculate Split Run Values ----------------------------------------------
 
 stats_final <- calcPlayerStats(stats)
+
+rm(list = c("args2"
+            , "coef_arm"
+            , "coef_def"
+            , "coef_oop_def"
+            , "coef_wOBA"
+            , "def_model"
+            , "stats"))
