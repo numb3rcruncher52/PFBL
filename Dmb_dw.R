@@ -5,8 +5,6 @@
 # for analysis and reporting
 ##############################################################
 
-library(googlesheets)
-
 source("DMB_data_clean.R")
 
 dim_player <- batter_ratings %>%
