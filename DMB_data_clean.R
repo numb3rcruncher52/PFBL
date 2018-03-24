@@ -41,6 +41,7 @@ args2 <- list(directory = paste0(REPORT_DIR,season_folders,"\\"),
 stats <- args2 %>% pmap(.f = readPlayerStats, type = 'Profile') %>% bind_rows()
 batter_ratings <- args2 %>% pmap(readBatterRatings) %>% bind_rows()
 pitcher_ratings <- args2 %>% pmap(readPitcherRatings) %>% bind_rows()
+rosters <- args2 %>% pmap(readRosterStatus) %>% bind_rows()
 
 # Get Fielding Value ------------------------------------------------------
 
