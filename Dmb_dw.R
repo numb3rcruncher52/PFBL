@@ -100,9 +100,9 @@ final_players <- final_batters %>%
 
 # Write all final files to OUTPUT_NEW -------------------------------------
 
-write_csv(final_players, "final_players.csv")
-write_csv(player_splits_final, "player_splits.csv")
-
+#write_csv(final_players, "OUTPUT_NEW/final_players.csv")
+#write_csv(player_splits_final, "OUTPUT_NEW/player_splits.csv")
+#write_csv(rosters, "OUTPUT_NEW/rosters.csv")
 
 # dim_player <- batter_ratings %>%
 #   select(ID, Name, Birth) %>%
