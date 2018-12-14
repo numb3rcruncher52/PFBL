@@ -45,7 +45,7 @@ readRosterStatus <- function(directory, season) {
   final_roster <- rbind(batter_roster, pitcher_roster) %>%
     mutate(season = season
            , ID = as.numeric(ID)) %>%
-    arrange(ID, Team) %>%
+    arrange(ID, desc(Team)) %>%
     distinct(ID, .keep_all = TRUE)
   
   return(final_roster)
@@ -86,7 +86,8 @@ readPlayerStats <- function(directory, season, type = 'Profile') {
 readBatterRatings <- function(directory, season) {
   batter_ratings <- paste0(directory, "BatterProfileRatings.txt")
   batter_ratings <- readDMBfile(batter_ratings) %>%
-    mutate(season = season) %>%
+    mutate(season = season
+           , G = as.numeric(G)) %>%
     arrange(ID, desc(G)) %>%
     distinct(ID, .keep_all = TRUE)
 
@@ -101,12 +102,13 @@ readBatterRatings <- function(directory, season) {
 readPitcherRatings <- function(directory, season) {
   pitcher_ratings <- paste0(directory, "PitcherProfileRatings.txt")
   pitcher_ratings <- readDMBfile(pitcher_ratings) %>%
-    mutate(season = season) %>%
+    mutate(season = season
+           , BF = as.numeric(BF)) %>%
     arrange(ID, desc(BF)) %>%
     distinct(ID, .keep_all = TRUE)
   
   # Change the type of fields as necessary
-  cols.num <- c("ID", "G", "GS", "INN", "BF")
+  cols.num <- c("ID", "G", "GS", "INN")
   pitcher_ratings[cols.num] <- sapply(pitcher_ratings[cols.num],as.numeric)
   pitcher_ratings$Birth <- as.Date(pitcher_ratings$Birth,
                                    format = "%m/%d/%Y")
