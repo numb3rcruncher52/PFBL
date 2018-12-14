@@ -1,5 +1,18 @@
 ## Optimal usage test
 
+## List of player-fielder_value combinations
+
+library(lpSolve)
+
+fielding_clean <- fielding_value %>%
+  mutate(maxPA = maxPAvsL + maxPAvsR
+         , value_PA = value / maxPA) %>%
+  select(ID, Name, season, POS, value_PA, maxPA) 
+
+
+a <- fielding_clean$value_PA
+
+
 ## Percentage of PA that are RH
 RH_PERCENT <- RH_PA_FULL / (LH_PA_FULL + RH_PA_FULL)
 
