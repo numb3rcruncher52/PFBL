@@ -21,6 +21,7 @@ LATEST_SEASON <- 2017
 
 REPORT_DIR <- "C:\\Users\\mwlyo\\Dropbox\\PFBL\\Reports - DMB\\"
 REPORT_DIR <- "C:\\Users\\maxl\\Dropbox (Personal)\\PFBL\\Reports - DMB\\"
+REPORT_DIR <- "C:\\Users\\maxl\\OneDrive\\PFBL\\Reports - DMB\\"
 
 # Source Helper functions -------------------------------------------------
 
@@ -37,8 +38,14 @@ season_folders <- paste("reports", seasons + 1, sep = "_")
 
 args2 <- list(directory = paste0(REPORT_DIR,season_folders,"\\"),
               season = seasons)
+args_results <- list(directory = paste0(REPORT_DIR
+                                        ,season_folders
+                                        ,"\\"),
+                     season = seasons)
 
 stats <- args2 %>% pmap(.f = readPlayerStats, type = 'Profile') %>% bind_rows()
+results <- args_results %>% 
+  pmap(.f = readPlayerStats, type = 'Results') %>% bind_rows()
 batter_ratings <- args2 %>% pmap(readBatterRatings) %>% bind_rows()
 pitcher_ratings <- args2 %>% pmap(readPitcherRatings) %>% bind_rows()
 rosters <- args2 %>% pmap(readRosterStatus) %>% bind_rows()
@@ -56,6 +63,6 @@ rm(list = c("args2"
             , "coef_arm"
             , "coef_def"
             , "coef_oop_def"
-            , "coef_wOBA"
-            , "def_model"
-            , "stats"))
+            #, "coef_wOBA"
+            , "def_model"))
+            #, "stats"))
