@@ -19,9 +19,10 @@ INN_START_MAX <- 7
 PITCH_LH_SPLIT <- 0.4357984
 LATEST_SEASON <- 2018
 
-REPORT_DIR <- "C:\\Users\\mwlyo\\Dropbox\\PFBL\\Reports - DMB\\"
-REPORT_DIR <- "C:\\Users\\maxl\\Dropbox (Personal)\\PFBL\\Reports - DMB\\"
+## Work Computer
 REPORT_DIR <- "C:\\Users\\maxl\\OneDrive\\PFBL\\Reports - DMB\\"
+## Home Computer
+REPORT_DIR <- "C:\\Users\\mwlyo\\OneDrive\\PFBL\\Reports - DMB\\"
 
 # Source Helper functions -------------------------------------------------
 

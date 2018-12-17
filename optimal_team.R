@@ -6,21 +6,6 @@
 ###########################################################
 source("Dmb_dw.R")
 
-## Start with final_players, player_splits_final, & rosters
-
-opt_team_base <- final_players %>%
-  left_join(player_splits_final, by = c('season', 'Name', 'ID')) %>%
-  left_join(rosters, by = c('season', 'Name', 'ID')) %>%
-  mutate(pa_value = run_raa / TOTAL_PA_FULL + RAA_PA + wRAA) %>%
-  filter(season == 2017
-        # , TeamName == "Alcatraz Stars"
-         ) %>%
-  arrange(desc(pa_value))
-
-#    , split_max = ifelse(split == "RH"
-#, RH_PA_FULL
-#, LH_PA_FULL)
-
 pos_hierarchy <- c('C'
                    , 'SS'
                    , '3B'
@@ -30,7 +15,95 @@ pos_hierarchy <- c('C'
                    , '2B'
                    , '1B'
                    #, 'DH'
-                   )
+)
+
+## Only need half as much DH PA (for the AL)
+## Need 162 starts for pitchers
+## Need xx amount of innings from bullpen
+
+## Setup needs player information, grouping information, and 
+
+opt_team_base <- final_players %>%
+  left_join(player_splits_final, by = c('season', 'Name', 'ID')) %>%
+  left_join(rosters, by = c('season', 'Name', 'ID')) %>%
+  filter(season == 2018
+        ## , split == "RH"
+         , POS %in% pos_hierarchy
+  ) %>%
+  mutate(pa_value = run_raa / TOTAL_PA_FULL + RAA_PA + wRAA) %>%
+  select(ID, Name, season, TeamName, POS, split, max_PA, pa_value) 
+
+assignPA <- function(players, player_pa, pos_pa) {
+  ## add current player and positional PA to player dataframe, and figure out 
+  ## the next best player
+  
+  players %>% 
+    left_join(player_pa, by = "ID") %>%
+    left_join(pos_pa, by = c("POS", "split")) %>%
+    mutate(pa_used = ifelse(is.na(pa_used), 0, pa_used)
+           , pa_remaining = pmax(max_PA - pa_used, 0)
+           , player_pos_value = pa_remaining * pa_value * POS_PA) %>%
+    filter(pa_remaining > 0
+           , POS_PA > 0) %>%
+    arrange(desc(player_pos_value)) %>%
+    slice(1)
+}
+
+update_players <- function(final_players) {
+  final_players %>%
+    group_by(ID) %>%
+    summarise(pa_used = sum(max_PA))
+}
+
+updatePositionPA <- function(final_players, pos_pa_needs) {
+  pos_pa_used <- final_players %>%
+    group_by(POS) %>%
+    summarise(pa_used = sum(max_PA))
+  
+  pos_pa_needs %>%
+    left_join(pos_pa_used, by = "POS") %>%
+    mutate(pa_used = ifelse(is.na(pa_used), 0, pa_used)
+           , POS_PA = pmax(POS_PA - pa_used, 0)) %>%
+    select(-pa_used)
+}
+
+pos_pa_needs_base <- expand.grid(POS = pos_hierarchy
+                                 , split = c("LH", "RH")
+                                 , stringsAsFactors = FALSE) %>%
+  mutate(POS_PA = ifelse(split == "LH", LH_PA_FULL, RH_PA_FULL) * 28)
+
+player_pa <- final_players %>%
+  distinct(ID) %>%
+  mutate(pa_used = 0)
+
+final_player_pa <- assignPA(opt_team_base, player_pa, pos_pa_needs_base)
+player_pa <- update_players(final_player_pa)
+pos_pa_needs <- updatePositionPA(final_player_pa, pos_pa_needs_base)
+
+while (sum(pos_pa_needs$POS_PA) > 0) {
+  print(sum(pos_pa_needs$POS_PA))
+  final_player_pa <- final_player_pa %>%
+    bind_rows(assignPA(opt_team_base, player_pa, pos_pa_needs))
+  player_pa <- update_players(final_player_pa)
+  pos_pa_needs <- updatePositionPA(final_player_pa, pos_pa_needs_base)
+}
+
+final_pa_used <- final_player_pa %>%
+  mutate(pa_used = pmin(max_PA, POS_PA)
+         , value = pa_used * pa_value)
+
+View(final_pa_used %>% group_by(TeamName) %>% summarise(batting_value = sum(value)))
+
+positional_replacement <- final_pa_used %>%
+  group_by(POS) %>%
+  summarise(replacement_level = min(value))
+
+
+#    , split_max = ifelse(split == "RH"
+#, RH_PA_FULL
+#, LH_PA_FULL)
+
+
 
 distPlayTime <- function(data, position) {
   data %>%
