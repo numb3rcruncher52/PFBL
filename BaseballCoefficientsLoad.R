@@ -56,3 +56,5 @@ rm(coef_OFarm, coef_Carm)
 #def_model <- lm(RAA ~ POS:RANGE + Err - 1, data = coef_def)
 
 def_model <- lm(RAA ~ (POS:RANGE)*Err - 1, data = coef_def)
+
+def_oop_model <- lm(RAA ~ (OPOS:NPOS:RANGE)*Err - 1, data = coef_oop_def)

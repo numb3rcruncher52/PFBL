@@ -40,6 +40,36 @@ fieldingValue <- function(batter_ratings) {
     distinct(ID, Name, season, POS, .keep_all = TRUE) %>%
     filter(!is.na(POS))
   
+  ## Do the same for OOP ratings
+  # oop_options <- coef_oop_def %>%
+  #   distinct(OPOS, NPOS)
+  # 
+  # oop_player_pos_ratings <- player_pos_ratings %>%
+  #   left_join(oop_options, by = c('POS'='OPOS')) %>%
+  #   rename(OPOS = POS) %>%
+  #   filter(!is.na(NPOS))
+  # 
+  # oop_raa_values <- predict(def_oop_model, newdata = oop_player_pos_ratings)
+  # 
+  # oop_fielding <- oop_player_pos_ratings %>%
+  #   mutate(RAA = oop_raa_values) %>%
+  #   left_join(coef_arm, by = c("Arm"="Arm", "NPOS"="POS")) %>%
+  #   mutate(RAA_throw = ifelse(is.na(RAA_throw),0,RAA_throw),
+  #          RAA = RAA + 
+  #            RAA_throw,
+  #          RAA_PA = RAA / TOTAL_PA_FULL
+  #          , rated = "NO") %>%
+  #   select(ID, Name, season, POS = NPOS, rated, RANGE, Err, Arm, RAA, RAA_PA) %>%
+  #   arrange(ID, Name, season, POS, rated, RAA) %>%
+  #   distinct(ID, Name, season, POS, .keep_all = TRUE) %>%
+  #   filter(!is.na(POS))
+  # 
+  # ## Calculate final fielding
+  # final_fielding <- fielding %>%
+  #   bind_rows(oop_fielding) %>%
+  #   arrange(ID, Name, season, POS, desc(rated), desc(RAA)) %>%
+  #   distinct(ID, Name, season, POS, .keep_all = TRUE)
+  
   ## Find the upper and lower rating benchmarks for all rated
   ## defensive positions
   # mutate(Err_low = pmin(plyr::round_any(Err, 25, f = floor),175),
