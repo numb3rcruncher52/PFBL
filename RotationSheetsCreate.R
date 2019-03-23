@@ -5,14 +5,18 @@
 # schedules for rotation sheets
 ##############################################################
 
+rm(list = ls())
 source("DMBreportLoad.R")
 library(tidyverse)
 library(readxl)
 library(openxlsx)
 
-filepath <- "C:/dmb11/PFBL 2019/reports/OrgSchedule2019.xlsx"
 
-schedule <- read_xlsx(filepath)
+# Read in schedule information --------------------------------------------
+
+sched_filepath <- "C:/dmb11/PFBL 2019/reports/OrgSchedule2019.xlsx"
+
+schedule <- read_xlsx(sched_filepath)
 
 teams <- unique(schedule$Away)
 
@@ -31,7 +35,7 @@ al_league <- c("Highland Engineers"
                ,"Newark Force" 
                ,"Tri City Tornados")
 
-nl_leagues <- teams[!teams %in% al_league & !is.na(teams) & teams != 'Org schedule -']
+nl_league <- teams[!teams %in% al_league & !is.na(teams) & teams != 'Org schedule -']
 
 teamSchedule <- function(TEAMNAME, data) {
   data %>%
@@ -45,9 +49,30 @@ writeTeamSchedule <- function(TEAMNAME, data, workbook) {
   writeData(workbook, TEAMNAME, x = schedule)
 }
 
-filename <- "OUTPUT/rotation_sheets_2019_NL.xlsx"
-wb <- createWorkbook("rotation")
+readFinalRotation <- function(filepath, sheet, include_teams = FALSE) {
+  data <- read_excel(filepath
+                     , col_names = c('Date', 'GameID', 'Away', 'AwayPitcher', 'Home', 'HomePitcher')
+                     , sheet = sheet
+                     , range = "A2:F163"
+                     , col_types = c('date', 'numeric', 'text', 'text', 'text', 'text'))
+  
+  ## Check for option to include team names for error checking
+  if (include_teams) {
+    data <- data %>% select(GameID, Away, Home, AwayPitcher, HomePitcher) 
+  }
+  else {
+    data <- data %>% select(GameID, AwayPitcher, HomePitcher)
+  }
+  
+  data  %>% 
+    gather('away_home', 'starter', AwayPitcher, HomePitcher) %>%
+    filter(!is.na(starter))
+}
 
-map(nl_leagues, writeTeamSchedule, data = schedule, workbook = wb)
-
-saveWorkbook(wb, file = filename)
+writeRotationSheet <- function(filename, team_list, schedule_data) {
+  wb <- createWorkbook("rotation")
+  
+  map(team_list, writeTeamSchedule, data = schedule_data, workbook = wb)
+  
+  saveWorkbook(wb, file = filename, overwrite = TRUE)
+}
