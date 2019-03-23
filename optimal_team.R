@@ -6,6 +6,9 @@
 ###########################################################
 source("Dmb_dw.R")
 
+#rosters_old <- rosters
+#rosters <- read_csv("C:\\Users\\mwlyo\\OneDrive\\PFBL\\Player Values\\rosters.csv")
+
 TOTAL_TEAMS <- 28
 
 pos_hierarchy <- c('C'
@@ -189,4 +192,25 @@ opt_teams <- map(teams, optimizeTeam, pos_pa_needs_base = pos_pa_needs_base
 
 final_opt_teams <- bind_rows(opt_teams)
 
-write_excel_csv(final_opt_teams, "opt_teams_test.csv")
+
+# Combine with original team info to see who has excess value -------------
+
+final_opt_teams_clean <- final_opt_teams %>%
+  mutate(pa_used = pmin(POS_PA, pa_remaining)
+         , opt_value = pa_used * pa_value) %>%
+  select(ID:split, pa_used, opt_value)
+
+player_pa_used_final <- final_opt_teams_clean %>%
+  group_by(ID, Name, season, split) %>%
+  summarise(total_pa_used = sum(pa_used))
+
+overall_value <- opt_team_base %>%
+  left_join(player_pa_used_final, by = c("ID", "Name", "season", "split")) %>%
+  left_join(final_opt_teams_clean, by = c("ID", "Name", "season", "split", "POS", "TeamName")) %>%
+  mutate(total_pa_used = ifelse(is.na(total_pa_used),0,total_pa_used)
+         , pa_remaining = max_PA - total_pa_used
+         , possible_value = pa_value * pa_remaining)
+
+
+write_excel_csv(final_opt_teams, "opt_teams_test_postfa.csv")
+write_excel_csv(overall_value, "overall_value.csv")
