@@ -21,7 +21,9 @@ getRookieSeasons <- function(pitcher_ratings, stats) {
     summarise(rookie_season = min(season))
   
   rookie_seasons <- pitcher_rookies %>%
-    bind_rows(batter_rookies)
+    bind_rows(batter_rookies) %>%
+    arrange(rookie_season) %>%
+    distinct(ID, .keep_all = TRUE)
   
   return(rookie_seasons)
 }
