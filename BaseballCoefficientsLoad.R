@@ -23,6 +23,8 @@ coef_baserunning <- read_csv(paste0(REPORT_DIR,"MAPPINGS\\RunCoef.csv"), col_typ
 
 coef_wOBA <- read_csv(paste0(REPORT_DIR,"MAPPINGS\\wOBACoef.csv"), col_types = "idddddddd")
 
+dim_team <- read_csv(paste0(REPORT_DIR,"MAPPINGS\\dimTeam.csv"), col_types = "ccicc")
+
 ## Pull seasonal constants from fangraphs
 if (max(coef_wOBA$Season) < LATEST_SEASON) {
   fg_guts <- read_html("http://www.fangraphs.com/guts.aspx?type=cn")

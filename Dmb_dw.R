@@ -91,6 +91,7 @@ final_fielding <- fielding %>%
 final_players <- final_batters %>%
   bind_rows(final_pitchers) %>%
   left_join(final_fielding, by = c("ID", "Name", "season")) %>%
+  left_join(rookie_seasons, by = "ID") %>%
   mutate(POS = ifelse(is.na(POS)
                       , ifelse(is.na(INN), "DH", P)
                       , POS)

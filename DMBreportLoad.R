@@ -52,7 +52,7 @@ readRosterStatus <- function(directory, season) {
 }
 
 readPlayerStatsSplit <- function(directory, season, type = 'Profile', split) {
-  
+  print(paste0(directory, "Batter",type,"Vs",split,"P.txt"))
   ## Define file names
   batter <- paste0(directory, "Batter",type,"Vs",split,"P.txt")
   pitcher <- paste0(directory, "Pitcher",type,"Vs",split,"B.txt")
