@@ -57,7 +57,7 @@ pitcher_ratings <- args2 %>% pmap(readPitcherRatings) %>% bind_rows()
 rosters <- args2 %>% pmap(readRosterStatus) %>% bind_rows()
 batter_season_results <- readBatterSeasonResults(paste0(REPORT_DIR, "reports_2019/")
                                                  , season = 2018)
-pitcher_season_results <- readBatterSeasonResults(paste0(REPORT_DIR, "reports_2019/")
+pitcher_season_results <- readPitcherSeasonResults(paste0(REPORT_DIR, "reports_2019/")
                                                  , season = 2018)
 
 # Get Fielding Value ------------------------------------------------------
@@ -66,7 +66,7 @@ fielding <- fieldingValue(batter_ratings)
 
 # Calculate Split Run Values ----------------------------------------------
 
-stats_final <- calcPlayerStats(stats)
+stats_final <- calcPlayerStats(results)
 stats_splits <- calcPlayerStatsSplits(results)
 
 
