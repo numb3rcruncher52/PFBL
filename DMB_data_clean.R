@@ -20,9 +20,10 @@ PITCH_LH_SPLIT <- 0.4357984
 LATEST_SEASON <- 2018
 
 ## Work Computer
-#REPORT_DIR <- "C:\\Users\\maxl\\OneDrive\\PFBL\\Reports - DMB\\"
+REPORT_DIR <- "~/OneDrive/PFBL/Reports - DMB/"
 ## Home Computer
-REPORT_DIR <- "C:\\Users\\mwlyo\\OneDrive\\PFBL\\Reports - DMB\\"
+#REPORT_DIR <- "C:\\Users\\mwlyo\\OneDrive\\PFBL\\Reports - DMB\\"
+SEPARATOR <- "/"
 
 # Source Helper functions -------------------------------------------------
 
@@ -41,11 +42,11 @@ source("find_rookie_seasons.R")
 seasons <- seq(2014, LATEST_SEASON, 1)
 season_folders <- paste("reports", seasons + 1, sep = "_")
 
-args2 <- list(directory = paste0(REPORT_DIR,season_folders,"\\"),
+args2 <- list(directory = paste0(REPORT_DIR,season_folders,SEPARATOR),
               season = seasons)
 args_results <- list(directory = paste0(REPORT_DIR
                                         ,season_folders
-                                        ,"\\"),
+                                        ,SEPARATOR),
                      season = seasons)
 
 stats <- args2 %>% pmap(.f = readPlayerStats, type = 'Profile') %>% bind_rows()
@@ -54,6 +55,10 @@ results <- args_results %>%
 batter_ratings <- args2 %>% pmap(readBatterRatings) %>% bind_rows()
 pitcher_ratings <- args2 %>% pmap(readPitcherRatings) %>% bind_rows()
 rosters <- args2 %>% pmap(readRosterStatus) %>% bind_rows()
+batter_season_results <- readBatterSeasonResults(paste0(REPORT_DIR, "reports_2019/")
+                                                 , season = 2018)
+pitcher_season_results <- readBatterSeasonResults(paste0(REPORT_DIR, "reports_2019/")
+                                                 , season = 2018)
 
 # Get Fielding Value ------------------------------------------------------
 

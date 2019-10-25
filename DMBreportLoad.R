@@ -99,6 +99,41 @@ readBatterRatings <- function(directory, season) {
   return(batter_ratings)
 }
 
+readBatterSeasonResults <- function(directory, season) {
+  raw_data <- paste0(directory, "BatterSeasonResults.txt")
+  batter_results <- readDMBfile(raw_data) %>%
+    mutate(season = season
+           , G = as.numeric(G)) %>%
+    arrange(ID, desc(G)) %>%
+    distinct(ID, .keep_all = TRUE)
+  
+  # Change the type of fields as necessary
+  cols_num <- c("ID", "G", "R", "RBI", "SB", "CS")
+  batter_results <- batter_results %>%
+    mutate_at(cols_num, as.numeric) %>%
+    mutate(Birth = as.Date(Birth, format = "%m/%d/%Y"))
+  
+  return(batter_results)
+}
+
+readPitcherSeasonResults <- function(directory, season) {
+  raw_data <- paste0(directory, "PitcherSeasonResults.txt")
+  pitcher_results <- readDMBfile(raw_data) %>%
+    mutate(season = season
+           , G = as.numeric(G)) %>%
+    arrange(ID, desc(G)) %>%
+    distinct(ID, .keep_all = TRUE)
+  
+  # Change the type of fields as necessary
+  cols_num <- c("ID", "G", "GS", "S", "SVO", "INN", "BF", "ERA", "WHIP", "W", "L")
+  pitcher_results <- pitcher_results %>%
+    separate('W-L', into = c("W", "L"), sep = "-") %>%
+    mutate_at(cols_num, as.numeric) %>%
+    mutate(Birth = as.Date(Birth, format = "%m/%d/%Y"))
+  
+  return(pitcher_results)
+}
+
 readPitcherRatings <- function(directory, season) {
   pitcher_ratings <- paste0(directory, "PitcherProfileRatings.txt")
   pitcher_ratings <- readDMBfile(pitcher_ratings) %>%
