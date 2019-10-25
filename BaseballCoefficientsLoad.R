@@ -9,21 +9,23 @@ library(rvest)
 
 # Load in Coefficients ----------------------------------------------------
 
-coef_def <- read_csv(paste0(REPORT_DIR,"MAPPINGS\\DefCoef.csv"), col_types = "ccii")
+MAPPINGS_DIR <- paste0(REPORT_DIR, "MAPPINGS", SEPARATOR)
+
+coef_def <- read_csv(paste0(MAPPINGS_DIR, "DefCoef.csv"), col_types = "ccii")
 #coef_def <- read_csv("DATA/DefCoef.csv", col_types = "cciiiiiiiii")
 
-coef_OFarm <- read_csv(paste0(REPORT_DIR,"MAPPINGS\\OFArm.csv"), col_types = "ciii")
+coef_OFarm <- read_csv(paste0(MAPPINGS_DIR, "OFArm.csv"), col_types = "ciii")
 
-coef_Carm <- read_csv(paste0(REPORT_DIR,"MAPPINGS\\CArm.csv"), col_types = "cci")
+coef_Carm <- read_csv(paste0(MAPPINGS_DIR, "CArm.csv"), col_types = "cci")
 names(coef_Carm) <- c("Arm","POS","RAA_throw")
 
-coef_oop_def <- read_csv(paste0(REPORT_DIR,"MAPPINGS\\DMBOOPCoef.csv"), col_types = "cccii")
+coef_oop_def <- read_csv(paste0(MAPPINGS_DIR, "DMBOOPCoef.csv"), col_types = "cccii")
 
-coef_baserunning <- read_csv(paste0(REPORT_DIR,"MAPPINGS\\RunCoef.csv"), col_types = "ci")
+coef_baserunning <- read_csv(paste0(MAPPINGS_DIR, "RunCoef.csv"), col_types = "ci")
 
-coef_wOBA <- read_csv(paste0(REPORT_DIR,"MAPPINGS\\wOBACoef.csv"), col_types = "idddddddd")
+coef_wOBA <- read_csv(paste0(MAPPINGS_DIR, "wOBACoef.csv"), col_types = "idddddddd")
 
-dim_team <- read_csv(paste0(REPORT_DIR,"MAPPINGS\\dimTeam.csv"), col_types = "ccicc")
+dim_team <- read_csv(paste0(MAPPINGS_DIR, "dimTeam.csv"), col_types = "ccicc")
 
 ## Pull seasonal constants from fangraphs
 if (max(coef_wOBA$Season) < LATEST_SEASON) {
@@ -32,7 +34,7 @@ if (max(coef_wOBA$Season) < LATEST_SEASON) {
     html_node(css = "#GutsBoard1_dg1_ctl00") %>%
     html_table() %>%
     select(Season, lg_wOBA = wOBA, wOBAScale:wHR) # previously
-  write_csv(coef_wOBA, paste0(REPORT_DIR,"MAPPINGS\\wOBACoef.csv"))
+  write_csv(coef_wOBA, paste0(MAPPINGS_DIR, "wOBACoef.csv"))
 }
 
 # Tidy coefficient data ---------------------------------------------------
