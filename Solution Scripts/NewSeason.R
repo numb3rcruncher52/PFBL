@@ -1,0 +1,20 @@
+##############################################################
+# NewSeason.R
+#
+# Run this when a new season is starting
+##############################################################
+
+rm(list=ls())
+
+REPORT_DIR <- "~/OneDrive/PFBL/Reports - DMB/reports_2019/"
+LATEST_SEASON <- 2018
+
+source("Solution Scripts/cleanFieldingData.R")
+source("Solution Scripts/cleanStats.R")
+source("BaseballCoefficientsLoad.R")
+
+fielding <- cleanFieldingData(REPORT_DIR, LATEST_SEASON)
+stats <- cleanPlayerStats(REPORT_DIR, LATEST_SEASON, type = "Profile")
+
+write_csv(fielding, paste0("OUTPUT_NEW/final_players_",LATEST_SEASON,".csv"))
+write_csv(stats, paste0("OUTPUT_NEW/player_splits_",LATEST_SEASON,".csv"))
