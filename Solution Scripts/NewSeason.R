@@ -6,8 +6,8 @@
 
 rm(list=ls())
 
-REPORT_DIR <- "~/OneDrive/PFBL/Reports - DMB/reports_2019/"
-LATEST_SEASON <- 2018
+LATEST_SEASON <- 2019
+REPORT_DIR <- paste0("~/OneDrive/PFBL/Reports - DMB/reports_",LATEST_SEASON,"/")
 
 source("Solution Scripts/cleanFieldingData.R")
 source("Solution Scripts/cleanStats.R")

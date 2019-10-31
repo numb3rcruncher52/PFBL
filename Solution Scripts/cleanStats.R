@@ -40,7 +40,7 @@ cleanPlayerStats <- function(directory, season, type = 'Profile') {
              wOBA = calcWOBA(PA, SNG, DBL, TRI, HR, UBB, HBP, 
                              wBB, wHBP, w1B, w2B, w3B, wHR),
              wRAA = calcWRAA(role, wOBA, lg_wOBA, wOBAScale, 1)) %>%
-      select(ID, Name, role, season, split, OPS, PA, wOBA, wRAA)
+      select(ID:season, PA, wOBA, wRAA)
   }
   
   return(calcPlayerStatsSplits(stats))
