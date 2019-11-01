@@ -22,3 +22,4 @@ batters_2016.csv
 *.xlsx
 Output/
 *.csv
+.httr-oauth
