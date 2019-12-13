@@ -7,7 +7,12 @@
 # - results
 ##############################################################
 
-source("DMB_data_clean.R")
+rm(list=ls())
+
+LATEST_SEASON <- 2019
+REPORT_DIR <- paste0("~/OneDrive/PFBL/Reports - DMB/reports_",LATEST_SEASON,"/")
+
+
 
 all_season_results <- batter_season_results %>%
   bind_rows(pitcher_season_results)

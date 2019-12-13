@@ -6,7 +6,10 @@
 
 rm(list=ls())
 
-LATEST_SEASON <- 2019
+## Be sure to run rosters, Profiles, and Ratings reports from DMB and save
+## in Onedrive before running this script
+
+LATEST_SEASON <- 2020
 REPORT_DIR <- paste0("~/OneDrive/PFBL/Reports - DMB/reports_",LATEST_SEASON,"/")
 
 source("Solution Scripts/cleanFieldingData.R")

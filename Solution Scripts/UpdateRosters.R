@@ -6,7 +6,7 @@
 
 rm(list=ls())
 
-LATEST_SEASON <- 2019
+LATEST_SEASON <- 2020
 REPORT_DIR <- paste0("~/OneDrive/PFBL/Reports - DMB/reports_",LATEST_SEASON,"/")
 
 timeframe_list <- c("01_New Season"
@@ -15,7 +15,7 @@ timeframe_list <- c("01_New Season"
                     , "04_Post Free Agency"
                     , "05_Season Start"
                     , "06_Midseason")
-CURRENT_TIMEFRAME <- timeframe_list[6]
+CURRENT_TIMEFRAME <- timeframe_list[1]
 
 library(tidyverse)
 

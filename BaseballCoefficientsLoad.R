@@ -39,7 +39,8 @@ if (max(coef_wOBA$Season) < LATEST_SEASON) {
   coef_wOBA <- fg_guts %>% 
     html_node(css = "#GutsBoard1_dg1_ctl00") %>%
     html_table() %>%
-    select(Season, lg_wOBA = wOBA, wOBAScale:wHR) # previously
+    select(Season, lg_wOBA = wOBA, wOBAScale:wHR) %>%
+    mutate(Season = Season + 1)# previously
   write_csv(coef_wOBA, paste0(MAPPINGS_DIR, "wOBACoef.csv"))
 }
 
