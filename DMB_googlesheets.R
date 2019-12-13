@@ -9,6 +9,8 @@ rm(list=ls())
 library(tidyverse)
 library(googlesheets)
 
+source("Solution Scripts/cleanStats.R")
+
 ### Combine all outputted & cleaned DMB data
 OUTPUT_DIR <- "OUTPUT_NEW/"
 output_files <- list.files(OUTPUT_DIR, full.names = TRUE)
@@ -29,7 +31,8 @@ final_players <- map(players_files, read_csv, col_types = player_cols) %>% bind_
 
 all_ratings <- final_players %>%
   left_join(player_splits, by = c("ID", "Name", "season")) %>%
-  left_join(rosters, by = c("ID", "Name", "season"))
+  left_join(rosters, by = c("ID", "Name", "season")) %>%
+  calcPlaytimeLimits()
 
 all_results <- final_players %>%
   left_join(results_splits, by = c("ID", "Name", "season")) %>%

@@ -9,6 +9,13 @@ library(tidyverse)
 
 source("./DMBreportLoad.R")
 
+LH_PA_FULL <- 179
+RH_PA_FULL <- 510
+TOTAL_PA_FULL <- LH_PA_FULL + RH_PA_FULL
+PA_INN <- 4.277
+INN_START_MAX <- 7
+PITCH_LH_SPLIT <- 0.4357984
+
 cleanPlayerStats <- function(directory, season, type = 'Profile') {
   
   stats <- readPlayerStats(directory, season, type)
@@ -40,8 +47,51 @@ cleanPlayerStats <- function(directory, season, type = 'Profile') {
              wOBA = calcWOBA(PA, SNG, DBL, TRI, HR, UBB, HBP, 
                              wBB, wHBP, w1B, w2B, w3B, wHR),
              wRAA = calcWRAA(role, wOBA, lg_wOBA, wOBAScale, 1)) %>%
-      select(ID:season, PA, wOBA, wRAA)
+      select(ID:season, PA, wOBA, wRAA) %>%
+      group_by(ID, Name, season) %>%
+      mutate(total_PA = sum(PA)) %>%
+      ungroup()
   }
   
   return(calcPlayerStatsSplits(stats))
+}
+
+cleanSeasonResults <- function(directory, season) {
+  
+  batter_results <-readBatterSeasonResults(directory, season)
+  pitcher_results <- readPitcherSeasonResults(directory, season)
+  
+  all_results <- batter_results %>%
+    bind_rows(pitcher_results)
+  
+  return(all_results)
+}
+
+calcPlaytimeLimits <- function(ratings) {
+  ratings %>%
+    mutate(min_PA = ifelse(role == "batter"
+                           ,ifelse(total_PA < 200, 0, round(0.7*PA,0))
+                           , ifelse(INN < 50, 0, round(0.7*PA,0)))
+           , max_PA = ifelse(role == "batter"
+                             ,round(ifelse(split == 'LH'
+                                           , ifelse(total_PA >= 502 | 
+                                                      OPS < .650
+                                                    , LH_PA_FULL
+                                                    , pmin(PA*1.33,LH_PA_FULL))
+                                           , ifelse(total_PA >= 502 | 
+                                                      OPS < .650
+                                                    , RH_PA_FULL
+                                                    , pmin(PA*1.33, RH_PA_FULL))),0)
+                             , round(ifelse(split == 'LH'
+                                            , ifelse(INN >= 162
+                                                     , max_GS * INN_START_MAX * PITCH_LH_SPLIT * PA_INN
+                                                     , PITCH_LH_SPLIT * total_PA * 1.33
+                                            )
+                                            , ifelse(INN >= 162
+                                                     , max_GS * INN_START_MAX * (1 - PITCH_LH_SPLIT) * PA_INN
+                                                     , (1 - PITCH_LH_SPLIT) * total_PA * 1.33
+                                            ))))
+           , min_INN = round(ifelse(role == "batter", NA, min_PA / PA_INN),0)
+           , max_INN = round(ifelse(role == "batter", NA, max_PA / PA_INN),0)
+    )
 }
