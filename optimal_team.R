@@ -6,18 +6,59 @@
 # based on all_ratings table
 ###########################################################
 
-positionalNeeds <- function(ratings) {
+# positionalNeeds <- function(ratings) {
+#   ## identify playtime needs for each position
+#   
+#   TOTAL_TEAMS <- ratings %>%
+#     filter(!is.na(Team)) %>%
+#     distinct(Team) %>%
+#     nrow()
+#   
+#   AL_TEAMS <- ratings %>%
+#     filter(Conference == 'AL') %>%
+#     distinct(Team) %>%
+#     nrow()
+#   
+#   pos_hierarchy <- c('C'
+#                      , 'SS'
+#                      , '3B'
+#                      , 'CF'
+#                      , 'RF'
+#                      , 'LF'
+#                      , '2B'
+#                      , '1B'
+#   )
+#   
+#   pos_pa_needs_base <- expand.grid(POS = pos_hierarchy
+#                                    , split = c("LH", "RH")
+#                                    , stringsAsFactors = FALSE) %>%
+#     mutate(POS_PA = ifelse(split == "LH", LH_PA_FULL, RH_PA_FULL) * TOTAL_TEAMS)
+#   
+#   pitch_pa_needs <- tribble(
+#     ~POS, ~split, ~POS_PA,
+#     'SP', 'BOTH', 162 * TOTAL_TEAMS,
+#     'RP', 'BOTH', TOTAL_TEAMS * 10 / 3 * 162, 
+#     ## Assuming 3.3 innings of relief per game average
+#     'DH', 'LH', AL_TEAMS * LH_PA_FULL,
+#     'DH', 'RH', AL_TEAMS * RH_PA_FULL
+#   )
+#   
+#   pos_pa_needs_base <- pos_pa_needs_base %>% 
+#     bind_rows(pitch_pa_needs)
+#   
+#   return(pos_pa_needs_base)
+# }
+
+positionalNeeds <- function(ratings, level = 'Team') {
   ## identify playtime needs for each position
   
   TOTAL_TEAMS <- ratings %>%
-    filter(!is.na(Team)) %>%
-    distinct(Team) %>%
-    nrow()
+    filter(!is.na(TeamName)) %>%
+    distinct(TeamName) 
   
   AL_TEAMS <- ratings %>%
     filter(Conference == 'AL') %>%
-    distinct(Team) %>%
-    nrow()
+    distinct(TeamName) 
   
   pos_hierarchy <- c('C'
                      , 'SS'
@@ -27,26 +68,38 @@ positionalNeeds <- function(ratings) {
                      , 'LF'
                      , '2B'
                      , '1B'
+                     , 'DH'
   )
   
-  pos_pa_needs_base <- expand.grid(POS = pos_hierarchy
+  pos_pa_needs_base <- expand_grid(POS = pos_hierarchy
                                    , split = c("LH", "RH")
-                                   , stringsAsFactors = FALSE) %>%
-    mutate(POS_PA = ifelse(split == "LH", LH_PA_FULL, RH_PA_FULL) * TOTAL_TEAMS)
+                                   , TeamName = TOTAL_TEAMS$TeamName) %>%
+    mutate(POS_PA = ifelse(split == "LH", LH_PA_FULL, RH_PA_FULL)) %>%
+    filter(!(!(TeamName %in% AL_TEAMS$TeamName) & POS == 'DH'))
   
   pitch_pa_needs <- tribble(
     ~POS, ~split, ~POS_PA,
-    'SP', 'BOTH', 162 * TOTAL_TEAMS,
-    'RP', 'BOTH', TOTAL_TEAMS * 10 / 3 * 162, 
+    'SP', 'BOTH', 162,
+    'RP', 'BOTH', 10 / 3 * 162, 
     ## Assuming 3.3 innings of relief per game average
-    'DH', 'LH', AL_TEAMS * LH_PA_FULL,
-    'DH', 'RH', AL_TEAMS * RH_PA_FULL
+   # 'DH', 'LH', LH_PA_FULL,
+   # 'DH', 'RH', RH_PA_FULL
   )
   
-  pos_pa_needs_base <- pos_pa_needs_base %>% 
-    bind_rows(pitch_pa_needs)
+  pos_pa_needs_base <- pitch_pa_needs %>%
+    expand_grid(TOTAL_TEAMS) %>%
+    bind_rows(pos_pa_needs_base)
   
-  return(pos_pa_needs_base)
+  if (level == 'Team') {
+    return(pos_pa_needs_base)
+  }
+  else {
+    pos_pa_needs_league <- pos_pa_needs_base %>%
+      group_by(POS, split) %>%
+      summarise(POS_PA = sum(POS_PA))
+    return(pos_pa_needs_league)
+  }
+  
 }
 
 prepRatings <- function(ratings) {
@@ -78,7 +131,10 @@ prepRatings <- function(ratings) {
   batters %>%
     bind_rows(pitchers) %>%
     mutate(pt_used = 0
-           , pt_remaining = max_playtime)
+           , pt_remaining = max_playtime
+           , value_used = 0
+           , value_remaining = pt_remaining * pa_value) %>%
+    arrange(desc(value_remaining))
 }
 
 prepDHRatings <- function(ratings, player_pt) {
@@ -89,12 +145,16 @@ prepDHRatings <- function(ratings, player_pt) {
            , POS = 'DH') %>%
     select(ID, Name, season, TeamName, POS, split, max_playtime, pa_value) %>%
     mutate(pt_used = 0
-           , pt_remaining = max_playtime)
+           , pt_remaining = max_playtime
+           , value_used = 0)
   
   dh_update <- dh %>%
     left_join(player_pt, by = c("ID", "Name", "split")) %>%
-    mutate(pt_remaining = pmax(pt_remaining - player_pt_used, 0)) %>%
+    mutate(pt_remaining = pmax(pt_remaining - player_pt_used, 0)
+           , value_remaining = pt_remaining * pa_value) %>%
     select(-player_pt_used)
+  
+  return(dh_update)
 }
 
 getPlayerAssignedPT <- function(assigned_playtime) {
@@ -103,13 +163,14 @@ getPlayerAssignedPT <- function(assigned_playtime) {
     summarise(player_pt_used = sum(pt_used))
 }
 
-getNextPlayer <- function(opt_team, needs) {
+getNextPlayer <- function(opt_team, needs, join_crit = c("POS", "split")) {
   next_player <- opt_team %>%
-    filter(pt_remaining > 0) %>%
-    left_join(needs, by = c("POS", "split")) %>%
+    left_join(needs, by = join_crit) %>%
+    filter(pt_remaining > 0
+           , POS_PA > 0) %>%
     mutate(pt_assigned = pmin(pt_remaining, POS_PA)
            ## calc how much pt can be assigned
-           , most_value = pt_assigned * pa_value * (1 - pt_assigned / POS_PA)) %>%
+           , most_value = pt_assigned * pa_value * POS_PA) %>%
            ## weight the POS that would close the gap the most for needs
     arrange(desc(most_value)) %>%
     slice(1) %>%
@@ -123,7 +184,8 @@ updateOptTeam <- function(opt_team, next_player) {
   ## Add next player to opt_team and update pt_used
   opt_team_update <- opt_team %>%
     left_join(next_player, by = c("ID", "Name", "season", "TeamName", "POS", "split")) %>%
-    mutate(pt_used = pt_used + ifelse(is.na(pt_assigned), 0, pt_assigned)) %>%
+    mutate(pt_used = pt_used + ifelse(is.na(pt_assigned), 0, pt_assigned)
+           , value_used = pt_used * pa_value) %>%
     select(-pt_assigned)
   
   ## calculate playtime remaining per player and update pt_remaining
@@ -131,19 +193,20 @@ updateOptTeam <- function(opt_team, next_player) {
   
   opt_team_update <- opt_team_update %>%
     left_join(player_pt, by = c("ID", "Name", "split")) %>%
-    mutate(pt_remaining = pmax(pt_remaining - player_pt_used, 0)) %>%
+    mutate(pt_remaining = pmax(pt_remaining - player_pt_used, 0)
+           , value_remaining = pt_remaining * pa_value) %>%
     select(-player_pt_used)
   
   return(opt_team_update)
 }
 
-updateNeeds <- function(needs, next_player) {
+updateNeeds <- function(needs, next_player, join_crit = c("POS", "split")) {
   ## Add next player pos_split to needs and calculate pt_remaining
   next_pos <- next_player %>%
-    select(POS, split, pt_assigned)
+    select(join_crit, pt_assigned)
   
   needs_update <- needs %>%
-    left_join(next_pos, by = c("POS", "split")) %>%
+    left_join(next_pos, by = join_crit) %>%
     mutate(POS_PA = POS_PA - ifelse(is.na(pt_assigned), 0, pt_assigned)) %>%
     select(-pt_assigned)
   
@@ -153,16 +216,30 @@ updateNeeds <- function(needs, next_player) {
 test_ratings <- all_ratings %>%
   filter(season == 2020)
 
+LEVEL = 'League'    ## Team if you want to do it by team
+JOIN_CRIT = c("POS", "split") ## Include 'TeamName' if you want to do it by team , "TeamName"
+
 opt_team <- prepRatings(test_ratings)
-needs <- positionalNeeds(test_ratings) %>%
+needs <- positionalNeeds(test_ratings, level = LEVEL) %>%
   filter(POS != 'DH')
 
+remaining_PA <- sum(needs$POS_PA)
+print_count <- 10
+
 while (sum(needs$POS_PA) > 0) {
-  print(sum(needs$POS_PA))
-  next_player <- getNextPlayer(opt_team, needs)
+  if (print_count == 0) {
+    print(sum(needs$POS_PA))
+    print_count <- 10
+    }
+  next_player <- getNextPlayer(opt_team, needs, JOIN_CRIT)
   #print(next_player)
   opt_team <- updateOptTeam(opt_team, next_player)
-  needs <- updateNeeds(needs, next_player)
+  needs <- updateNeeds(needs, next_player, JOIN_CRIT)
+  if (sum(needs$POS_PA) == remaining_PA) {
+    break
+  }
+  remaining_PA <- sum(needs$POS_PA)
+  print_count <- print_count - 1
 }
 
 # Now finish off the optimization with DH ---------------------------------
@@ -171,21 +248,23 @@ player_pt <- getPlayerAssignedPT(opt_team)
 
 dh_opt <- prepDHRatings(test_ratings, player_pt)
 
-dh_needs <- positionalNeeds(test_ratings) %>%
+dh_needs <- positionalNeeds(test_ratings, level = LEVEL) %>%
   filter(POS == 'DH')
 
 while (sum(dh_needs$POS_PA) > 0) {
   print(sum(dh_needs$POS_PA))
-  next_player <- getNextPlayer(dh_opt, dh_needs)
+  next_player <- getNextPlayer(dh_opt, dh_needs, JOIN_CRIT)
   #print(next_player)
   dh_opt <- updateOptTeam(dh_opt, next_player)
-  dh_needs <- updateNeeds(dh_needs, next_player)
+  dh_needs <- updateNeeds(dh_needs, next_player, JOIN_CRIT)
 }
 
 total_opt_team <- opt_team %>%
   bind_rows(dh_opt)
 
-write_csv(opt_team, "OUTPUT_NEW/opt_team_2020.csv")
+write_csv(total_opt_team, "OUTPUT_NEW/opt_team_by_team_2020.csv")
+#write_csv(total_opt_team, "OUTPUT_NEW/opt_team_2020.csv")
+## Use the 2nd for the league rankings
 
 # TOTAL_TEAMS <- 28
 # 
