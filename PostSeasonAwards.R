@@ -8,11 +8,13 @@
 ##############################################################
 
 rm(list=ls())
+source("DMB_data_clean.R")
 
-LATEST_SEASON <- 2019
-REPORT_DIR <- paste0("~/OneDrive/PFBL/Reports - DMB/reports_",LATEST_SEASON,"/")
+LATEST_SEASON <- 2020
+REPORT_DIR <- paste0("C:/Users/mwlyo/OneDrive/PFBL/Reports - DMB/reports_",LATEST_SEASON,"/")
 
-
+#batter_season_results <- readBatterSeasonResults(REPORT_DIR, LATEST_SEASON) 
+#pitcher_season_results <- readPitcherSeasonResults(REPORT_DIR, LATEST_SEASON) 
 
 all_season_results <- batter_season_results %>%
   bind_rows(pitcher_season_results)
@@ -39,4 +41,4 @@ season_results <- results %>%
   left_join(rosters, by = c('ID', 'Name', 'season')) %>%
   left_join(dim_team, by = c('season' = 'Season', 'TeamName'))
 
-write_csv(season_results, "end_of_season_2018.csv")
+write_csv(season_results, "end_of_season_2019.csv")

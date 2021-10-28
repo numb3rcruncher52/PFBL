@@ -6,9 +6,9 @@
 
 rm(list=ls())
 
-LATEST_SEASON <- 2020
-REPORT_DIR <- paste0("~/OneDrive/PFBL/Reports - DMB/reports_",LATEST_SEASON,"/")
-MAPPINGS_DIR <- "~/OneDrive/PFBL/Reports - DMB/MAPPINGS/"
+LATEST_SEASON <- 2021
+REPORT_DIR <- paste0("C:/Users/mwlyo/OneDrive/PFBL/Reports - DMB/reports_",LATEST_SEASON,"/")
+MAPPINGS_DIR <- "C:/Users/mwlyo/OneDrive/PFBL/Reports - DMB/MAPPINGS/"
 
 timeframe_list <- c("01_New Season"
                     , "02_Pre Draft"

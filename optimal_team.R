@@ -4,6 +4,8 @@
 # A non-strict optimization function to understand 
 # how good each team is/where they have extra playtime
 # based on all_ratings table
+
+# must run DMB_googlesheets.R first
 ###########################################################
 
 # positionalNeeds <- function(ratings) {
@@ -48,6 +50,9 @@
 #   
 #   return(pos_pa_needs_base)
 # }
+
+library(tidyverse)
+options(dplyr.summarise.inform = FALSE)
 
 positionalNeeds <- function(ratings, level = 'Team') {
   ## identify playtime needs for each position
@@ -214,10 +219,10 @@ updateNeeds <- function(needs, next_player, join_crit = c("POS", "split")) {
 }
 
 test_ratings <- all_ratings %>%
-  filter(season == 2020)
+  filter(season == 2021)
 
-LEVEL = 'League'    ## Team if you want to do it by team
-JOIN_CRIT = c("POS", "split") ## Include 'TeamName' if you want to do it by team , "TeamName"
+LEVEL = 'Team' ##League'    ## Team if you want to do it by team
+JOIN_CRIT = c("POS", "split", "TeamName") ## Include 'TeamName' if you want to do it by team , "TeamName"
 
 opt_team <- prepRatings(test_ratings)
 needs <- positionalNeeds(test_ratings, level = LEVEL) %>%
@@ -260,10 +265,11 @@ while (sum(dh_needs$POS_PA) > 0) {
 }
 
 total_opt_team <- opt_team %>%
-  bind_rows(dh_opt)
+  bind_rows(dh_opt) %>%
+  distinct()
 
-write_csv(total_opt_team, "OUTPUT_NEW/opt_team_by_team_2020.csv")
-#write_csv(total_opt_team, "OUTPUT_NEW/opt_team_2020.csv")
+write_csv(total_opt_team, "OUTPUT_NEW/opt_team_by_team_2021_postdraft.csv")
+#write_csv(total_opt_team, "OUTPUT_NEW/opt_team_2021.csv")
 ## Use the 2nd for the league rankings
 
 # TOTAL_TEAMS <- 28

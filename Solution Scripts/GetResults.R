@@ -6,8 +6,8 @@
 
 rm(list=ls())
 
-LATEST_SEASON <- 2019
-REPORT_DIR <- paste0("~/OneDrive/PFBL/Reports - DMB/reports_",LATEST_SEASON,"/")
+LATEST_SEASON <- 2020
+REPORT_DIR <- paste0("C:/Users/mwlyo/OneDrive/PFBL/Reports - DMB/reports_",LATEST_SEASON,"/")
 
 months_list <- c("04_April"         ## 1
                     , "05_May"      ## 2

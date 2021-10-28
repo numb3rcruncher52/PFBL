@@ -15,7 +15,7 @@ TOTAL_PA_FULL <- LH_PA_FULL + RH_PA_FULL
 # Load in Coefficients ----------------------------------------------------
 
 #MAPPINGS_DIR <- paste0(REPORT_DIR, "MAPPINGS", SEPARATOR)
-MAPPINGS_DIR <- "~/OneDrive/PFBL/Reports - DMB/MAPPINGS/"
+MAPPINGS_DIR <- "C:/Users/mwlyo/OneDrive/PFBL/Reports - DMB/MAPPINGS/"
 
 coef_def <- read_csv(paste0(MAPPINGS_DIR, "DefCoef.csv"), col_types = "ccii")
 #coef_def <- read_csv("DATA/DefCoef.csv", col_types = "cciiiiiiiii")

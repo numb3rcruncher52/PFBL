@@ -11,10 +11,12 @@ library(tidyverse)
 library(readxl)
 library(openxlsx)
 
+## Before starting you must prepare the OrgSchedule.txt output from Diamond
+## mind. 
 
 # Read in schedule information --------------------------------------------
 
-sched_filepath <- "C:/dmb11/PFBL 2019/reports/OrgSchedule2019.xlsx"
+sched_filepath <- "C:/dmb12/PFBL 2021/reports/OrgSchedule.xlsx"
 
 schedule <- read_xlsx(sched_filepath)
 
@@ -32,18 +34,30 @@ al_league <- c("Highland Engineers"
                ,"Portland Columbias"       
                ,"Essexville Eruption"
                ,"Houston Mockingbirds"
-               ,"Newark Force" 
-               ,"Tri City Tornados")
+              ## ,"Newark Force" 
+               ,"Tri City Tornados"
+               ,"Frisco Beer Snobs")
 
 nl_league <- teams[!teams %in% al_league & !is.na(teams) & teams != 'Org schedule -']
 
 teamSchedule <- function(TEAMNAME, data) {
   data %>%
-    filter(Away == TEAMNAME | Home == TEAMNAME)
+    filter(Away == TEAMNAME | Home == TEAMNAME) %>%
+    #mutate(AwayPitcher = NA
+     #      , HomePitcher = NA) %>%
+    select(Date, GameID, Away, AwayPitcher, Home, HomePitcher)
+}
+
+addOffDays <- function(data) {
+  data %>%
+    mutate(Date = as.Date(Date)) %>%
+    complete(Date = seq.Date(min(Date), max(Date), by='day')) %>%
+    mutate(Away = ifelse(is.na(Away), "OFF DAY", Away))
 }
 
 writeTeamSchedule <- function(TEAMNAME, data, workbook) {
-  schedule <- teamSchedule(TEAMNAME, data)
+  schedule <- teamSchedule(TEAMNAME, data) %>% 
+    addOffDays()
   
   addWorksheet(workbook, sheetName = TEAMNAME)
   writeData(workbook, TEAMNAME, x = schedule)
@@ -53,7 +67,7 @@ readFinalRotation <- function(filepath, sheet, include_teams = FALSE) {
   data <- read_excel(filepath
                      , col_names = c('Date', 'GameID', 'Away', 'AwayPitcher', 'Home', 'HomePitcher')
                      , sheet = sheet
-                     , range = "A2:F163"
+                     , range = "A2:F183"
                      , col_types = c('date', 'numeric', 'text', 'text', 'text', 'text'))
   
   ## Check for option to include team names for error checking
@@ -76,3 +90,10 @@ writeRotationSheet <- function(filename, team_list, schedule_data) {
   
   saveWorkbook(wb, file = filename, overwrite = TRUE)
 }
+
+
+
+# Write Rotation Sheets for each league -----------------------------------
+
+writeRotationSheet("AL2021_RotationTemplate.xlsx", al_league, schedule)
+writeRotationSheet("NL2021_RotationTemplate.xlsx", nl_league, schedule)
