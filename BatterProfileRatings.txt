@@ -1,0 +1,558 @@
+                          BatterProfileRatings -- All players in database                           
+                                           Regular season                                           
+
+ID     Name                   Bats Birth      c       1b      2b      3b      ss      lf      cf      rf      OF C  PB Run Stl Jmp G    
+29210  Jose Abreu             R    1/29/1987          Vg/136                                                           Av  Pr  Pr  162  
+31599  Ronald Acuna           R    12/18/1997                                                 Av/25   Av/25   Vg       Ex  Ex  Av  124  
+29441  Willy Adames           R    9/2/1995                                   Av/156                                   Ex  Av  Fr  146  
+28850  Matt Adams             L    8/31/1988          Av/97                                                            Pr  Pr  Pr  43   
+32270  Jo Adell               R    4/8/1999                                                   Fr/225  Fr/225  Pr       Vg  Pr  Fr  103  
+29191  Ehire Adrianza         S    8/21/1989                  Av/94   Av/85   Av/87                                    Av  Fr  Fr  119  
+29271  Jesus Aguilar          R    6/30/1990          Av/123                                                           Pr  Pr  Pr  138  
+29325  Nick Ahmed             R    3/15/1990                                  Vg/128                                   Vg  Ex  Fr  154  
+33182  Shogo Akiyama          L    4/16/1988                                          Vg/24   Av/24           Av       Vg  Av  Vg  146  
+29443  Hanser Alberto         R    10/17/1992                 Fr/59   Av/93                                            Vg  Ex  Fr  146  
+30863  Ozzie Albies           S    1/7/1997                   Av/94                                                    Vg  Vg  Av  78   
+31358  Sergio Alcantara       S    7/10/1996                  Fr/94   Av/121                                           Av  Pr  Pr  28   
+29448  Jorge Alfaro           R    6/11/1993  Fr/123                                                  Pr/147  Av Av 7  Pr  Vg  Fr  84   
+30230  Anthony Alford         R    7/20/1994                                          Fr/85   Fr/85   Fr/85   Fr       Av  Ex  Ex  49   
+31532  Austin Allen           L    1/16/1994  Av/84                                                              Fr 3  Av  Pr  Pr  38   
+30761  Greg Allen             S    3/15/1993                                          Av/83   Fr/83   Av/83   Vg       Vg  Vg  Ex  43   
+29168  Abraham Almonte        S    6/27/1989                                          Fr/97   Fr/97           Av       Vg  Fr  Ex  19   
+29454  Albert Almora          R    4/16/1994                                                  Av/81           Av       Vg  Pr  Pr  76   
+31651  Pete Alonso            R    12/7/1994          Fr/181                                                           Fr  Av  Pr  154  
+28682  Jose Altuve            R    5/6/1990                   Av/100                                                   Vg  Pr  Av  130  
+30742  Eddy Alvarez           S    1/30/1990                  Fr/88   Pr/96   Fr/98                                    Av  Vg  Vg  32   
+30699  Brian Anderson         R    5/19/1993          Pr/99           Vg/123                                           Av  Pr  Pr  159  
+29459  Tim Anderson           R    6/23/1993                                  Av/113                                   Vg  Av  Av  132  
+28276  Elvis Andrus           R    8/26/1988                                  Fr/104                                   Av  Vg  Vg  78   
+30233  Miguel Andujar         R    3/2/1995                           Fr/130          Pr/223                  Av       Av  Pr  Pr  57   
+33181  Sherten Apostel        R    3/11/1999          Av/119          Pr/116                                           Fr  Pr  Pr  19   
+30686  Aristides Aquino       R    4/22/1994                                          Av/78   Pr/78   Av/78   Av       Av  Av  Fr  62   
+32473  Jonathan Arauz         S    8/3/1998                   Fr/117  Pr/95   Vg/96                                    Av  Pr  Pr  68   
+29466  Orlando Arcia          R    8/4/1994                                   Av/63           Pr/100          Fr       Vg  Vg  Fr  159  
+29029  Nolan Arenado          R    4/16/1991                          Ex/51                                            Vg  Pr  Pr  130  
+31468  Randy Arozarena        R    2/28/1995                                          Av/77   Fr/77   Av/77   Av       Av  Ex  Vg  62   
+31373  Luis Arraez            L    4/9/1997                   Av/69                                                    Av  Pr  Pr  86   
+30236  Christian Arroyo       R    5/30/1995                  Av/78   Fr/100  Fr/98                                    Av  Pr  Pr  41   
+32053  Willians Astudillo     R    10/14/1991 Av/94                                                              Av 6  Av  Pr  Pr  22   
+28341  Alex Avila             L    1/29/1987  Av/152                                                             Av 3  Pr  Pr  Pr  62   
+30764  Harrison Bader         R    6/3/1994                                                   Av/165          Vg       Vg  Vg  Av  140  
+29354  Javier Baez            R    12/1/1992                                  Vg/110                                   Ex  Ex  Fr  159  
+29477  Austin Barnes          R    12/28/1989 Vg/108                                                             Av 1  Fr  Ex  Av  78   
+29223  Tucker Barnhart        L    1/7/1991   Ex/46   Pr/99                                                      Av 3  Pr  Pr  Pr  103  
+30243  Franklin Barreto       R    2/27/1996                  Fr/95   Pr/98   Fr/112  Fr/99                   Fr       Av  Av  Ex  57   
+33066  Joey Bart              R    12/15/1996 Av/109                                                             Fr 4  Pr  Pr  Pr  89   
+31331  Luis Alexande Basabe   S    8/26/1996                                          Av/91           Av/91   Av       Fr  Vg  Ex  24   
+30844  Matt Beaty             L    4/28/1993          Fr/85                           Fr/99                   Fr       Av  Pr  Pr  57   
+29485  Josh Bell              S    8/14/1992          Av/162                                                           Av  Pr  Pr  154  
+30247  Cody Bellinger         L    7/13/1995          Av/71                                   Ex/84           Vg       Av  Ex  Av  151  
+28564  Brandon Belt           L    4/20/1988          Av/88                                                            Fr  Pr  Pr  138  
+31785  Anthony Bemboom        L    1/18/1990  Av/71                                                              Av 2  Fr  Pr  Fr  57   
+30656  Andrew Benintendi      L    7/6/1994                                           Av/80                   Av       Av  Pr  Vg  38   
+29492  Jon Berti              R    1/22/1990                  Av/89   Fr/96   Fr/97           Av/77   Av/77   Av       Vg  Ex  Vg  105  
+29438  Mookie Betts           R    10/7/1992                  Pr/98                                   Ex/251  Ex       Ex  Ex  Vg  149  
+31653  Bo Bichette            R    3/5/1998                                   Av/101                                   Fr  Ex  Vg  78   
+31815  Cavan Biggio           L    4/11/1995                  Vg/107  Av/97           Av/141  Fr/141  Av/141  Av       Fr  Ex  Fr  159  
+30695  Braden Bishop          R    8/22/1993                                          Av/84   Fr/84   Av/84   Av       Av  Av  Vg  32   
+28644  Charlie Blackmon       L    7/1/1986                                                           Av/14   Fr       Av  Av  Fr  159  
+29155  Xander Bogaerts        R    10/1/1992                                  Fr/91                                    Vg  Ex  Av  151  
+32813  Alec Bohm              R    8/3/1996           Av/90           Fr/97                                            Av  Fr  Fr  119  
+31227  Jorge Bonifacio        R    6/4/1993                                           Av/122          Av/122  Fr       Av  Pr  Pr  84   
+30727  David Bote             R    4/7/1993           Fr/99   Av/112  Fr/116                                           Av  Vg  Fr  122  
+28989  Jackie Bradley         L    4/19/1990                                                  Vg/6            Av       Av  Av  Av  149  
+27523  Michael Brantley       L    5/15/1987                                          Vg/68                   Av       Fr  Vg  Fr  124  
+27497  Ryan Braun             R    11/17/1983                                                         Av/150  Fr       Av  Fr  Fr  105  
+30258  Alex Bregman           R    3/30/1994                          Av/61                                            Av  Pr  Pr  113  
+29522  Lewis Brinson          R    5/8/1994                                           Av/113  Av/113  Av/113  Av       Av  Ex  Vg  127  
+32484  Mike Brosseau          R    3/15/1994          Vg/88   Av/89   Vg/107          Fr/97           Fr/97   Av       Av  Vg  Fr  97   
+27877  Jay Bruce              L    4/3/1987           Av/97                           Av/78           Av/78   Av       Pr  Pr  Pr  86   
+29529  Kris Bryant            R    1/4/1992           Fr/98           Av/119          Fr/94                   Fr       Vg  Pr  Pr  92   
+28504  Drew Butera            R    8/9/1983   Fr/77   Pr/99                                                      Av 4  Pr  Pr  Pr  76   
+29536  Byron Buxton           R    12/18/1993                                                 Ex/37           Fr       Ex  Av  Vg  105  
+27840  Asdrubal Cabrera       S    11/13/1985         Av/88           Av/72                                            Pr  Pr  Pr  140  
+26367  Miguel Cabrera         R    4/18/1983                                                                           Pr  Pr  Pr  159  
+28038  Lorenzo Cain           R    4/13/1986                                                  Av/91           Av       Ex  Pr  Pr  14   
+28853  Kole Calhoun           L    10/14/1987                                                         Vg/81   Ex       Vg  Fr  Fr  146  
+                          BatterProfileRatings -- All players in database                           
+                                           Regular season                                           
+
+ID     Name                   Bats Birth      c       1b      2b      3b      ss      lf      cf      rf      OF C  PB Run Stl Jmp G    
+30268  Willie Calhoun         L    11/4/1994                                          Av/90                   Av       Av  Pr  Pr  78   
+30269  Johan Camargo          S    12/13/1993                 Av/86   Vg/82                                            Av  Pr  Pr  95   
+31497  Daz Cameron            R    1/15/1997                                                          Av/132  Av       Av  Av  Av  47   
+30271  Jeimer Candelario      S    11/24/1993         Av/142          Vg/83                                            Fr  Fr  Fr  145  
+29540  Mark Canha             R    2/15/1989          Fr/98                           Av/96   Av/96   Av/96   Fr       Vg  Ex  Fr  159  
+26480  Robinson Cano          L    10/22/1982                 Av/76                                                    Pr  Pr  Pr  132  
+30892  Victor Caratini        S    8/17/1993  Vg/90   Pr/99                                                      Av 2  Fr  Pr  Pr  119  
+31231  Dylan Carlson          S    10/23/1998                                         Av/47   Av/47   Av/47   Vg       Vg  Fr  Av  98   
+28639  Matt Carpenter         L    11/26/1985         Fr/94           Av/95                                            Fr  Pr  Pr  140  
+29343  Curt Casali            R    11/9/1988  Av/81                                                              Av 5  Fr  Av  Fr  84   
+29170  Nick Castellanos       R    3/4/1992                                                           Fr/280  Av       Av  Pr  Fr  162  
+30762  Harold Castro          L    11/30/1993         Fr/99   Fr/99   Fr/97   Fr/97   Fr/89   Fr/89   Fr/89   Av       Vg  Pr  Pr  61   
+28411  Jason Castro           L    6/18/1987  Av/85                                                              Av 3  Pr  Pr  Pr  73   
+28375  Starlin Castro         R    3/24/1990                  Av/133                                                   Av  Pr  Pr  43   
+31369  Willi Castro           S    4/24/1997                  Fr/98   Fr/105  Fr/145                                   Vg  Pr  Pr  101  
+29553  Jake Cave              L    12/4/1992                                          Av/46   Av/46   Av/46   Av       Av  Pr  Fr  113  
+27928  Francisco Cervelli     R    3/6/1986   Fr/104                                                             Av 5  Fr  Fr  Fr  43   
+28789  Yoenis Cespedes        R    10/18/1985                                                                          Av  Pr  Pr  22   
+30902  Yu Chang               R    8/18/1995                  Av/110  Fr/98   Pr/98                                    Fr  Pr  Pr  27   
+30278  Matt Chapman           R    4/28/1993                          Vg/114  Pr/99                                    Vg  Pr  Pr  100  
+31396  Michael Chavis         R    8/11/1995          Av/64   Fr/129                  Fr/242                  Av       Av  Ex  Av  113  
+28679  Robinson Chirinos      R    6/5/1984   Av/62                                                              Av 4  Pr  Pr  Pr  70   
+32236  Jazz Chisholm          L    2/1/1998                   Av/81           Av/104                                   Vg  Fr  Ex  57   
+29559  Ji-Man Choi            L    5/19/1991          Av/124                                                           Fr  Pr  Pr  113  
+26745  Shin-Soo Choo          L    7/13/1982                                          Av/127          Av/127  Fr       Fr  Vg  Vg  89   
+31619  Zack Collins           L    2/6/1995   Fr/98                                                              Fr 4  Fr  Pr  Pr  24   
+29327  Christian Colon        R    5/14/1989                  Av/92                                                    Av  Av  Ex  30   
+30199  Michael Conforto       L    3/1/1993                                                           Fr/12   Ex       Av  Fr  Fr  146  
+30286  Willson Contreras      R    5/13/1992  Av/94                                                              Av 0  Av  Pr  Fr  154  
+30756  Garrett Cooper         R    12/25/1990         Fr/76                                                            Fr  Pr  Pr  92   
+30753  Franchy Cordero        L    9/2/1994                                           Fr/231  Fr/231  Fr/231  Fr       Av  Av  Av  43   
+29571  Carlos Correa          R    9/22/1994                                  Av/21                                    Av  Pr  Pr  157  
+28628  Brandon Crawford       L    1/21/1987                                  Vg/132                                   Fr  Pr  Fr  146  
+29578  J.P. Crawford          L    1/11/1995                                  Ex/52                                    Ex  Av  Av  143  
+29256  C.J. Cron              R    1/5/1990           Av/122                                                           Pr  Pr  Pr  36   
+30819  Kevin Cron             R    2/17/1993                                                                           Fr  Pr  Pr  22   
+31892  Jake Cronenworth       L    1/21/1994          Vg/84   Av/87           Fr/118                                   Vg  Vg  Fr  146  
+26747  Nelson Cruz            R    7/1/1980                                                                            Pr  Pr  Pr  143  
+29152  Travis d'Arnaud        R    2/10/1989  Fr/129                                                             Fr 7  Fr  Av  Pr  119  
+29586  David Dahl             L    4/1/1994                                           Av/122  Av/122  Av/122  Fr       Vg  Av  Fr  65   
+31686  Bobby Dalbec           R    6/29/1995          Av/151          Pr/97                                            Fr  Pr  Pr  62   
+29147  Matt Davidson          R    3/26/1991          Fr/97                                                            Fr  Pr  Pr  54   
+28062  Chris Davis            L    3/17/1986          Av/153                                                           Fr  Pr  Pr  43   
+30295  J.D. Davis             R    4/27/1993                          Fr/97           Fr/173                  Av       Fr  Pr  Pr  151  
+32494  Jaylin Davis           R    7/1/1994                                                           Av/143  Av       Av  Pr  Pr  11   
+31919  Jonathan Davis         R    5/12/1992                                          Av/83   Av/83   Av/83   Av       Av  Av  Av  35   
+28992  Khris Davis            R    12/21/1987                                                                          Pr  Pr  Pr  81   
+30864  Paul DeJong            R    8/2/1993                                   Av/92                                    Av  Fr  Pr  126  
+29598  Nicky Delmonico        L    7/12/1992                                          Fr/91           Fr/91   Av       Av  Pr  Pr  16   
+30889  Travis Demeritte       R    9/30/1994                                          Av/131          Av/131  Av       Vg  Pr  Pr  50   
+29600  Delino DeShields       R    8/16/1992                                                  Av/43           Fr       Ex  Av  Vg  100  
+30305  Rafael Devers          L    10/24/1996                         Fr/236                                           Vg  Pr  Pr  154  
+29601  Aledmys Diaz           R    8/1/1990           Fr/97   Fr/85   Fr/97           Fr/99                   Fr       Vg  Pr  Pr  46   
+29602  Elias Diaz             R    11/17/1990 Fr/75                                                              Av 2  Av  Pr  Pr  70   
+31400  Isan Diaz              L    5/27/1996                  Av/91                                                    Av  Pr  Pr  19   
+31372  Lewin Diaz             L    11/19/1996         Vg/83                                                            Fr  Pr  Pr  38   
+30308  Yandy Diaz             R    8/8/1991           Fr/97           Fr/78                                            Fr  Pr  Pr  92   
+29603  Alex Dickerson         L    5/26/1990                                          Fr/114          Fr/114  Pr       Fr  Pr  Pr  140  
+29090  Corey Dickerson        L    5/22/1989                                          Fr/196                  Fr       Av  Fr  Fr  140  
+29038  Derek Dietrich         L    7/18/1989          Av/119  Fr/96   Fr/98                                            Av  Fr  Av  68   
+29605  Wilmer Difo            S    4/2/1992                   Fr/97   Fr/98   Fr/98                                    Av  Pr  Pr  32   
+30696  Brandon Dixon          R    1/29/1992          Av/97   Fr/99                   Fr/98                   Av       Av  Pr  Pr  14   
+28509  Josh Donaldson         R    12/8/1985                          Av/61                                            Fr  Pr  Pr  76   
+28834  Brian Dozier           R    5/15/1987                  Av/111                                                   Av  Pr  Pr  19   
+29611  Hunter Dozier          R    8/22/1991          Av/58           Pr/100          Fr/67           Fr/67   Fr       Av  Ex  Fr  119  
+29613  Brandon Drury          R    8/21/1992                  Fr/94   Fr/82   Fr/98                                    Av  Pr  Pr  57   
+30312  Mauricio Dubon         R    7/19/1994                  Av/109          Av/108          Av/94           Av       Vg  Pr  Av  146  
+30882  Steven Duggar          L    11/4/1993                                          Av/79   Fr/79   Av/79   Av       Av  Av  Vg  57   
+29320  Adam Duvall            R    9/4/1988                                           Av/180          Av/180  Fr       Vg  Pr  Pr  154  
+28474  Jarrod Dyson           L    8/15/1984                                          Av/129  Av/129  Av/129  Av       Ex  Ex  Ex  86   
+28962  Adam Eaton             L    12/6/1988                                                          Fr/33   Vg       Ex  Ex  Av  111  
+32036  Tommy Edman            S    5/9/1995                   Av/108  Vg/106  Av/117  Av/156          Av/156  Vg       Ex  Pr  Av  154  
+                          BatterProfileRatings -- All players in database                           
+                                           Regular season                                           
+
+ID     Name                   Bats Birth      c       1b      2b      3b      ss      lf      cf      rf      OF C  PB Run Stl Jmp G    
+26495  Edwin Encarnacion      R    1/7/1983                                                                            Pr  Pr  Pr  119  
+30316  Adam Engel             R    12/9/1991                                          Av/148  Fr/148  Av/148  Av       Vg  Av  Fr  97   
+30317  Phillip Ervin          R    7/15/1992                                          Av/61   Av/61   Av/61   Av       Av  Av  Fr  100  
+28742  Eduardo Escobar        S    1/5/1989                   Av/95   Av/137                                           Av  Fr  Pr  146  
+32220  Santiago Espinal       R    11/13/1994                         Pr/99   Vg/96                                    Av  Av  Fr  70   
+31359  Thairo Estrada         R    2/22/1996                  Av/79   Pr/116  Fr/100                                   Vg  Av  Av  70   
+30866  Phillip Evans          R    9/10/1992          Fr/133          Fr/122          Fr/97           Fr/97   Av       Av  Pr  Fr  30   
+29632  Kyle Farmer            R    8/17/1990                  Av/131  Fr/97   Av/83   Pr/100                  Fr       Av  Av  Fr  86   
+30325  Derek Fisher           L    8/21/1993                                          Fr/185          Fr/185  Av       Av  Pr  Av  43   
+30728  David Fletcher         R    5/31/1994                  Av/96   Av/103  Av/99                   Pr/131  Av       Av  Av  Fr  132  
+29141  Wilmer Flores          R    8/6/1991           Av/107  Av/78   Fr/120                                           Pr  Av  Pr  149  
+28352  Tyler Flowers          R    1/24/1986  Av/92                                                              Fr 3  Pr  Pr  Pr  59   
+30854  Mike Ford              L    7/4/1992           Fr/155                                                           Av  Pr  Pr  78   
+28601  Logan Forsythe         R    1/14/1987          Fr/95   Av/90                                                    Fr  Pr  Pr  32   
+28199  Dexter Fowler          S    3/22/1986                                                          Fr/58   Pr       Vg  Fr  Fr  87   
+32202  Jake Fraley            L    5/25/1995                                          Av/88           Av/88   Av       Av  Av  Ex  19   
+30890  Ty France              R    7/13/1994          Av/93   Av/107  Fr/99                                            Av  Pr  Pr  116  
+29388  Maikel Franco          R    8/26/1992          Fr/98           Av/107                                           Pr  Fr  Pr  162  
+30331  Adam Frazier           L    12/14/1991                 Ex/53                   Vg/78                   Vg       Vg  Pr  Fr  157  
+29648  Clint Frazier          R    9/6/1994                                           Vg/114          Vg/114  Vg       Av  Ex  Fr  105  
+28621  Todd Frazier           R    2/12/1986          Av/74           Av/98                                            Av  Fr  Fr  122  
+28454  Freddie Freeman        L    9/12/1989          Av/31                                                            Fr  Vg  Pr  162  
+30646  Mike Freeman           L    8/4/1987                   Fr/97   Av/106  Fr/96   Fr/145                  Fr       Av  Pr  Pr  65   
+31925  Josh Fuentes           R    2/19/1993          Vg/83           Fr/97           Pr/100                  Av       Av  Av  Fr  81   
+29651  Cam Gallagher          R    12/6/1992  Av/97                                                              Av 3  Pr  Pr  Pr  68   
+29652  Joey Gallo             L    11/19/1993                                                         Vg/8    Vg       Vg  Vg  Fr  154  
+28790  Freddy Galvis          S    11/14/1989                 Av/80           Av/107                                   Av  Fr  Fr  127  
+30337  Ben Gamel              L    5/17/1992                                          Av/44   Fr/44   Av/44   Fr       Vg  Pr  Fr  108  
+28948  Avisail Garcia         R    6/12/1991                                                  Fr/21   Fr/21   Av       Fr  Pr  Fr  143  
+29248  Greg Garcia            L    8/8/1989                   Av/110  Av/93                                            Vg  Fr  Fr  95   
+33081  Jose Garcia            R    4/5/1998                                   Av/102                                   Av  Fr  Av  65   
+29002  Leury Garcia           S    3/18/1991                  Av/92           Av/84                   Fr/98   Av       Vg  Pr  Pr  43   
+32244  Luis Garcia            L    5/16/2000                  Fr/172          Fr/107                                   Vg  Fr  Fr  108  
+27597  Brett Gardner          L    8/24/1983                                          Av/184  Av/184          Av       Vg  Fr  Av  132  
+31590  Kyle Garlick           R    1/26/1992                                          Fr/91           Fr/91   Av       Fr  Pr  Pr  32   
+29659  Dustin Garneau         R    8/13/1987  Av/178                                                             Fr 4  Fr  Pr  Pr  46   
+30855  Mitch Garver           R    1/15/1991  Av/66                                                              Av 6  Fr  Pr  Pr  62   
+31606  Andres Gimenez         L    9/4/1998                   Av/87   Av/105  Fr/80                                    Ex  Ex  Ex  132  
+28694  Paul Goldschmidt       R    9/10/1987          Vg/43                                                            Av  Fr  Pr  162  
+28847  Yan Gomes              R    7/19/1987  Av/110                                                             Av 3  Fr  Av  Fr  81   
+29675  Erik Gonzalez          R    8/31/1991                          Av/95   Av/131                                   Vg  Pr  Vg  135  
+28801  Marwin Gonzalez        S    3/14/1989          Av/88   Av/93   Fr/66                           Av/170  Av       Av  Pr  Pr  143  
+30859  Niko Goodrum           S    2/28/1992                  Av/103          Vg/63                                    Vg  Ex  Vg  120  
+29677  Brian Goodwin          L    11/2/1990                                          Fr/100  Fr/100  Fr/100  Av       Av  Ex  Vg  135  
+27495  Alex Gordon            L    2/10/1984                                          Av/22                   Vg       Vg  Pr  Pr  135  
+28641  Dee Gordon             L    4/22/1988                  Av/146          Fr/96   Av/82                   Fr       Vg  Av  Vg  89   
+29153  Phil Gosselin          R    10/3/1988          Fr/90   Fr/96   Fr/99           Fr/205          Fr/205  Av       Av  Pr  Pr  105  
+28865  Yasmani Grandal        S    11/8/1988  Vg/102  Av/113                                                     Vg 6  Pr  Pr  Pr  124  
+28964  Didi Gregorius         L    2/18/1990                                  Av/111                                   Av  Av  Fr  162  
+30760  Grayson Greiner        R    10/11/1992 Fr/73                                                              Av 5  Pr  Pr  Pr  50   
+29249  Randal Grichuk         R    8/13/1991                                                  Fr/85           Vg       Vg  Fr  Fr  149  
+31487  Trent Grisham          L    11/1/1996                                                  Vg/115          Vg       Av  Ex  Av  159  
+29023  Robbie Grossman        S    9/16/1989                                          Av/22   Pr/22   Av/22   Av       Av  Ex  Vg  138  
+31603  Vladimir Guerrero      R    3/16/1999          Fr/120                                                           Fr  Av  Pr  162  
+30829  Luis Guillorme         L    9/27/1994                  Av/80   Pr/94   Fr/98                                    Vg  Vg  Fr  78   
+30828  Lourdes Gurriel        R    10/10/1993                                         Av/80                   Vg       Av  Vg  Fr  154  
+30661  Yuli Gurriel           R    6/9/1984           Vg/32                                                            Fr  Pr  Pr  154  
+31330  Kelvin Gutierrez       R    8/28/1994                          Fr/95                                            Fr  Pr  Pr  11   
+30357  Ronald Guzman          L    10/20/1994         Av/88                                                            Fr  Av  Fr  70   
+28985  Jedd Gyorko            R    9/23/1988          Av/89           Av/88                                            Fr  Pr  Pr  113  
+30748  Eric Haase             R    12/18/1992 Av/116                                                             Fr 3  Fr  Pr  Pr  20   
+32509  Sam Haggerty           S    5/26/1994                          Pr/98           Vg/81           Vg/81   Av       Vg  Ex  Ex  35   
+29179  Billy Hamilton         S    9/9/1990                                                   Av/81           Ex       Ex  Vg  Ex  84   
+31662  Garrett Hampson        R    10/10/1994                 Av/97           Av/96   Av/66   Av/66           Fr       Ex  Ex  Vg  143  
+30768  Ian Happ               S    8/12/1994          Fr/99                           Fr/89   Fr/89   Fr/89   Av       Av  Pr  Fr  154  
+28824  Bryce Harper           L    10/16/1992                                                 Fr/111  Fr/111  Av       Vg  Ex  Av  157  
+28633  Josh Harrison          R    7/8/1987                   Av/86   Av/103          Pr/94           Pr/94   Av       Av  Pr  Av  89   
+31404  Monte Harrison         R    8/10/1995                                                  Av/75   Av/75   Av       Vg  Ex  Ex  86   
+32267  Adam Haseley           L    4/12/1996                                          Av/57   Av/57   Av/57   Av       Av  Pr  Pr  108  
+31494  Ke'Bryan Hayes         R    1/28/1997                          Vg/73                                            Vg  Av  Fr  65   
+31208  Austin Hays            R    7/5/1995                                           Av/45   Av/45   Av/45   Fr       Vg  Pr  Av  89   
+31742  Nick Heath             L    11/27/1993                                         Pr/93   Pr/93           Av       Vg  Fr  Ex  41   
+                          BatterProfileRatings -- All players in database                           
+                                           Regular season                                           
+
+ID     Name                   Bats Birth      c       1b      2b      3b      ss      lf      cf      rf      OF C  PB Run Stl Jmp G    
+28924  Adeiny Hechavarria     R    4/15/1989                  Av/82   Av/294  Fr/98                                    Vg  Pr  Pr  73   
+29709  Austin Hedges          R    8/18/1992  Vg/110                                                             Vg 7  Pr  Fr  Av  95   
+31340  Jonah Heim             S    6/27/1995  Vg/81                                                              Vg 3  Av  Pr  Pr  35   
+32017  Scott Heineman         R    12/4/1992          Pr/98                           Fr/125  Fr/125  Fr/125  Fr       Av  Ex  Ex  65   
+29711  Tyler Heineman         S    6/19/1991  Av/162                                                             Fr 3  Fr  Av  Fr  41   
+30664  Guillermo Heredia      R    1/31/1991                                                  Av/82   Av/82   Av       Av  Av  Av  41   
+29059  Cesar Hernandez        S    5/23/1990                  Vg/93                                                    Av  Pr  Pr  157  
+29328  Enrique Hernandez      R    8/24/1991          Av/99   Vg/143          Fr/97   Av/81   Fr/81   Av/81   Vg       Ex  Pr  Fr  130  
+29718  Teoscar Hernandez      R    10/15/1992                                                 Fr/236  Fr/236  Vg       Av  Ex  Av  135  
+32057  Yadiel Hernandez       L    10/9/1987                                                          Pr/98   Av       Av  Pr  Pr  32   
+28514  Jason Heyward          L    8/9/1989                                                           Vg/19   Vg       Vg  Vg  Fr  135  
+28988  Aaron Hicks            S    10/2/1989                                                  Fr/145          Ex       Vg  Ex  Fr  146  
+30372  Kyle Higashioka        R    4/20/1990  Vg/132                                                             Av 4  Av  Pr  Pr  43   
+31405  Derek Hill             R    12/30/1995                                                 Av/146          Av       Vg  Pr  Pr  42   
+32015  Sam Hilliard           L    2/21/1994                                          Av/51   Fr/51   Av/51   Vg       Vg  Ex  Av  97   
+32253  Keston Hiura           R    8/2/1996                   Fr/172                                                   Fr  Av  Fr  159  
+32626  Nico Hoerner           R    5/13/1997                  Av/105  Pr/92   Fr/90   Pr/98   Pr/98           Fr       Av  Av  Av  130  
+28870  Bryan Holaday          R    11/19/1987 Fr/88   Av/97                                                      Av 3  Pr  Pr  Pr  54   
+28952  Brock Holt             L    6/11/1988          Fr/126          Av/98           Fr/82           Fr/82   Fr       Av  Av  Fr  97   
+30870  Rhys Hoskins           R    3/17/1993          Fr/134                                                           Av  Av  Pr  111  
+28602  Eric Hosmer            L    10/24/1989         Av/104                                                           Av  Ex  Av  103  
+32077  Joe Hudson             R    5/21/1991  Fr/89                                                              Fr 5  Fr  Pr  Pr  24   
+33173  Sam Huff               R    1/14/1998  Fr/154                                                             Av 6  Av  Pr  Pr  27   
+28605  Jose Iglesias          R    1/5/1990                                   Av/83                                    Av  Pr  Pr  105  
+29253  Ender Inciarte         L    10/29/1990                                                 Fr/107          Vg       Av  Ex  Vg  124  
+29739  Travis Jankowski       L    6/15/1991                                          Av/90   Av/90   Av/90   Av       Vg  Av  Ex  43   
+31350  Danny Jansen           R    4/15/1995  Fr/88                                                              Av 4  Fr  Pr  Pr  116  
+28518  Jon Jay                L    3/15/1985                                          Vg/76   Av/76   Vg/76   Fr       Av  Pr  Pr  49   
+33166  Ryan Jeffers           R    6/3/1997   Vg/68                                                              Pr 3  Pr  Pr  Pr  70   
+31366  Eloy Jimenez           R    11/27/1996                                         Fr/114                  Av       Fr  Pr  Pr  149  
+31704  Daniel Johnson         L    7/11/1995                                          Pr/93           Pr/93   Fr       Fr  Pr  Pr  14   
+30393  JaCoby Jones           R    5/10/1992                                                  Av/53           Pr       Vg  Fr  Av  84   
+32519  Taylor Jones           R    12/6/1993          Av/96                                                            Av  Pr  Pr  19   
+27644  Matt Joyce             L    8/3/1984                                           Fr/225          Fr/225  Fr       Av  Fr  Pr  124  
+29752  Aaron Judge            R    4/26/1992                                                          Vg/62   Ex       Av  Pr  Fr  76   
+30399  Carson Kelly           R    7/14/1994  Av/98                                                              Av 4  Fr  Pr  Pr  105  
+27431  Matt Kemp              R    9/23/1984                                          Fr/99                   Fr       Fr  Fr  Pr  116  
+29761  Tony Kemp              L    10/31/1991                 Fr/72                   Fr/97                   Av       Av  Vg  Av  132  
+27220  Howie Kendrick         R    7/12/1983          Fr/129                                                           Av  Pr  Pr  68   
+29762  Max Kepler             L    2/10/1993                                                  Fr/103  Vg/103  Vg       Av  Ex  Pr  130  
+32192  Carter Kieboom         R    9/3/1997                           Vg/88                                            Av  Pr  Pr  89   
+29209  Kevin Kiermaier        L    4/22/1990                                                  Vg/30           Ex       Vg  Ex  Vg  132  
+31341  Isiah Kiner-Falefa     R    3/23/1995                          Ex/97   Av/76                                    Vg  Av  Vg  157  
+30880  Scott Kingery          R    4/29/1994                  Fr/156                          Fr/87           Av       Vg  Pr  Pr  97   
+28683  Jason Kipnis           L    4/3/1987           Pr/98   Av/118                                                   Av  Fr  Pr  119  
+32920  Alejandro Kirk         R    11/6/1998  Fr/90                                                              Fr 3  Pr  Pr  Pr  24   
+29768  Andrew Knapp           S    11/9/1991  Av/110  Fr/99                                                      Av 7  Av  Pr  Pr  89   
+31720  Andrew Knizner         R    2/3/1995   Av/116                                                             Av 5  Av  Pr  Pr  22   
+28420  Erik Kratz             R    6/15/1980  Av/86   Fr/99                                                      Av 3  Pr  Pr  Pr  43   
+29281  Tommy La Stella        L    1/31/1989          Av/83   Fr/138  Fr/93                                            Av  Av  Pr  149  
+29361  Jake Lamb              L    10/9/1990          Fr/83           Fr/96                                            Av  Pr  Fr  84   
+30868  Ramon Laureano         R    7/15/1994                                                  Vg/11           Vg       Ex  Av  Fr  146  
+28631  DJ LeMahieu            R    7/13/1988          Av/95   Vg/123  Av/110                                           Av  Ex  Pr  135  
+28843  Sandy Leon             S    3/13/1989  Vg/272                                                             Vg 2  Pr  Pr  Pr  68   
+31947  Kyle Lewis             R    7/13/1995                                                  Fr/117          Av       Ex  Ex  Fr  157  
+31182  Tzu-Wei Lin            L    2/15/1994                  Av/94           Av/113  Pr/88   Pr/88   Pr/88   Av       Vg  Pr  Pr  70   
+29793  Francisco Lindor       S    11/14/1993                                 Vg/17                                    Av  Vg  Av  162  
+30885  Tim Locastro           R    7/14/1992                                          Av/117  Av/117  Av/117  Fr       Av  Ex  Vg  89   
+31346  Shed Long              L    8/22/1995                  Av/72                   Fr/99                   Av       Vg  Ex  Vg  92   
+27882  Evan Longoria          R    10/7/1985                          Vg/45                                            Fr  Pr  Pr  143  
+30886  Tim Lopes              R    6/24/1994                          Pr/105          Fr/62           Fr/62   Av       Av  Ex  Vg  124  
+31706  Nicky Lopez            L    3/13/1995                  Vg/54   Pr/100  Av/96                                    Ex  Pr  Av  151  
+31521  Brandon Lowe           L    7/6/1994           Pr/100  Av/86                   Av/83           Av/83   Av       Av  Ex  Fr  151  
+31735  Nate Lowe              L    7/7/1995           Av/75           Fr/97                                            Av  Av  Fr  57   
+30731  Dawel Lugo             R    12/31/1994                 Fr/100  Fr/95                                            Fr  Pr  Pr  25   
+31181  Jordan Luplow          R    9/26/1993                                          Av/58           Av/58   Ex       Av  Pr  Fr  78   
+31624  Gavin Lux              L    11/23/1997                 Vg/130                                                   Av  Av  Fr  51   
+28931  Manny Machado          R    7/6/1992                           Vg/35                                            Av  Av  Av  162  
+32659  Vimael Machin          L    9/25/1993          Pr/99   Fr/97   Fr/89   Av/112                                   Av  Pr  Pr  65   
+32537  Nick Madrigal          R    3/5/1997                   Av/139                                                   Av  Av  Fr  78   
+28734  Martin Maldonado       R    8/16/1986  Av/79                                                              Vg 3  Pr  Fr  Pr  127  
+29811  Manuel Margot          R    9/28/1994                                          Vg/148  Vg/148  Vg/148  Av       Ex  Vg  Ex  127  
+                          BatterProfileRatings -- All players in database                           
+                                           Regular season                                           
+
+ID     Name                   Bats Birth      c       1b      2b      3b      ss      lf      cf      rf      OF C  PB Run Stl Jmp G    
+29125  Jake Marisnick         R    3/30/1991                                                  Av/127          Av       Av  Pr  Pr  43   
+27242  Nick Markakis          L    11/17/1983                                         Fr/46           Fr/46   Pr       Av  Pr  Fr  100  
+30804  Jose Marmolejos        L    1/2/1993           Av/93                           Fr/145          Fr/145  Av       Av  Pr  Fr  95   
+29818  Ketel Marte            S    10/12/1993                 Av/54           Fr/111          Fr/96           Av       Av  Fr  Pr  122  
+28913  Starling Marte         R    10/9/1988                                          Av/64   Av/64           Av       Ex  Ex  Vg  165  
+30784  Jason Martin           L    9/5/1995                                           Fr/94   Fr/94           Av       Av  Pr  Pr  19   
+28690  J.D. Martinez          R    8/21/1987                                          Pr/90           Pr/90   Fr       Fr  Av  Pr  146  
+30445  Jose Martinez          R    7/25/1988          Av/93                                                            Fr  Pr  Pr  92   
+30798  Jorge Mateo            R    6/23/1995                  Av/96                   Fr/93   Pr/93   Fr/93   Av       Av  Av  Ex  59   
+30839  Mark Mathias           R    8/2/1994           Av/99                           Av/86           Av/86   Av       Av  Av  Av  43   
+26545  Jeff Mathis            R    3/31/1983  Vg/121                                                             Av 4  Pr  Fr  Av  65   
+32056  Wyatt Mathisen         R    12/30/1993                         Vg/114                                           Av  Pr  Pr  24   
+27677  Cameron Maybin         R    4/4/1987                                           Av/126  Fr/126  Av/126  Fr       Av  Ex  Av  86   
+30772  Jack Mayfield          R    9/30/1990                  Fr/95   Av/91   Av/91                                    Av  Pr  Pr  57   
+29827  Nomar Mazara           L    4/26/1995                                                          Av/33   Av       Fr  Pr  Pr  113  
+30878  Ryan McBroom           R    4/9/1992           Fr/114                          Fr/97           Fr/97   Av       Av  Pr  Pr  97   
+29396  James McCann           R    6/13/1990  Vg/162                                                             Vg 4  Fr  Fr  Fr  84   
+27678  Andrew McCutchen       R    10/10/1986                                         Pr/40                   Av       Fr  Ex  Fr  154  
+30458  Reese McGuire          L    3/2/1995   Av/148                                                             Vg 5  Fr  Pr  Pr  51   
+30459  Ryan McMahon           L    12/14/1994         Av/107  Av/178  Vg/103  Pr/100                                   Av  Pr  Pr  140  
+30460  Jeff McNeil            L    4/8/1992                   Av/86   Av/390          Av/51           Av/51   Ex       Fr  Pr  Pr  140  
+30462  Austin Meadows         L    5/3/1995                                           Av/59           Av/59   Vg       Vg  Av  Av  97   
+30751  Erick Mejia            S    11/9/1994                          Pr/109          Pr/99                   Av       Av  Av  Pr  22   
+30754  Francisco Mejia        S    10/27/1995 Av/109                                                             Av 4  Av  Pr  Pr  46   
+32549  Danny Mendick          R    9/28/1993                  Vg/76   Fr/95   Fr/97                                    Av  Pr  Fr  89   
+31988  Oscar Mercado          R    12/16/1994                                         Ex/53   Ex/53           Av       Vg  Ex  Vg  97   
+28860  Jordy Mercer           R    8/27/1986          Fr/98           Pr/98   Fr/93                                    Av  Pr  Pr  24   
+29844  Whit Merrifield        R    1/24/1989          Fr/99   Av/113                  Vg/85   Av/85   Vg/85   Vg       Av  Ex  Vg  162  
+29098  Brad Miller            L    10/18/1989                 Fr/99   Av/251  Fr/98                                    Av  Fr  Pr  134  
+26555  Yadier Molina          R    7/13/1982  Av/184  Pr/99                                                      Ex 4  Pr  Pr  Pr  117  
+29857  Yoan Moncada           S    5/27/1995                          Vg/96                                            Vg  Pr  Pr  140  
+29859  Adalberto Mondesi      S    7/27/1995                                  Vg/60                                    Ex  Vg  Ex  159  
+31612  Mickey Moniak          L    5/13/1998                                          Av/175          Av/175  Av       Av  Pr  Pr  22   
+32170  Dylan Moore            R    8/2/1992           Av/96   Vg/117  Fr/98   Fr/120  Vg/63   Fr/63   Vg/63   Vg       Vg  Av  Ex  103  
+29863  Colin Moran            L    10/1/1992          Av/117          Av/105                                           Fr  Pr  Pr  140  
+28431  Mitch Moreland         L    9/6/1985           Av/99                                                            Pr  Pr  Pr  113  
+28427  Logan Morrison         L    8/25/1987          Av/97                                                            Av  Pr  Pr  24   
+31496  Ryan Mountcastle       R    2/18/1997          Fr/120                          Av/62                   Fr       Av  Pr  Pr  95   
+28648  Mike Moustakas         L    9/11/1988          Av/120  Fr/51   Fr/96                                            Pr  Fr  Pr  119  
+31574  Cedric Mullins         S    10/1/1994                                          Vg/33   Vg/33   Vg/33   Vg       Av  Vg  Vg  130  
+29872  Max Muncy              L    8/25/1990          Av/130  Av/84   Av/88                                            Av  Fr  Pr  157  
+30900  Yairo Munoz            R    1/23/1995                                          Av/84           Av/84   Av       Av  Vg  Vg  32   
+28177  Daniel Murphy          L    4/1/1985           Av/146                                                           Av  Pr  Pr  108  
+29172  John Ryan Murphy       R    5/13/1991  Av/123                                                             Av 2  Fr  Pr  Pr  68   
+31664  Sean Murphy            R    10/4/1994  Av/89                                                              Vg 5  Av  Pr  Pr  116  
+29085  Wil Myers              R    12/10/1990         Av/98                                           Av/234  Pr       Av  Av  Fr  149  
+29880  Tyler Naquin           L    4/24/1991                                                          Av/40   Av       Av  Pr  Fr  108  
+30648  Omar Narvaez           L    2/10/1992  Av/116                                                             Av 0  Pr  Pr  Pr  108  
+30811  Josh Naylor            L    6/22/1997          Fr/98                           Av/65           Av/65   Av       Vg  Av  Fr  108  
+30821  Kevin Newman           R    8/4/1993                   Av/130          Fr/154                                   Av  Pr  Pr  119  
+30888  Tomas Nido             R    4/12/1994  Av/118                                                             Fr 5  Fr  Pr  Pr  19   
+29892  Brandon Nimmo          L    3/27/1993                                          Fr/148  Fr/148  Fr/148  Av       Vg  Pr  Fr  149  
+30485  Austin Nola            R    12/28/1989 Fr/87   Av/96           Pr/99                                      Av 5  Fr  Pr  Pr  130  
+32558  Jake Noll              R    3/8/1994           Av/94                                                            Av  Pr  Pr  19   
+30773  Jacob Nottingham       R    4/3/1995   Vg/115                                                             Av 5  Av  Pr  Pr  54   
+29898  Renato Nunez           R    4/4/1994           Av/83           Fr/116                                           Fr  Pr  Pr  140  
+30488  Ryan O'Hearn           L    7/26/1993          Av/111                                                           Av  Pr  Pr  113  
+30489  Tyler O'Neill          R    6/22/1995                                          Ex/31                   Vg       Av  Vg  Av  140  
+32724  Joseph Odom            R    1/9/1992   Fr/75                                                              Pr 5  Av  Pr  Pr  49   
+29264  Rougned Odor           L    2/3/1994                   Av/122                                                   Vg  Pr  Fr  103  
+31236  Shohei Ohtani          L    7/5/1994                                                                            Av  Ex  Vg  119  
+32561  Jared Oliva            R    11/27/1995                                         Fr/92   Fr/92           Fr       Fr  Av  Ex  16   
+31451  Edward Olivares        R    3/6/1996                                           Fr/183  Fr/183  Fr/183  Av       Vg  Pr  Av  84   
+29909  Matt Olson             L    3/29/1994          Vg/29                                                            Fr  Fr  Pr  162  
+31757  Jorge Ona              R    12/31/1996                                                         Pr/100  Fr       Av  Pr  Pr  14   
+30806  Jose Osuna             R    12/12/1992         Av/91           Fr/95           Av/84           Av/84   Av       Av  Pr  Fr  70   
+29178  Chris Owings           R    8/12/1991                  Av/90   Fr/118  Fr/98   Fr/94   Fr/94   Fr/94   Av       Av  Av  Av  46   
+29031  Marcell Ozuna          R    11/12/1990                                         Av/185          Av/185  Av       Vg  Pr  Pr  162  
+29314  Joe Panik              L    10/30/1990                 Av/99   Fr/85   Av/81                                    Av  Pr  Pr  111  
+31751  Isaac Paredes          R    2/18/1999                          Av/77                                            Fr  Pr  Pr  95   
+30840  Mark Payton            L    12/7/1991                                          Pr/92                   Av       Fr  Av  Ex  22   
+29386  Joc Pederson           L    4/21/1992                                          Fr/58           Fr/58   Av       Av  Fr  Fr  116  
+                          BatterProfileRatings -- All players in database                           
+                                           Regular season                                           
+
+ID     Name                   Bats Birth      c       1b      2b      3b      ss      lf      cf      rf      OF C  PB Run Stl Jmp G    
+27312  Hunter Pence           R    4/13/1983                                          Fr/85           Fr/85   Av       Av  Pr  Pr  46   
+29286  David Peralta          L    8/14/1987                                          Vg/24                   Av       Av  Fr  Pr  146  
+29920  Jose Peraza            R    4/30/1994                  Av/115  Pr/122  Fr/98   Fr/92                   Av       Vg  Fr  Fr  92   
+31977  Michael Perez          L    8/7/1992   Av/81   Pr/99                                                      Av 2  Av  Pr  Pr  103  
+29338  Roberto Perez          R    12/23/1988 Ex/49                                                              Ex 1  Pr  Pr  Pr  86   
+28706  Salvador Perez         R    5/10/1990  Av/45   Fr/97                                                      Ex 0  Pr  Fr  Pr  100  
+29243  Jace Peterson          L    5/9/1990           Av/96   Fr/121  Av/112          Fr/84           Fr/84   Av       Av  Fr  Fr  70   
+29425  Tommy Pham             R    3/8/1988                                           Av/150                  Av       Vg  Ex  Vg  84   
+29105  Josh Phegley           R    2/12/1988  Av/97                                                              Av 5  Pr  Pr  Pr  30   
+29928  Brett Phillips         L    5/30/1994                                          Av/70   Av/70   Av/70   Ex       Vg  Ex  Ex  95   
+29150  Kevin Pillar           R    1/4/1989                                           Av/81   Fr/81   Av/81   Av       Ex  Av  Av  146  
+28695  Manny Pina             R    6/5/1987   Vg/80                                                              Av 3  Pr  Pr  Pr  41   
+29933  Chad Pinder            R    3/29/1992                  Fr/107  Av/94           Fr/99           Fr/99   Av       Av  Pr  Pr  65   
+29934  Stephen Piscotty       R    1/14/1991                                                          Av/25   Av       Av  Ex  Av  122  
+29935  Kevin Plawecki         R    2/26/1991  Av/95   Pr/100                                                     Av 3  Fr  Fr  Fr  65   
+29299  Gregory Polanco        L    9/14/1991                                                          Vg/181  Fr       Av  Vg  Vg  135  
+29322  Jorge Polanco          S    7/5/1993                                   Fr/48                                    Av  Av  Av  149  
+28814  AJ Pollock             R    12/5/1987                                          Av/121  Av/121          Fr       Av  Fr  Av  149  
+28953  Jurickson Profar       S    2/20/1993                  Fr/100                  Av/39   Fr/39   Av/39   Av       Av  Ex  Av  151  
+29939  Cesar Puello           R    4/1/1991                                           Fr/95           Fr/95   Av       Av  Pr  Pr  14   
+25720  Albert Pujols          R    1/16/1980          Av/116                                                           Pr  Pr  Pr  105  
+29941  Roman Quinn            S    5/14/1993                                                  Fr/113  Fr/113  Av       Vg  Ex  Ex  111  
+30521  Harold Ramirez         R    9/6/1994                                           Fr/96           Fr/96   Fr       Av  Pr  Ex  8    
+29175  Jose Ramirez           S    9/17/1992                          Fr/121                                           Vg  Vg  Vg  157  
+28525  Wilson Ramos           R    8/10/1987  Av/58                                                              Fr 5  Pr  Pr  Pr  122  
+29950  Rangel Ravelo          R    4/24/1992          Av/97                           Pr/93           Pr/93   Vg       Av  Pr  Pr  36   
+29292  J.T. Realmuto          R    3/18/1991  Av/98   Fr/96                                                      Av 2  Ex  Ex  Av  127  
+28338  Josh Reddick           L    2/19/1987                                                          Fr/162  Av       Fr  Fr  Pr  151  
+29955  Rob Refsnyder          R    3/26/1991          Av/96                           Fr/97           Fr/97   Av       Vg  Pr  Pr  41   
+29018  Anthony Rendon         R    6/6/1990                           Av/58                                            Vg  Pr  Pr  140  
+29959  Hunter Renfroe         R    1/28/1992          Pr/98                                           Fr/257  Vg       Av  Vg  Av  113  
+32297  Luis Rengifo           S    2/26/1997                  Av/97   Pr/100  Pr/113                                   Av  Vg  Vg  89   
+31881  Franmil Reyes          R    7/7/1995                                           Fr/100                  Fr       Av  Pr  Pr  159  
+30894  Victor Reyes           S    10/5/1994                                          Av/72   Av/72   Av/72   Av       Vg  Ex  Vg  159  
+31648  Bryan Reynolds         S    1/27/1995                                          Vg/149  Av/149          Vg       Av  Fr  Fr  149  
+29965  Matt Reynolds          R    12/3/1990                          Fr/95                                            Av  Pr  Pr  8    
+30530  JT Riddle              L    10/12/1991                 Pr/98   Fr/128  Av/108  Fr/90   Fr/90   Fr/90   Av       Fr  Av  Av  62   
+31500  Austin Riley           R    4/2/1997           Av/126          Fr/101          Fr/95                   Av       Fr  Pr  Pr  138  
+30745  Edwin Rios             L    4/21/1994          Av/92           Fr/110                                           Fr  Pr  Pr  86   
+28649  Anthony Rizzo          L    8/8/1989           Ex/31                                                            Av  Vg  Fr  157  
+32578  Luis Robert            R    8/3/1997                                                   Ex/54           Vg       Vg  Ex  Vg  151  
+29973  Daniel Robertson       R    3/22/1994                  Fr/100  Fr/99   Fr/93   Fr/99                   Fr       Av  Pr  Pr  35   
+31220  Victor Robles          R    5/19/1997                                                  Fr/70           Vg       Vg  Ex  Av  140  
+31481  Brendan Rodgers        R    8/9/1996                   Av/93                                                    Av  Pr  Pr  19   
+27727  Sean Rodriguez         R    4/26/1985                  Fr/96                   Fr/100                  Av       Av  Pr  Pr  11   
+32582  Josh Rojas             L    6/30/1994                  Av/87           Fr/96   Fr/98                   Av       Vg  Fr  Av  46   
+29296  Miguel Rojas           R    2/24/1989                          Fr/99   Ex/77                                    Av  Ex  Av  108  
+28771  Austin Romine          R    11/22/1988 Fr/39   Fr/99                                                      Fr 3  Fr  Pr  Pr  103  
+31802  Brent Rooker           R    11/1/1994                                          Pr/95           Pr/95   Av       Av  Pr  Pr  19   
+30548  Amed Rosario           R    11/20/1995                                 Fr/78                                    Vg  Pr  Pr  124  
+29987  Eddie Rosario          L    9/28/1991                                          Av/166                  Av       Vg  Vg  Fr  154  
+28971  Darin Ruf              R    7/28/1986          Fr/96                           Av/151          Av/151  Av       Av  Av  Fr  108  
+29990  Rio Ruiz               L    5/22/1994                          Av/94                                            Pr  Pr  Fr  146  
+30001  Gary Sanchez           R    12/2/1992  Av/190                                                             Vg 6  Pr  Pr  Pr  132  
+31477  Jesus Sanchez          L    10/7/1997                                                          Av/145  Av       Fr  Pr  Pr  27   
+29342  Yolmer Sanchez         S    6/29/1992                  Fr/98   Fr/110  Fr/98                                    Av  Pr  Pr  30   
+27988  Pablo Sandoval         S    8/11/1986          Av/90           Pr/95                                            Fr  Pr  Pr  92   
+30003  Miguel Sano            R    5/11/1993          Av/132                                                           Av  Pr  Pr  143  
+28401  Carlos Santana         S    4/8/1986           Av/113                                                           Fr  Pr  Pr  162  
+29258  Danny Santana          S    11/7/1990          Av/84                           Av/93   Av/93           Av       Av  Vg  Vg  41   
+29437  Domingo Santana        R    8/5/1992                                           Av/65           Av/65   Av       Av  Pr  Pr  65   
+30685  Anthony Santander      S    10/19/1994                                         Vg/220          Vg/220  Pr       Fr  Pr  Fr  100  
+29206  Jonathan Schoop        R    10/16/1991                 Vg/49                                                    Vg  Pr  Pr  123  
+30848  Max Schrock            L    10/12/1994                 Fr/96   Pr/98                                            Fr  Pr  Pr  31   
+30013  Kyle Schwarber         L    3/5/1993                                           Fr/27                   Vg       Av  Fr  Pr  159  
+30016  Corey Seager           L    4/27/1994                                  Av/150                                   Av  Fr  Pr  140  
+28670  Kyle Seager            L    11/3/1987                          Av/61                                            Av  Ex  Fr  162  
+28912  Jean Segura            R    3/17/1990                  Av/52   Vg/93   Av/107                                   Ex  Fr  Fr  146  
+29185  Marcus Semien          R    9/17/1990                                  Av/113                                   Vg  Ex  Fr  143  
+31613  Nick Senzel            R    6/29/1995                                                  Av/131          Av       Av  Av  Ex  62   
+30217  Pedro Severino         R    7/20/1993  Av/158                                                             Av 7  Pr  Fr  Pr  130  
+30025  Travis Shaw            L    4/16/1990          Av/111          Av/73                                            Av  Pr  Pr  135  
+                          BatterProfileRatings -- All players in database                           
+                                           Regular season                                           
+
+ID     Name                   Bats Birth      c       1b      2b      3b      ss      lf      cf      rf      OF C  PB Run Stl Jmp G    
+30837  Magneuris Sierra       L    4/7/1996                                           Vg/77   Av/77   Vg/77   Vg       Vg  Ex  Ex  51   
+28866  Andrelton Simmons      R    9/4/1989                                   Av/121                                   Av  Vg  Fr  81   
+30036  Chance Sisco           L    2/24/1995  Fr/123                                                             Av 2  Fr  Pr  Pr  97   
+30561  Austin Slater          R    12/13/1992                                         Vg/83           Vg/83   Av       Av  Ex  Vg  84   
+30041  Dominic Smith          L    6/15/1995          Fr/123                          Fr/68                   Av       Av  Pr  Pr  135  
+31226  Dwight Smith           L    10/26/1992                                         Av/146                  Pr       Vg  Av  Fr  57   
+30043  Kevan Smith            R    6/28/1988  Fr/84                                                              Av 4  Fr  Pr  Pr  46   
+30045  Mallex Smith           L    5/6/1993                                                   Fr/152  Av/152  Av       Vg  Vg  Ex  38   
+32130  Pavin Smith            L    2/6/1996           Av/92                           Fr/93           Fr/93   Av       Av  Av  Fr  32   
+31631  Will Smith             R    3/28/1995  Av/45                                                              Av 2  Fr  Pr  Pr  100  
+28530  Justin Smoak           S    12/5/1986          Av/136                                                           Pr  Pr  Pr  97   
+28486  Eric Sogard            L    5/22/1986                  Av/94   Av/94   Av/108  Fr/100                  Fr       Fr  Pr  Pr  116  
+31650  Nick Solak             R    1/11/1995                  Fr/98                   Av/108  Fr/108          Pr       Vg  Ex  Av  157  
+28852  Donovan Solano         R    12/17/1987                 Av/197  Av/298  Fr/97                                    Av  Pr  Pr  146  
+29378  Jorge Soler            R    2/25/1992                                                          Av/88   Av       Fr  Pr  Pr  116  
+32070  Juan Soto              L    10/25/1998                                         Pr/34           Pr/34   Fr       Fr  Vg  Av  127  
+29232  Steven Souza           R    4/24/1989                                          Fr/88           Fr/88   Av       Av  Av  Vg  30   
+29235  George Springer        R    9/19/1989                                                  Vg/22   Vg/22   Av       Ex  Pr  Fr  138  
+30642  Jacob Stallings        R    12/22/1989 Vg/131                                                             Av 4  Pr  Pr  Pr  113  
+28396  Giancarlo Stanton      R    11/8/1989                                                                           Pr  Fr  Fr  62   
+30055  Bubba Starling         R    8/3/1992                                           Fr/68   Fr/68   Fr/68   Fr       Av  Pr  Pr  95   
+29157  Max Stassi             R    3/15/1991  Vg/80                                                              Pr 2  Fr  Pr  Pr  84   
+31484  Tyler Stephenson       R    8/16/1996  Vg/96                                                              Av 4  Fr  Pr  Pr  22   
+30682  Andrew Stevenson       L    6/1/1994                                           Av/81   Fr/81   Av/81   Av       Av  Vg  Vg  41   
+30720  Christin Stewart       L    12/10/1993                                         Av/58                   Fr       Fr  Pr  Pr  101  
+30725  DJ Stewart             L    11/30/1993                                         Av/217          Av/217  Fr       Fr  Pr  Pr  84   
+30061  Trevor Story           R    11/15/1992                                 Vg/134                                   Ex  Ex  Vg  159  
+31569  Myles Straw            R    10/17/1994                                 Fr/100          Av/63           Fr       Vg  Vg  Ex  89   
+29294  Eugenio Suarez         R    7/18/1991                          Fr/88                                            Av  Vg  Fr  154  
+27761  Kurt Suzuki            R    10/4/1983  Fr/50                                                              Pr 2  Pr  Fr  Pr  89   
+30673  Dansby Swanson         R    2/11/1994                                  Av/31                                    Ex  Ex  Fr  162  
+30584  Raimel Tapia           L    2/4/1994                                           Vg/184          Vg/184  Fr       Av  Ex  Av  138  
+31749  Fernando Tatis         R    1/2/1999                                   Av/57                                    Vg  Vg  Vg  159  
+30586  Mike Tauchman          L    12/3/1990                                          Av/50   Fr/50   Av/50   Av       Ex  Ex  Vg  116  
+31608  Leody Taveras          S    9/8/1998                                                   Vg/149          Fr       Vg  Ex  Vg  89   
+31790  Beau Taylor            L    2/13/1990  Av/110                                                             Av 3  Av  Pr  Pr  19   
+29349  Chris Taylor           R    8/29/1990                  Av/105          Av/70   Vg/127  Av/127          Av       Vg  Av  Fr  151  
+29366  Michael A. Taylor      R    3/26/1991                                          Vg/111  Av/111  Vg/111  Av       Av  Pr  Pr  103  
+30076  Tyrone Taylor          R    1/22/1994                                          Fr/82   Fr/82   Fr/82   Fr       Av  Pr  Pr  59   
+31475  Anderson Tejeda        S    5/1/1998                   Av/93           Av/126                                   Vg  Ex  Ex  62   
+30587  Rowdy Tellez           L    3/16/1995          Av/69                                                            Av  Pr  Pr  95   
+31620  Matt Thaiss            L    5/6/1995           Av/96   Pr/118                  Fr/98                   Av       Av  Pr  Pr  22   
+28612  Eric Thames            L    11/10/1986         Av/119                                                           Fr  Fr  Pr  111  
+32134  Lane Thomas            R    8/23/1995                                                  Fr/148  Av/148  Av       Av  Pr  Pr  50   
+32602  Abraham Toro           S    12/20/1996         Av/97   Fr/98   Av/81                                            Vg  Fr  Av  89   
+30832  Luis Torrens           R    5/2/1996   Fr/65                                                              Fr 10 Av  Pr  Pr  68   
+30592  Gleyber Torres         R    12/13/1996                                 Fr/185                                   Av  Fr  Pr  113  
+30808  Jose Trevino           R    11/28/1992 Av/98                                                              Av 2  Fr  Pr  Pr  65   
+31816  Chadwick Tromp         R    3/21/1995  Fr/100                                                             Av 6  Fr  Pr  Pr  65   
+28673  Mike Trout             R    8/7/1991                                                   Fr/9            Av       Av  Fr  Pr  143  
+33228  Yoshi Tsutsugo         L    11/26/1991                         Av/143          Av/79                   Ex       Vg  Pr  Pr  138  
+31425  Cole Tucker            S    7/3/1996                   Pr/100                          Fr/50   Fr/50   Av       Av  Av  Fr  100  
+30824  Kyle Tucker            L    1/17/1997                                          Vg/90           Vg/90   Fr       Av  Ex  Vg  157  
+28079  Justin Turner          R    11/23/1984                         Av/103                                           Fr  Fr  Pr  113  
+30101  Trea Turner            R    6/30/1993                                  Fr/150                                   Vg  Vg  Vg  159  
+27768  Justin Upton           R    8/25/1987                                          Fr/187                  Av       Av  Pr  Fr  113  
+30833  Luis Urias             R    6/3/1997                   Av/100  Av/79   Fr/111                                   Vg  Fr  Av  111  
+31996  Ramon Urias            R    6/3/1994                   Av/115          Av/130                                   Av  Pr  Pr  27   
+30106  Gio Urshela            R    10/11/1991                         Vg/42                                            Fr  Fr  Pr  116  
+30598  Pat Valaika            R    9/9/1992           Av/86   Av/85   Fr/94   Fr/161  Fr/95                   Av       Av  Pr  Fr  140  
+32604  Josh VanMeter          L    3/10/1995          Av/98   Av/97   Fr/110                                           Av  Av  Fr  70   
+30770  Ildemaro Vargas        S    7/16/1991          Av/123  Av/100  Pr/97                                            Av  Pr  Pr  65   
+32249  Daulton Varsho         L    7/2/1996   Fr/88                                   Vg/69   Vg/69           Av Pr 5  Av  Vg  Vg  100  
+29339  Christian Vazquez      R    8/21/1990  Av/56                                                              Av 5  Pr  Fr  Av  127  
+30113  Andrew Velazquez       S    7/14/1994                  Fr/97           Av/66   Fr/95   Pr/95           Av       Av  Av  Ex  108  
+30603  Alex Verdugo           L    5/15/1996                                          Av/294  Fr/294  Av/294  Vg       Vg  Ex  Fr  143  
+29123  Jonathan Villar        S    5/2/1991                   Av/154          Av/129          Fr/178          Fr       Vg  Vg  Ex  140  
+31442  Meibrys Viloria        L    2/15/1997  Fr/117                                                             Av 5  Av  Pr  Pr  41   
+30119  Daniel Vogelbach       L    12/17/1992         Av/97                                                            Pr  Pr  Pr  105  
+28805  Stephen Vogt           L    11/1/1984  Av/66   Pr/99                                                      Fr 2  Pr  Pr  Pr  70   
+30836  Luke Voit              R    2/13/1991          Fr/112                                                           Fr  Pr  Pr  151  
+27402  Joey Votto             L    9/10/1983          Av/170                                                           Pr  Pr  Pr  146  
+                          BatterProfileRatings -- All players in database                           
+                                           Regular season                                           
+
+ID     Name                   Bats Birth      c       1b      2b      3b      ss      lf      cf      rf      OF C  PB Run Stl Jmp G    
+31561  LaMonte Wade           L    1/1/1994           Av/94                           Fr/168  Fr/168  Fr/168  Av       Av  Fr  Vg  43   
+30605  Tyler Wade             L    11/23/1994                 Av/96           Fr/72                                    Vg  Ex  Vg  140  
+29433  Christian Walker       R    3/28/1991          Av/121                                                           Av  Fr  Fr  154  
+27976  Neil Walker            S    9/10/1985          Av/95   Av/94   Fr/98                                            Fr  Pr  Pr  49   
+30125  Chad Wallach           R    11/4/1991  Fr/78                                                              Av 3  Fr  Pr  Pr  41   
+30782  Jared Walsh            L    7/30/1993          Fr/90                                           Pr/97   Av       Fr  Pr  Pr  86   
+31855  Donovan Walton         L    5/25/1994                  Fr/98           Fr/95                                    Fr  Pr  Ex  14   
+30884  Taylor Ward            R    12/14/1993         Pr/100                          Av/54           Av/54   Av       Vg  Vg  Fr  92   
+30131  Joey Wendle            L    4/26/1990                  Av/70   Vg/115  Av/99                                    Vg  Ex  Vg  135  
+32605  Eli White              R    6/26/1994                                          Av/74   Fr/74   Av/74   Ex       Pr  Fr  Vg  51   
+32254  Evan White             R    4/26/1996          Vg/40                                                            Vg  Pr  Fr  146  
+28221  Matt Wieters           S    5/21/1986  Av/80                                                              Vg 6  Pr  Pr  Pr  53   
+30136  Mason Williams         L    8/21/1991                                          Fr/91   Fr/91   Fr/91   Av       Vg  Pr  Ex  27   
+30147  Jesse Winker           L    8/17/1993                                          Av/81           Av/81   Av       Fr  Fr  Pr  146  
+30154  Tony Wolters           L    6/9/1992   Fr/77           Pr/99                                              Av 6  Vg  Pr  Pr  113  
+29151  Kolten Wong            L    10/10/1990                 Ex/61                                                    Ex  Av  Av  148  
+30160  Mike Yastrzemski       L    8/23/1990                                          Av/13   Av/13   Av/13   Vg       Vg  Av  Fr  146  
+29124  Christian Yelich       L    12/5/1991                                          Fr/14                   Fr       Av  Av  Fr  157  
+32611  Andy Young             R    5/10/1994                  Av/97   Pr/181                                           Av  Pr  Pr  32   
+30625  Bradley Zimmer         L    11/27/1992                                         Av/250  Av/250  Av/250  Av       Av  Av  Vg  54   
+29079  Mike Zunino            R    3/25/1991  Av/81                                                              Av 8  Pr  Pr  Pr  76   
+

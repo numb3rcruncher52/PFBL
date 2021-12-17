@@ -219,7 +219,7 @@ updateNeeds <- function(needs, next_player, join_crit = c("POS", "split")) {
 }
 
 test_ratings <- all_ratings %>%
-  filter(season == 2021)
+  filter(season == 2022)
 
 LEVEL = 'Team' ##League'    ## Team if you want to do it by team
 JOIN_CRIT = c("POS", "split", "TeamName") ## Include 'TeamName' if you want to do it by team , "TeamName"
@@ -268,7 +268,7 @@ total_opt_team <- opt_team %>%
   bind_rows(dh_opt) %>%
   distinct()
 
-write_csv(total_opt_team, "OUTPUT_NEW/opt_team_by_team_2021_postdraft.csv")
+write_csv(total_opt_team, "OUTPUT_NEW/opt_team_by_team_2022_new.csv")
 #write_csv(total_opt_team, "OUTPUT_NEW/opt_team_2021.csv")
 ## Use the 2nd for the league rankings
 

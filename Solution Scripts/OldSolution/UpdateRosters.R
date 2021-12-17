@@ -6,7 +6,7 @@
 
 rm(list=ls())
 
-LATEST_SEASON <- 2021
+LATEST_SEASON <- 2022
 REPORT_DIR <- paste0("C:/Users/mwlyo/OneDrive/PFBL/Reports - DMB/reports_",LATEST_SEASON,"/")
 MAPPINGS_DIR <- "C:/Users/mwlyo/OneDrive/PFBL/Reports - DMB/MAPPINGS/"
 
@@ -27,6 +27,10 @@ dim_team <- read_csv(paste0(MAPPINGS_DIR, "dimTeam.csv"), col_types = "ccicc")
 rosters <- readRosterStatus(REPORT_DIR, LATEST_SEASON) %>%
   select(ID, Name, Team, season) %>%
   left_join(dim_team, by = c('season' = 'Season', 'Team' = 'Team'))
+
+rosters %>% filter(season == LATEST_SEASON) %>%
+  distinct(Team, TeamName, season) %>%
+  anti_join(dim_team, by = c('season' = 'Season', 'Team' = 'Team'))
 
 head(rosters)
 

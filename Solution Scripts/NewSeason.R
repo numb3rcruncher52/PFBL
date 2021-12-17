@@ -1,5 +1,5 @@
 ##############################################################
-# NewSeason.R
+# NewSeason2.R
 #
 # Run this when a new season is starting
 ##############################################################
@@ -9,15 +9,47 @@ rm(list=ls())
 ## Be sure to run rosters, Profiles, and Ratings reports from DMB and save
 ## in Onedrive before running this script
 
-LATEST_SEASON <- 2021
-REPORT_DIR <- paste0("C:/Users/mwlyo/OneDrive/PFBL/Reports - DMB/reports_",LATEST_SEASON,"/")
+LATEST_SEASON <- 2022
 
-source("Solution Scripts/cleanFieldingData.R")
-source("Solution Scripts/cleanStats.R")
-source("BaseballCoefficientsLoad.R")
+source("Solution Scripts/CoefficientsLoad.R")
+source("Solution Scripts/CalculateValue.R")
 
-fielding <- cleanFieldingData(REPORT_DIR, LATEST_SEASON)
-stats <- cleanPlayerStats(REPORT_DIR, LATEST_SEASON, type = "Profile")
+### Find all Raw data files
+RAW_DIR <- "RAW_DATA/PFBL"
+output_files <- list.files(RAW_DIR, full.names = TRUE, recursive = TRUE)
 
-write_csv(fielding, paste0("OUTPUT_NEW/final_players_",LATEST_SEASON,".csv"))
-write_csv(stats, paste0("OUTPUT_NEW/player_splits_",LATEST_SEASON,".csv"))
+roster_files <- output_files[grep("rosters", output_files)]
+realstats_files <- output_files[grep("real_stats", output_files)]
+batter_files <- output_files[grep("batter_ratings", output_files)]
+pitcher_files <- output_files[grep("pitcher_ratings", output_files)]
+
+rosters <- map(roster_files, read_csv) %>% bind_rows() 
+batter_ratings  <- map(batter_files, read_csv) %>% bind_rows()
+pitcher_ratings <- map(pitcher_files, read_csv) %>% bind_rows()
+
+real_stats <- map(realstats_files, read_csv) %>% bind_rows()
+
+players <- cleanPlayerRatings(batter_ratings, pitcher_ratings)
+stats <- cleanPlayerStats(real_stats)
+
+# Final Reporting Tables --------------------------------------------------
+
+## TeamName Check
+teams <- rosters %>%
+  distinct(Team, TeamName, season) %>%
+  left_join(dim_team, by = c("Team", "TeamName", "season"="Season"))
+
+## Calculate Rookies
+rookie_season <- rosters %>%
+  group_by(ID) %>%
+  arrange(season) %>%
+  mutate(rookie_season = min(season))
+
+## Join all relevant data together
+all_ratings <- players %>%
+  left_join(stats, by = c("ID", "Name", "season")) %>%
+  left_join(rookie_season, by = c("ID", "Name", "season")) %>%
+  left_join(dim_team, by = c("Team", "TeamName", "season"="Season")) %>%
+  calcPlaytimeLimits()
+
+## Calculate Optimal Team

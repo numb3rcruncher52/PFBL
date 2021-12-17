@@ -2,7 +2,6 @@
 ## BaseballCoefficientsLoad.R
 #
 # File to load data necessary for analyzing players
-#
 #######################################
 
 library(rvest)
@@ -11,28 +10,26 @@ library(rvest)
 LH_PA_FULL <- 179
 RH_PA_FULL <- 510
 TOTAL_PA_FULL <- LH_PA_FULL + RH_PA_FULL
+PA_INN <- 4.277
+INN_START_MAX <- 7
+PITCH_LH_SPLIT <- 0.4357984
 
 # Load in Coefficients ----------------------------------------------------
 
-#MAPPINGS_DIR <- paste0(REPORT_DIR, "MAPPINGS", SEPARATOR)
-#MAPPINGS_DIR <- "C:/Users/mwlyo/OneDrive/PFBL/Reports - DMB/MAPPINGS/"
-MAPPINGS_DIR <- "~/OneDrive/PFBL/Reports - DMB/MAPPINGS/"
+coef_def <- read_csv("MAPPING_DATA/coef_def.csv", col_types = "ccii")
 
-coef_def <- read_csv(paste0(MAPPINGS_DIR, "DefCoef.csv"), col_types = "ccii")
-#coef_def <- read_csv("DATA/DefCoef.csv", col_types = "cciiiiiiiii")
+coef_OFarm <- read_csv("MAPPING_DATA/coef_OFarm.csv", col_types = "ciii")
 
-coef_OFarm <- read_csv(paste0(MAPPINGS_DIR, "OFArm.csv"), col_types = "ciii")
-
-coef_Carm <- read_csv(paste0(MAPPINGS_DIR, "CArm.csv"), col_types = "cci")
+coef_Carm <- read_csv("MAPPING_DATA/coef_Carm.csv", col_types = "cci")
 names(coef_Carm) <- c("Arm","POS","RAA_throw")
 
-coef_oop_def <- read_csv(paste0(MAPPINGS_DIR, "DMBOOPCoef.csv"), col_types = "cccii")
+coef_oop_def <- read_csv("MAPPING_DATA/coef_oop_def.csv", col_types = "cccii")
 
-coef_baserunning <- read_csv(paste0(MAPPINGS_DIR, "RunCoef.csv"), col_types = "ci")
+coef_baserunning <- read_csv("MAPPING_DATA/coef_baserunning.csv", col_types = "ci")
 
-coef_wOBA <- read_csv(paste0(MAPPINGS_DIR, "wOBACoef.csv"), col_types = "idddddddd")
+coef_wOBA <- read_csv("MAPPING_DATA/coef_wOBA.csv", col_types = "idddddddd")
 
-dim_team <- read_csv(paste0(MAPPINGS_DIR, "dimTeam.csv"), col_types = "ccicc")
+dim_team <- read_csv("MAPPING_DATA/dim_team.csv", col_types = "ccicc")
 
 ## Pull seasonal constants from fangraphs
 if (max(coef_wOBA$Season) < LATEST_SEASON) {
@@ -46,14 +43,6 @@ if (max(coef_wOBA$Season) < LATEST_SEASON) {
 }
 
 # Tidy coefficient data ---------------------------------------------------
-
-# coef_def <- coef_def %>% 
-#   gather(Err,RAA,`0`:`200`) %>% 
-#   mutate(Err = as.numeric(Err))
-
-## Clean up out of position coefficients
-# coef_oop_def <- coef_oop_def %>% 
-#   gather(Err,RAA,`0`:`200`,convert = TRUE)
 
 ### Clean up the outfield arm coefficients
 coef_arm <- coef_OFarm %>% 
