@@ -13,6 +13,7 @@ TOTAL_PA_FULL <- LH_PA_FULL + RH_PA_FULL
 PA_INN <- 4.277
 INN_START_MAX <- 7
 PITCH_LH_SPLIT <- 0.4357984
+INN_PER_START <- 5.516906 ## From EvaluateResults.R
 
 # Load in Coefficients ----------------------------------------------------
 
@@ -30,6 +31,8 @@ coef_baserunning <- read_csv("MAPPING_DATA/coef_baserunning.csv", col_types = "c
 coef_wOBA <- read_csv("MAPPING_DATA/coef_wOBA.csv", col_types = "idddddddd")
 
 dim_team <- read_csv("MAPPING_DATA/dim_team.csv", col_types = "ccicc")
+
+coef_lh_perc <- read_csv("MAPPING_DATA/coef_lh_perc.csv", col_type = "cdd")
 
 ## Pull seasonal constants from fangraphs
 if (max(coef_wOBA$Season) < LATEST_SEASON) {

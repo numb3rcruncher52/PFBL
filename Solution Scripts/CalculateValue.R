@@ -44,7 +44,10 @@ cleanPlayerRatings <- function(batter_ratings, pitcher_ratings) {
       return(fielding)
     }
     
-    fielding <- fieldingValue(batter_ratings)
+    fielding <- fieldingValue(batter_ratings) %>% 
+      bind_rows(batter_ratings %>% distinct(ID, Name, season) %>% mutate(POS = 'DH', pos_rank = 1)) %>%
+      group_by(ID, Name, season) %>%
+      mutate(pos_rank = ifelse(POS == 'DH', max(pos_rank, na.rm=TRUE) + 1, pos_rank))
     
     final_batters <- batter_ratings %>%
       mutate(Run = toupper(Run)
@@ -64,12 +67,17 @@ cleanPlayerRatings <- function(batter_ratings, pitcher_ratings) {
              , run_raa = RAA) %>%
       left_join(fielding, by = c("ID", "Name", "season")) %>%
       mutate(POS = ifelse(is.na(POS), "DH", POS)
-             , pos_rank = ifelse(is.na(pos_rank), 1, pos_rank))
+             , pos_rank = ifelse(is.na(pos_rank), 1, pos_rank)
+             , RAA = ifelse(is.na(RAA),0,RAA)
+             , RAA_PA = ifelse(is.na(RAA_PA),0,RAA_PA)
+             , role = 'batter')
   }
   
-  cleanPitcherRatings <- function(batter_ratings) {
+  cleanPitcherRatings <- function(pitcher_ratings) {
     final_pitchers <- pitcher_ratings %>%
-      mutate(max_GS = pmin(round(GS * 1.33,0), 36)) %>%
+      mutate(max_GS = pmin(round(GS * 1.33,0), 36)
+             , POS = ifelse(G == GS, 'SP', ifelse(GS == 0, 'RP', 'SW'))
+             , role = 'pitcher') %>%
       filter(!is.na(INN),
              INN >= 20) %>%
       select(ID
@@ -77,11 +85,12 @@ cleanPlayerRatings <- function(batter_ratings, pitcher_ratings) {
              , season
              , handedness = Throws
              , birth_date = Birth
-             , POS = P
+             , POS
              , Games = G
              , Starts = GS
              , max_GS
-             , INN)
+             , INN
+             , role)
   }
   
   batters <- cleanBatterRatings(batter_ratings)
@@ -132,9 +141,12 @@ cleanPlayerStats <- function(stats) {
 
 calcPlaytimeLimits <- function(ratings) {
   ratings %>%
-    mutate(min_PA = ifelse(role == "batter"
+    calcValue() %>%
+    mutate(min_INN = round(ifelse(role == "batter", NA, INN * 0.7),0)
+           , max_INN = round(ifelse(role == "batter", NA, INN * 1.33),0)
+           , min_PA = ifelse(role == "batter"
                            ,ifelse(total_PA < 200, 0, round(0.7*PA,0))
-                           , ifelse(INN < 50, 0, round(0.7*PA,0)))
+                           , ifelse(INN < 50, 0, round(min_INN*PA_PER_INN,0)))
            , max_PA = ifelse(role == "batter"
                              ,round(ifelse(split == 'LH'
                                            , ifelse(total_PA >= 502 | 
@@ -145,16 +157,26 @@ calcPlaytimeLimits <- function(ratings) {
                                                       OPS < .650
                                                     , RH_PA_FULL
                                                     , pmin(PA*1.33, RH_PA_FULL))),0)
-                             , round(ifelse(split == 'LH'
-                                            , ifelse(INN >= 162
-                                                     , max_GS * INN_START_MAX * PITCH_LH_SPLIT * PA_INN
-                                                     , PITCH_LH_SPLIT * total_PA * 1.33
+                             ## Otherwise it's a pitcher
+                             , round(ifelse(POS == 'SP'
+                                            , max_GS * PA_PER_START
+                                            , max_INN * PA_PER_INN
                                             )
-                                            , ifelse(INN >= 162
-                                                     , max_GS * INN_START_MAX * (1 - PITCH_LH_SPLIT) * PA_INN
-                                                     , (1 - PITCH_LH_SPLIT) * total_PA * 1.33
-                                            ))))
-           , min_INN = round(ifelse(role == "batter", NA, min_PA / PA_INN),0)
-           , max_INN = round(ifelse(role == "batter", NA, max_PA / PA_INN),0)
+                                            ))
+           
     )
+}
+
+calcValue <- function(ratings) {
+  ratings %>%
+    left_join(coef_lh_perc, by = 'handedness') %>%
+    mutate(value_PA = RAA_PA + wRAA + run_raa / TOTAL_PA_FULL
+           , PA_PER_INN = total_PA / INN
+           , PA_PER_START = ifelse(Starts == 0, NA,
+                                   ifelse(POS == 'SW', INN_PER_START, INN / Starts) * PA_PER_INN)
+           , lh_perc_RP = ifelse(split == 'LH', lh_perc_RP, 1 - lh_perc_RP)
+           , lh_perc_SP = ifelse(split == 'LH', lh_perc_SP, 1 - lh_perc_SP)
+           , value_INN = PA_PER_INN * lh_perc_RP * wRAA
+           , value_GS = PA_PER_START * lh_perc_SP * wRAA) %>%
+    select(-lh_perc_RP, -lh_perc_SP)
 }

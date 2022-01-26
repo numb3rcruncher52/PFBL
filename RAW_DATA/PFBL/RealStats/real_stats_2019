@@ -1187,6 +1187,7 @@ ID,Name,AVG,OBP,SLG,OPS,AB,SNG,DBL,TRI,HR,UBB,HBP,SF,role,split,season
 31232,Yoshihisa Hirano,0.215,0.291,0.312,0.603,93,14,4,1,1,9,0,0,pitcher,LH,2019
 31233,Kazuhisa Makita,0.274,0.384,0.532,0.916,62,9,4,0,4,8,1,0,pitcher,LH,2019
 31236,Shohei Ohtani,0.222,0.3,0.354,0.654,99,14,5,1,2,10,1,0,batter,LH,2019
+31236,Shohei Ohtani,0.192,0.304,0.231,0.535,78,14,0,0,1,13,0,1,pitcher,LH,2019
 31249,Luke Bard,0.231,0.355,0.577,0.932,26,3,0,0,3,2,2,0,pitcher,LH,2019
 31257,D.J. Snelten,0.455,0.538,0.727,1.266,11,4,0,0,1,2,0,0,pitcher,LH,2019
 31262,Scott Barlow,0.25,0.28,0.333,0.613,24,4,2,0,0,1,0,0,pitcher,LH,2019
@@ -2481,6 +2482,7 @@ ID,Name,AVG,OBP,SLG,OPS,AB,SNG,DBL,TRI,HR,UBB,HBP,SF,role,split,season
 31232,Yoshihisa Hirano,0.204,0.278,0.345,0.624,142,20,3,1,5,10,2,1,pitcher,RH,2019
 31233,Kazuhisa Makita,0.211,0.243,0.366,0.609,71,10,2,0,3,2,1,0,pitcher,RH,2019
 31236,Shohei Ohtani,0.313,0.387,0.656,1.043,227,34,16,1,20,25,1,1,batter,RH,2019
+31236,Shohei Ohtani,0.211,0.277,0.404,0.681,109,12,6,0,5,9,1,0,pitcher,RH,2019
 31249,Luke Bard,0.211,0.318,0.368,0.687,19,3,0,0,1,2,1,0,pitcher,RH,2019
 31257,D.J. Snelten,0.333,0.385,0.583,0.968,12,3,0,0,1,1,0,0,pitcher,RH,2019
 31262,Scott Barlow,0.263,0.3,0.421,0.721,38,8,0,0,2,2,0,0,pitcher,RH,2019

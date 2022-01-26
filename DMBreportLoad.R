@@ -66,7 +66,7 @@ readPlayerStatsSplit <- function(directory, season, type = 'Profile', split) {
     mutate(split = split,
            season = season) %>%
     arrange(ID, desc(AB)) %>%
-    distinct(ID, .keep_all = TRUE)
+    distinct(ID, role, .keep_all = TRUE)
   
   # Change the type of fields as necessary
   cols.num <- c("ID", "AVG", "OBP", "SLG", "OPS", "AB", "SNG", "DBL", "TRI",

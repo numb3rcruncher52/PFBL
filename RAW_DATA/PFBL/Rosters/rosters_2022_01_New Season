@@ -4,7 +4,7 @@ ID,Name,Team,TeamName,season
 26510,Zack Greinke,ALS,Alcatraz Stars,2022
 26555,Yadier Molina,PAS,Philadelphia Athletics,2022
 26587,Ervin Santana,,,2022
-26605,Adam Wainwright,GWc,Galveston Whitecaps,2022
+26605,Adam Wainwright,ALS,Alcatraz Stars,2022
 26715,Rene Rivera,,,2022
 26747,Nelson Cruz,SDF,San Diego Flash,2022
 26794,Yusmeiro Petit,HMb,Houston Mockingbirds,2022
@@ -31,15 +31,15 @@ ID,Name,Team,TeamName,season
 27797,Joe Smith,FFz,Freeland Freeze,2022
 27840,Asdrubal Cabrera,HMM,Holland Mothmen,2022
 27852,Ian Kennedy,BlH,Blanco Hornets,2022
-27865,Ross Detwiler,HMM,Holland Mothmen,2022
+27865,Ross Detwiler,,,2022
 27877,Jay Bruce,,,2022
 27882,Evan Longoria,BBD,Bennington Black Diamonds,2022
 27888,Max Scherzer,NYG,Manhattan Gorillas,2022
-27988,Pablo Sandoval,IAF,Iowa Farmers,2022
+27988,Pablo Sandoval,,,2022
 28014,Sergio Romo,DED,Delaware Destroyers,2022
 28038,Lorenzo Cain,LMM,Lake Mendota Muskies,2022
 28057,Deolis Guerra,,,2022
-28071,Wade LeBlanc,PAS,Philadelphia Athletics,2022
+28071,Wade LeBlanc,,,2022
 28079,Justin Turner,FBS,Frisco Beer Snobs,2022
 28087,Clayton Kershaw,SDF,San Diego Flash,2022
 28117,Gerardo Parra,,,2022
@@ -51,9 +51,9 @@ ID,Name,Team,TeamName,season
 28228,Mark Melancon,WSP,Winston-Salem Pirates,2022
 28230,Trevor Cahill,BBD,Bennington Black Diamonds,2022
 28231,Brett Anderson,TCT,Tri City Tornados,2022
-28235,Derek Holland,NYG,Manhattan Gorillas,2022
-28276,Elvis Andrus,DED,Delaware Destroyers,2022
-28300,Craig Stammen,GWc,Galveston Whitecaps,2022
+28235,Derek Holland,,,2022
+28276,Elvis Andrus,,,2022
+28300,Craig Stammen,,,2022
 28327,Jhoulys Chacin,,,2022
 28338,Josh Reddick,DED,Delaware Destroyers,2022
 28341,Alex Avila,TCT,Tri City Tornados,2022
@@ -78,8 +78,8 @@ ID,Name,Team,TeamName,season
 28441,Mike Minor,BBm,Brandywine Boom,2022
 28452,Aroldis Chapman,NYG,Manhattan Gorillas,2022
 28454,Freddie Freeman,TCT,Tri City Tornados,2022
-28474,Jarrod Dyson,FBS,Frisco Beer Snobs,2022
-28478,Brandon Kintzler,HMM,Holland Mothmen,2022
+28474,Jarrod Dyson,,,2022
+28478,Brandon Kintzler,,,2022
 28486,Eric Sogard,HEG,Highland Engineers,2022
 28493,Steve Cishek,,,2022
 28499,Andrew Romine,,,2022
@@ -95,11 +95,11 @@ ID,Name,Team,TeamName,season
 28602,Eric Hosmer,WSW,West Side Wizards,2022
 28605,Jose Iglesias,TCT,Tri City Tornados,2022
 28614,Danny Duffy,DED,Delaware Destroyers,2022
-28621,Todd Frazier,LAc,Lansing Aces,2022
+28621,Todd Frazier,,,2022
 28628,Brandon Crawford,NYG,Manhattan Gorillas,2022
 28631,DJ LeMahieu,ESE,Essexville Eruption,2022
 28632,Jordan Lyles,BlH,Blanco Hornets,2022
-28633,Josh Harrison,ALS,Alcatraz Stars,2022
+28633,Josh Harrison,GWc,Galveston Whitecaps,2022
 28634,Josh Lindblom,ALS,Alcatraz Stars,2022
 28635,Lance Lynn,TMH,Toledo Mudhens,2022
 28639,Matt Carpenter,ALS,Alcatraz Stars,2022
@@ -124,7 +124,7 @@ ID,Name,Team,TeamName,season
 28706,Salvador Perez,ALS,Alcatraz Stars,2022
 28708,Wade Miley,NYG,Manhattan Gorillas,2022
 28710,Ryan Lavarnway,,,2022
-28724,Brad Brach,GLG,Great Lakes Bay Grunts,2022
+28724,Brad Brach,,,2022
 28728,Corey Kluber,LMM,Lake Mendota Muskies,2022
 28734,Martin Maldonado,ELg,Eagleville Lollygaggers,2022
 28739,Tommy Milone,,,2022
@@ -139,7 +139,7 @@ ID,Name,Team,TeamName,season
 28793,Lucas Luetge,,,2022
 28795,Erasmo Ramirez,BBD,Bennington Black Diamonds,2022
 28800,Nate Jones,,,2022
-28801,Marwin Gonzalez,RRR,Roars Rugrats,2022
+28801,Marwin Gonzalez,,,2022
 28805,Stephen Vogt,FBS,Frisco Beer Snobs,2022
 28809,Drew Smyly,GLG,Great Lakes Bay Grunts,2022
 28814,AJ Pollock,TCT,Tri City Tornados,2022
@@ -147,7 +147,7 @@ ID,Name,Team,TeamName,season
 28822,Wily Peralta,,,2022
 28824,Bryce Harper,ALS,Alcatraz Stars,2022
 28827,Patrick Corbin,TMH,Toledo Mudhens,2022
-28832,Miles Mikolas,ALS,Alcatraz Stars,2022
+28832,Miles Mikolas,GWc,Galveston Whitecaps,2022
 28836,Jose Quintana,GLG,Great Lakes Bay Grunts,2022
 28842,Charlie Culberson,,,2022
 28843,Sandy Leon,LMM,Lake Mendota Muskies,2022
@@ -162,14 +162,14 @@ ID,Name,Team,TeamName,season
 28865,Yasmani Grandal,WSW,West Side Wizards,2022
 28866,Andrelton Simmons,MMC,Middleburg Mudcats,2022
 28869,Sean Doolittle,HEG,Highland Engineers,2022
-28870,Bryan Holaday,ALS,Alcatraz Stars,2022
-28879,Brad Boxberger,HMM,Holland Mothmen,2022
+28870,Bryan Holaday,,,2022
+28879,Brad Boxberger,,,2022
 28880,Joe Kelly,TCT,Tri City Tornados,2022
 28882,Dallas Keuchel,IBs,Indianapolis Barnstormers,2022
 28884,Chris Archer,HMb,Houston Mockingbirds,2022
 28888,Martin Perez,DED,Delaware Destroyers,2022
 28890,Trevor Bauer,TCT,Tri City Tornados,2022
-28900,Aaron Loup,LMM,Lake Mendota Muskies,2022
+28900,Aaron Loup,ALS,Alcatraz Stars,2022
 28912,Jean Segura,LAc,Lansing Aces,2022
 28913,Starling Marte,HEG,Highland Engineers,2022
 28914,Matt Harvey,FBS,Frisco Beer Snobs,2022
@@ -178,9 +178,9 @@ ID,Name,Team,TeamName,season
 28937,Justin Wilson,IBs,Indianapolis Barnstormers,2022
 28943,Collin McHugh,,,2022
 28948,Avisail Garcia,BBm,Brandywine Boom,2022
-28952,Brock Holt,ALS,Alcatraz Stars,2022
+28952,Brock Holt,,,2022
 28953,Jurickson Profar,WSW,West Side Wizards,2022
-28960,Jeurys Familia,FBS,Frisco Beer Snobs,2022
+28960,Jeurys Familia,,,2022
 28962,Adam Eaton,BlH,Blanco Hornets,2022
 28963,Shelby Miller,,,2022
 28964,Didi Gregorius,ALS,Alcatraz Stars,2022
@@ -190,7 +190,7 @@ ID,Name,Team,TeamName,season
 28982,Rafael Ortega,,,2022
 28987,Hyun Jin Ryu,NYG,Manhattan Gorillas,2022
 28988,Aaron Hicks,HMM,Holland Mothmen,2022
-28989,Jackie Bradley,WSW,West Side Wizards,2022
+28989,Jackie Bradley,NYG,Manhattan Gorillas,2022
 28992,Khris Davis,TCT,Tri City Tornados,2022
 28998,Ryan Pressly,ALS,Alcatraz Stars,2022
 29000,T.J. McFarland,ELg,Eagleville Lollygaggers,2022
@@ -200,8 +200,8 @@ ID,Name,Team,TeamName,season
 29024,Juan Lagares,,,2022
 29029,Nolan Arenado,LMM,Lake Mendota Muskies,2022
 29031,Marcell Ozuna,LAc,Lansing Aces,2022
-29036,Carlos Martinez,IAF,Iowa Farmers,2022
-29039,Burch Smith,TMH,Toledo Mudhens,2022
+29036,Carlos Martinez,,,2022
+29039,Burch Smith,,,2022
 29046,Caleb Thielbar,FBS,Frisco Beer Snobs,2022
 29050,Kevin Gausman,SDF,San Diego Flash,2022
 29052,Sean Nolin,,,2022
@@ -225,7 +225,7 @@ ID,Name,Team,TeamName,season
 29124,Christian Yelich,NYG,Manhattan Gorillas,2022
 29125,Jake Marisnick,WSW,West Side Wizards,2022
 29140,Andrew Albers,,,2022
-29141,Wilmer Flores,WSW,West Side Wizards,2022
+29141,Wilmer Flores,NYG,Manhattan Gorillas,2022
 29150,Kevin Pillar,ESE,Essexville Eruption,2022
 29151,Kolten Wong,PAS,Philadelphia Athletics,2022
 29152,Travis d'Arnaud,TCT,Tri City Tornados,2022
@@ -237,9 +237,9 @@ ID,Name,Team,TeamName,season
 29168,Abraham Almonte,,,2022
 29170,Nick Castellanos,BlH,Blanco Hornets,2022
 29175,Jose Ramirez,ESE,Essexville Eruption,2022
-29177,Heath Hembree,GLG,Great Lakes Bay Grunts,2022
+29177,Heath Hembree,,,2022
 29178,Chris Owings,PtC,Portland Columbias,2022
-29179,Billy Hamilton,PAS,Philadelphia Athletics,2022
+29179,Billy Hamilton,,,2022
 29185,Marcus Semien,TMH,Toledo Mudhens,2022
 29187,Jimmy Nelson,,,2022
 29191,Ehire Adrianza,PAS,Philadelphia Athletics,2022
@@ -250,7 +250,7 @@ ID,Name,Team,TeamName,season
 29210,Jose Abreu,FBS,Frisco Beer Snobs,2022
 29218,Ryan Buchter,,,2022
 29223,Tucker Barnhart,TMH,Toledo Mudhens,2022
-29229,Dominic Leone,DED,Delaware Destroyers,2022
+29229,Dominic Leone,,,2022
 29232,Steven Souza,WSP,Winston-Salem Pirates,2022
 29233,Blake Treinen,WSP,Winston-Salem Pirates,2022
 29235,George Springer,TMH,Toledo Mudhens,2022
@@ -263,11 +263,11 @@ ID,Name,Team,TeamName,season
 29254,Casey Sadler,NYG,Manhattan Gorillas,2022
 29256,C.J. Cron,WSW,West Side Wizards,2022
 29257,Marcus Stroman,BlH,Blanco Hornets,2022
-29258,Danny Santana,HEG,Highland Engineers,2022
+29258,Danny Santana,,,2022
 29261,Robbie Ray,BlH,Blanco Hornets,2022
 29262,Evan Marshall,HEG,Highland Engineers,2022
 29264,Rougned Odor,GLG,Great Lakes Bay Grunts,2022
-29265,Chase Anderson,GWc,Galveston Whitecaps,2022
+29265,Chase Anderson,,,2022
 29267,Anthony DeSclafani,FFz,Freeland Freeze,2022
 29268,Rafael Montero,BBD,Bennington Black Diamonds,2022
 29269,Jacob deGrom,ALS,Alcatraz Stars,2022
@@ -282,7 +282,7 @@ ID,Name,Team,TeamName,season
 29299,Gregory Polanco,ELg,Eagleville Lollygaggers,2022
 29300,Tyler Matzek,TCT,Tri City Tornados,2022
 29307,Andrew Heaney,PAS,Philadelphia Athletics,2022
-29314,Joe Panik,HEG,Highland Engineers,2022
+29314,Joe Panik,,,2022
 29317,Marco Gonzales,TMH,Toledo Mudhens,2022
 29320,Adam Duvall,WSW,West Side Wizards,2022
 29322,Jorge Polanco,DED,Delaware Destroyers,2022
@@ -292,14 +292,14 @@ ID,Name,Team,TeamName,season
 29338,Roberto Perez,MMC,Middleburg Mudcats,2022
 29339,Christian Vazquez,BlH,Blanco Hornets,2022
 29343,Curt Casali,FFz,Freeland Freeze,2022
-29345,Chasen Shreve,PtC,Portland Columbias,2022
+29345,Chasen Shreve,,,2022
 29348,Aaron Sanchez,TCT,Tri City Tornados,2022
 29349,Chris Taylor,ESE,Essexville Eruption,2022
 29352,Mike Foltynewicz,HMb,Houston Mockingbirds,2022
 29354,Javier Baez,FFz,Freeland Freeze,2022
 29357,Matt Duffy,,,2022
-29359,Hector Neris,IAF,Iowa Farmers,2022
-29361,Jake Lamb,RRR,Roars Rugrats,2022
+29359,Hector Neris,,,2022
+29361,Jake Lamb,,,2022
 29364,Trevor May,FFz,Freeland Freeze,2022
 29366,Michael A. Taylor,HEG,Highland Engineers,2022
 29367,Andrew Chafin,TMH,Toledo Mudhens,2022
@@ -314,7 +314,7 @@ ID,Name,Team,TeamName,season
 29394,Yimi Garcia,PtC,Portland Columbias,2022
 29396,James McCann,RRR,Roars Rugrats,2022
 29414,Daniel Norris,FFz,Freeland Freeze,2022
-29415,Kendall Graveman,HMb,Houston Mockingbirds,2022
+29415,Kendall Graveman,,,2022
 29417,Spencer Patton,,,2022
 29421,Matt Barnes,GWc,Galveston Whitecaps,2022
 29425,Tommy Pham,LAc,Lansing Aces,2022
@@ -330,7 +330,7 @@ ID,Name,Team,TeamName,season
 29460,Tyler Anderson,IBs,Indianapolis Barnstormers,2022
 29461,Matt Andriese,SDF,San Diego Flash,2022
 29466,Orlando Arcia,PAS,Philadelphia Athletics,2022
-29468,Shawn Armstrong,LAc,Lansing Aces,2022
+29468,Shawn Armstrong,,,2022
 29477,Austin Barnes,GWc,Galveston Whitecaps,2022
 29482,Jake Bauers,ESE,Essexville Eruption,2022
 29485,Josh Bell,WSP,Winston-Salem Pirates,2022
@@ -349,14 +349,14 @@ ID,Name,Team,TeamName,season
 29580,Kyle Crick,PAS,Philadelphia Athletics,2022
 29586,David Dahl,WSP,Winston-Salem Pirates,2022
 29588,Zach Davies,GWc,Galveston Whitecaps,2022
-29590,Grant Dayton,GWc,Galveston Whitecaps,2022
+29590,Grant Dayton,,,2022
 29600,Delino DeShields,BBD,Bennington Black Diamonds,2022
 29601,Aledmys Diaz,BBm,Brandywine Boom,2022
 29602,Elias Diaz,GWc,Galveston Whitecaps,2022
 29603,Alex Dickerson,IBs,Indianapolis Barnstormers,2022
 29605,Wilmer Difo,WSP,Winston-Salem Pirates,2022
 29611,Hunter Dozier,ELg,Eagleville Lollygaggers,2022
-29613,Brandon Drury,MMC,Middleburg Mudcats,2022
+29613,Brandon Drury,,,2022
 29614,Tyler Duffey,TMH,Toledo Mudhens,2022
 29625,Zach Eflin,BlH,Blanco Hornets,2022
 29627,Jerad Eickhoff,,,2022
@@ -366,7 +366,7 @@ ID,Name,Team,TeamName,season
 29648,Clint Frazier,ELg,Eagleville Lollygaggers,2022
 29651,Cam Gallagher,LMM,Lake Mendota Muskies,2022
 29652,Joey Gallo,BlH,Blanco Hornets,2022
-29659,Dustin Garneau,FFz,Freeland Freeze,2022
+29659,Dustin Garneau,,,2022
 29660,Amir Garrett,GLG,Great Lakes Bay Grunts,2022
 29664,Domingo German,RRR,Roars Rugrats,2022
 29669,Lucas Giolito,PtC,Portland Columbias,2022
@@ -419,10 +419,10 @@ ID,Name,Team,TeamName,season
 29898,Renato Nunez,IBs,Indianapolis Barnstormers,2022
 29907,Steven Okert,,,2022
 29909,Matt Olson,IAF,Iowa Farmers,2022
-29920,Jose Peraza,TMH,Toledo Mudhens,2022
-29928,Brett Phillips,PAS,Philadelphia Athletics,2022
+29920,Jose Peraza,,,2022
+29928,Brett Phillips,,,2022
 29933,Chad Pinder,ALS,Alcatraz Stars,2022
-29934,Stephen Piscotty,IAF,Iowa Farmers,2022
+29934,Stephen Piscotty,,,2022
 29935,Kevin Plawecki,SDF,San Diego Flash,2022
 29941,Roman Quinn,NYG,Manhattan Gorillas,2022
 29945,Nick Ramirez,,,2022
@@ -473,12 +473,12 @@ ID,Name,Team,TeamName,season
 30108,Breyvic Valera,,,2022
 30112,Vince Velasquez,IAF,Iowa Farmers,2022
 30113,Andrew Velazquez,BBD,Bennington Black Diamonds,2022
-30119,Daniel Vogelbach,FFz,Freeland Freeze,2022
+30119,Daniel Vogelbach,,,2022
 30120,Austin Voth,HMb,Houston Mockingbirds,2022
 30125,Chad Wallach,TCT,Tri City Tornados,2022
 30129,Tyler Webb,GLG,Great Lakes Bay Grunts,2022
 30131,Joey Wendle,BBm,Brandywine Boom,2022
-30136,Mason Williams,GLG,Great Lakes Bay Grunts,2022
+30136,Mason Williams,,,2022
 30139,Trevor Williams,BBm,Brandywine Boom,2022
 30147,Jesse Winker,SDF,San Diego Flash,2022
 30148,Dan Winkler,BBm,Brandywine Boom,2022
@@ -503,7 +503,7 @@ ID,Name,Team,TeamName,season
 30230,Anthony Alford,BBD,Bennington Black Diamonds,2022
 30233,Miguel Andujar,RRR,Roars Rugrats,2022
 30236,Christian Arroyo,PAS,Philadelphia Athletics,2022
-30241,Jacob Barnes,TCT,Tri City Tornados,2022
+30241,Jacob Barnes,,,2022
 30247,Cody Bellinger,MMC,Middleburg Mudcats,2022
 30250,Alex Blandino,,,2022
 30251,Richard Bleier,BBD,Bennington Black Diamonds,2022
@@ -517,13 +517,13 @@ ID,Name,Team,TeamName,season
 30278,Matt Chapman,WSW,West Side Wizards,2022
 30279,J.T. Chargois,,,2022
 30286,Willson Contreras,HMM,Holland Mothmen,2022
-30289,Jharel Cotton,FFz,Freeland Freeze,2022
+30289,Jharel Cotton,,,2022
 30295,J.D. Davis,HMb,Houston Mockingbirds,2022
 30300,Jose De Leon,,,2022
 30305,Rafael Devers,FFz,Freeland Freeze,2022
 30307,Edwin Diaz,WSW,West Side Wizards,2022
 30308,Yandy Diaz,WSP,Winston-Salem Pirates,2022
-30312,Mauricio Dubon,PtC,Portland Columbias,2022
+30312,Mauricio Dubon,,,2022
 30316,Adam Engel,SDF,San Diego Flash,2022
 30319,Carlos Estevez,PAS,Philadelphia Athletics,2022
 30320,Jacob Faria,PAS,Philadelphia Athletics,2022
@@ -538,7 +538,7 @@ ID,Name,Team,TeamName,season
 30372,Kyle Higashioka,HMb,Houston Mockingbirds,2022
 30376,Jeff Hoffman,RRR,Roars Rugrats,2022
 30385,Joe Jimenez,BlH,Blanco Hornets,2022
-30393,JaCoby Jones,PtC,Portland Columbias,2022
+30393,JaCoby Jones,,,2022
 30399,Carson Kelly,BlH,Blanco Hornets,2022
 30410,Chad Kuhl,RRR,Roars Rugrats,2022
 30424,Domingo Leyba,,,2022
@@ -585,7 +585,7 @@ ID,Name,Team,TeamName,season
 30634,Chad Green,MMC,Middleburg Mudcats,2022
 30639,Dylan Floro,BBm,Brandywine Boom,2022
 30642,Jacob Stallings,TMH,Toledo Mudhens,2022
-30646,Mike Freeman,LMM,Lake Mendota Muskies,2022
+30646,Mike Freeman,,,2022
 30648,Omar Narvaez,NYG,Manhattan Gorillas,2022
 30656,Andrew Benintendi,BBm,Brandywine Boom,2022
 30661,Yuli Gurriel,BBD,Bennington Black Diamonds,2022
@@ -599,7 +599,7 @@ ID,Name,Team,TeamName,season
 30683,Andy Ibanez,,,2022
 30685,Anthony Santander,GLG,Great Lakes Bay Grunts,2022
 30686,Aristides Aquino,GWc,Galveston Whitecaps,2022
-30688,Austin Dean,ELg,Eagleville Lollygaggers,2022
+30688,Austin Dean,,,2022
 30689,Austin Wynns,,,2022
 30699,Brian Anderson,DED,Delaware Destroyers,2022
 30725,DJ Stewart,,,2022
@@ -607,7 +607,7 @@ ID,Name,Team,TeamName,season
 30728,David Fletcher,IBs,Indianapolis Barnstormers,2022
 30735,Dom Nunez,GLG,Great Lakes Bay Grunts,2022
 30739,Dustin Fowler,,,2022
-30742,Eddy Alvarez,FBS,Frisco Beer Snobs,2022
+30742,Eddy Alvarez,,,2022
 30743,Edmundo Sosa,,,2022
 30745,Edwin Rios,GWc,Galveston Whitecaps,2022
 30748,Eric Haase,IAF,Iowa Farmers,2022
@@ -616,12 +616,12 @@ ID,Name,Team,TeamName,season
 30756,Garrett Cooper,DED,Delaware Destroyers,2022
 30757,Garrett Stubbs,,,2022
 30760,Grayson Greiner,GLG,Great Lakes Bay Grunts,2022
-30761,Greg Allen,BBm,Brandywine Boom,2022
+30761,Greg Allen,,,2022
 30762,Harold Castro,HMM,Holland Mothmen,2022
 30764,Harrison Bader,WSW,West Side Wizards,2022
 30768,Ian Happ,FBS,Frisco Beer Snobs,2022
 30770,Ildemaro Vargas,,,2022
-30772,Jack Mayfield,MMC,Middleburg Mudcats,2022
+30772,Jack Mayfield,,,2022
 30773,Jacob Nottingham,TCT,Tri City Tornados,2022
 30782,Jared Walsh,SDF,San Diego Flash,2022
 30784,Jason Martin,TMH,Toledo Mudhens,2022
@@ -639,7 +639,7 @@ ID,Name,Team,TeamName,season
 30832,Luis Torrens,FBS,Frisco Beer Snobs,2022
 30833,Luis Urias,DED,Delaware Destroyers,2022
 30836,Luke Voit,TMH,Toledo Mudhens,2022
-30837,Magneuris Sierra,MMC,Middleburg Mudcats,2022
+30837,Magneuris Sierra,,,2022
 30844,Matt Beaty,HMb,Houston Mockingbirds,2022
 30848,Max Schrock,TMH,Toledo Mudhens,2022
 30854,Mike Ford,,,2022
@@ -652,7 +652,7 @@ ID,Name,Team,TeamName,season
 30868,Ramon Laureano,MMC,Middleburg Mudcats,2022
 30870,Rhys Hoskins,PAS,Philadelphia Athletics,2022
 30871,Richie Martin,,,2022
-30882,Steven Duggar,DED,Delaware Destroyers,2022
+30882,Steven Duggar,,,2022
 30884,Taylor Ward,ALS,Alcatraz Stars,2022
 30885,Tim Locastro,TMH,Toledo Mudhens,2022
 30888,Tomas Nido,SDF,San Diego Flash,2022
@@ -685,9 +685,9 @@ ID,Name,Team,TeamName,season
 30979,Chris Flexen,,,2022
 30981,Clay Holmes,,,2022
 30990,Enyel De Los Santos,,,2022
-30993,Kyle Finnegan,GWc,Galveston Whitecaps,2022
+30993,Kyle Finnegan,,,2022
 30997,Jose Urquidy,HMb,Houston Mockingbirds,2022
-31002,Anthony Banda,ELg,Eagleville Lollygaggers,2022
+31002,Anthony Banda,,,2022
 31005,Sam Howard,PAS,Philadelphia Athletics,2022
 31016,Cole Sulser,RRR,Roars Rugrats,2022
 31022,Jordan Montgomery,TMH,Toledo Mudhens,2022
@@ -792,7 +792,7 @@ ID,Name,Team,TeamName,season
 31409,Mitch Keller,IBs,Indianapolis Barnstormers,2022
 31412,Brett Martin,TMH,Toledo Mudhens,2022
 31421,Justin Steele,,,2022
-31423,Erik Swanson,DED,Delaware Destroyers,2022
+31423,Erik Swanson,,,2022
 31424,Touki Toussaint,PAS,Philadelphia Athletics,2022
 31425,Cole Tucker,ELg,Eagleville Lollygaggers,2022
 31427,Jacob Webb,BlH,Blanco Hornets,2022
@@ -914,7 +914,7 @@ ID,Name,Team,TeamName,season
 31754,Trevor Richards,IAF,Iowa Farmers,2022
 31755,Yordan Alvarez,ESE,Essexville Eruption,2022
 31756,TJ Friedl,,,2022
-31764,Adam Cimber,LMM,Lake Mendota Muskies,2022
+31764,Adam Cimber,,,2022
 31802,Brent Rooker,FBS,Frisco Beer Snobs,2022
 31809,Bryan Garcia,MMC,Middleburg Mudcats,2022
 31815,Cavan Biggio,FBS,Frisco Beer Snobs,2022
@@ -940,7 +940,7 @@ ID,Name,Team,TeamName,season
 31953,Louis Head,,,2022
 31975,Michael Hermosillo,,,2022
 31977,Michael Perez,HMb,Houston Mockingbirds,2022
-31988,Oscar Mercado,PtC,Portland Columbias,2022
+31988,Oscar Mercado,,,2022
 31989,Pablo Lopez,GLG,Great Lakes Bay Grunts,2022
 31990,Pablo Reyes,,,2022
 31991,Patrick Mazeika,,,2022
@@ -993,7 +993,7 @@ ID,Name,Team,TeamName,season
 32204,Mason Thompson,,,2022
 32206,Jesus Luzardo,BlH,Blanco Hornets,2022
 32218,Andre Scrubb,HMM,Holland Mothmen,2022
-32220,Santiago Espinal,GWc,Galveston Whitecaps,2022
+32220,Santiago Espinal,,,2022
 32226,Wyatt Mills,,,2022
 32227,Trevor Stephan,,,2022
 32229,Matt Foster,BBm,Brandywine Boom,2022
@@ -1006,7 +1006,7 @@ ID,Name,Team,TeamName,season
 32246,Alan Trejo,,,2022
 32249,Daulton Varsho,PtC,Portland Columbias,2022
 32253,Keston Hiura,ELg,Eagleville Lollygaggers,2022
-32254,Evan White,PtC,Portland Columbias,2022
+32254,Evan White,,,2022
 32255,Ernie Clement,,,2022
 32270,Jo Adell,IAF,Iowa Farmers,2022
 32271,Trevor Rogers,RRR,Roars Rugrats,2022
@@ -1020,7 +1020,7 @@ ID,Name,Team,TeamName,season
 32296,Yusei Kikuchi,WSW,West Side Wizards,2022
 32297,Luis Rengifo,IAF,Iowa Farmers,2022
 32299,Bryan Abreu,,,2022
-32310,Wes Benjamin,RRR,Roars Rugrats,2022
+32310,Wes Benjamin,,,2022
 32313,Brandon Bielak,MMC,Middleburg Mudcats,2022
 32331,Robert Dugger,,,2022
 32346,Ralph Garza,,,2022
@@ -1053,7 +1053,7 @@ ID,Name,Team,TeamName,season
 32509,Sam Haggerty,IBs,Indianapolis Barnstormers,2022
 32511,Yonny Hernandez,,,2022
 32519,Taylor Jones,,,2022
-32537,Nick Madrigal,WSW,West Side Wizards,2022
+32537,Nick Madrigal,NYG,Manhattan Gorillas,2022
 32545,Chas McCormick,,,2022
 32547,Zach McKinstry,,,2022
 32549,Danny Mendick,LMM,Lake Mendota Muskies,2022
@@ -1069,7 +1069,7 @@ ID,Name,Team,TeamName,season
 32597,Kevin Smith,,,2022
 32602,Abraham Toro,HMb,Houston Mockingbirds,2022
 32604,Josh VanMeter,TCT,Tri City Tornados,2022
-32605,Eli White,NYG,Manhattan Gorillas,2022
+32605,Eli White,,,2022
 32611,Andrew Young,LMM,Lake Mendota Muskies,2022
 32612,Seby Zavala,,,2022
 32613,Nick Margevicius,MMC,Middleburg Mudcats,2022
@@ -1131,7 +1131,7 @@ ID,Name,Team,TeamName,season
 33002,Demarcus Evans,,,2022
 33023,Gilberto Celestino,,,2022
 33027,Greg Deichmann,,,2022
-33032,Humberto Castellanos,PAS,Philadelphia Athletics,2022
+33032,Humberto Castellanos,,,2022
 33043,Jake Meyers,,,2022
 33046,James Kaprielian,,,2022
 33048,Janson Junk,,,2022

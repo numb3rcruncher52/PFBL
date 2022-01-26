@@ -6,10 +6,11 @@
 
 rm(list=ls())
 
+library(tidyverse)
 source("./DMBreportLoad.R")
 
 ## Define a directory to look for raw DMB reports
-LATEST_SEASON <- 2022
+LATEST_SEASON <- 2021
 ## "01_New Season" "02_Pre Draft" "03_Post Draft" "04_Post Free Agency"
 ## "05_Season Start" "06_Midseason"
 TIMEFRAME <- "01_New Season"
