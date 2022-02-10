@@ -10,10 +10,10 @@ library(tidyverse)
 source("./DMBreportLoad.R")
 
 ## Define a directory to look for raw DMB reports
-LATEST_SEASON <- 2021
+LATEST_SEASON <- 2022
 ## "01_New Season" "02_Pre Draft" "03_Post Draft" "04_Post Free Agency"
 ## "05_Season Start" "06_Midseason"
-TIMEFRAME <- "01_New Season"
+TIMEFRAME <- "03_Post_Draft"
 REPORT_DIR <- paste0("~/OneDrive/PFBL/Reports - DMB/reports_",LATEST_SEASON,"/")
 
 ## Check for and read in various types of reports
@@ -22,6 +22,7 @@ pitcher_ratings <- readPitcherRatings(REPORT_DIR, LATEST_SEASON)
 real_stats <- readPlayerStats(REPORT_DIR, LATEST_SEASON, type='Profile')
 dmb_stats <- readPlayerStats(REPORT_DIR, LATEST_SEASON, type='Results')
 rosters <- readRosterStatus(REPORT_DIR, LATEST_SEASON)
+schedule <- readDMBfile(paste(REPORT_DIR, "OrgSchedule.txt", sep = ""))
 
 ## Write out any reports that were read in to the RAW_DATA folder
 write_csv(batter_ratings
@@ -34,3 +35,5 @@ write_csv(rosters
           , paste0("RAW_DATA/PFBL/Rosters/rosters_",LATEST_SEASON,"_",TIMEFRAME))
 write_csv(dmb_stats
           , paste0("RAW_DATA/PFBL/DMBStats/dmb_stats_",LATEST_SEASON,"_",TIMEFRAME))
+write_csv(schedule
+          , paste0("RAW_DATA/PFBL/Schedules/schedule_",LATEST_SEASON))

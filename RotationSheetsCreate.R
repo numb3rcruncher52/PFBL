@@ -11,14 +11,19 @@ library(tidyverse)
 library(readxl)
 library(openxlsx)
 
-## Before starting you must prepare the OrgSchedule.txt output from Diamond
-## mind. 
-
 # Read in schedule information --------------------------------------------
 
-sched_filepath <- "C:/dmb12/PFBL 2021/reports/OrgSchedule.xlsx"
+LATEST_SEASON <- 2022
 
-schedule <- read_xlsx(sched_filepath)
+### Find all Raw data files
+RAW_DIR <- "RAW_DATA/PFBL/Schedules/schedule_"
+sched_filepath <- paste0(RAW_DIR, LATEST_SEASON)
+
+schedule <- read_csv(sched_filepath, col_types = "cccc") %>%
+  mutate(Away = str_sub(Away, 6, 100)
+         , Home = str_sub(Home, 6, 100)
+         , GameID = row_number()
+         , Date = as.Date(Date, format = "%m/%d/%Y"))
 
 teams <- unique(schedule$Away)
 
@@ -43,14 +48,13 @@ nl_league <- teams[!teams %in% al_league & !is.na(teams) & teams != 'Org schedul
 teamSchedule <- function(TEAMNAME, data) {
   data %>%
     filter(Away == TEAMNAME | Home == TEAMNAME) %>%
-    #mutate(AwayPitcher = NA
-     #      , HomePitcher = NA) %>%
+    mutate(AwayPitcher = NA
+           , HomePitcher = NA) %>%
     select(Date, GameID, Away, AwayPitcher, Home, HomePitcher)
 }
 
 addOffDays <- function(data) {
   data %>%
-    mutate(Date = as.Date(Date)) %>%
     complete(Date = seq.Date(min(Date), max(Date), by='day')) %>%
     mutate(Away = ifelse(is.na(Away), "OFF DAY", Away))
 }
@@ -95,5 +99,5 @@ writeRotationSheet <- function(filename, team_list, schedule_data) {
 
 # Write Rotation Sheets for each league -----------------------------------
 
-writeRotationSheet("AL2021_RotationTemplate.xlsx", al_league, schedule)
-writeRotationSheet("NL2021_RotationTemplate.xlsx", nl_league, schedule)
+writeRotationSheet(paste0("OUTPUT_NEW/AL",LATEST_SEASON,"_RotationTemplate.xlsx"), al_league, schedule)
+writeRotationSheet(paste0("OUTPUT_NEW/NL",LATEST_SEASON,"_RotationTemplate.xlsx"), nl_league, schedule)
