@@ -1,7 +1,7 @@
 ##############################################################
-# cleanFieldingData.R
+# CalculateValue.R
 #
-# Given batter ratings, calculate and return fielding value
+# Given player ratings, calculate offensive/defensive run values
 ##############################################################
 
 library(tidyverse)
@@ -74,6 +74,42 @@ cleanPlayerRatings <- function(batter_ratings, pitcher_ratings) {
   }
   
   cleanPitcherRatings <- function(pitcher_ratings) {
+    starters <- pitcher_ratings %>%
+      filter(!is.na(INN),
+             INN >= 20,
+             GS > 0) %>%
+      mutate(max_GS = pmin(round(GS * 1.33,0), 36)
+             , POS = 'SP'
+             , role = 'pitcher')
+    
+    relievers <- pitcher_ratings %>%
+      filter(!is.na(INN),
+             INN >= 20, 
+             G != GS) %>%
+      mutate(GS = 0
+             , max_GS = 0
+             , POS = 'RP'
+             , role = 'pitcher')
+      
+    final_pitchers <- starters %>%
+      bind_rows(relievers) %>%
+      select(ID
+             , Name
+             , season
+             , handedness = Throws
+             , birth_date = Birth
+             , POS
+             , Games = G
+             , Starts = GS
+             , max_GS
+             , INN
+             , role) %>%
+      group_by(ID, season) %>%
+      arrange(desc(POS)) %>%
+      mutate(pos_rank = row_number())
+  }
+  
+  cleanPitcherRatings_old <- function(pitcher_ratings) {
     final_pitchers <- pitcher_ratings %>%
       mutate(max_GS = pmin(round(GS * 1.33,0), 36)
              , POS = ifelse(G == GS, 'SP', ifelse(GS == 0, 'RP', 'SW'))

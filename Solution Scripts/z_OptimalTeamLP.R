@@ -5,7 +5,7 @@ library(lpSolve)
 optimalBattersLP <- function(ratings) {
   
   test_rating <- ratings %>% 
-    filter(!(Conference == 'NL' & POS == 'DH')) %>% ## remove DH from NL
+    #filter(!(Conference == 'NL' & POS == 'DH')) %>% ## remove DH from NL
     select(ID, Name, role, POS, split, RAA_PA, wRAA, min_PA, max_PA, value_PA) %>%
     ## Ensure all values are non-negative for valid optimization
     mutate(value_PA_pos = value_PA - min(value_PA))
@@ -93,7 +93,10 @@ optimalPitchers <- function(ratings) {
     left_join(opt_relief, by = 'ID') %>%
     select(ID, Name, POS, opt_starts, opt_inn) %>%
     mutate(opt_starts = ifelse(is.na(opt_starts),0,opt_starts)
-           , opt_inn = ifelse(is.na(opt_inn),0,opt_inn))
+           , opt_inn = ifelse(is.na(opt_inn),0,opt_inn)) %>%
+    ## adding for splitting relievers + pitchers
+    mutate(opt_starts = ifelse(POS == 'SP', opt_starts, 0)
+           , opt_inn = ifelse(POS == 'RP', opt_inn, 0))
 }
 
 optimalTeam <- function(ratings) {

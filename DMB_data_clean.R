@@ -17,13 +17,14 @@ TOTAL_PA_FULL <- LH_PA_FULL + RH_PA_FULL
 PA_INN <- 4.277
 INN_START_MAX <- 7
 PITCH_LH_SPLIT <- 0.4357984
-LATEST_SEASON <- 2020
+LATEST_SEASON <- 2022
 
 ## Work Computer
-#REPORT_DIR <- "~/OneDrive/PFBL/Reports - DMB/"
+REPORT_DIR <- "~/OneDrive/PFBL/Reports - DMB/"
+SEPARATOR <- '/'
 ## Home Computer
-REPORT_DIR <- "C:\\Users\\mwlyo\\OneDrive\\PFBL\\Reports - DMB\\"
-SEPARATOR <- "\\"
+#REPORT_DIR <- "C:\\Users\\mwlyo\\OneDrive\\PFBL\\Reports - DMB\\"
+##SEPARATOR <- "\\"
 
 # Source Helper functions -------------------------------------------------
 
@@ -55,9 +56,9 @@ results <- args_results %>%
 batter_ratings <- args2 %>% pmap(readBatterRatings) %>% bind_rows()
 pitcher_ratings <- args2 %>% pmap(readPitcherRatings) %>% bind_rows()
 rosters <- args2 %>% pmap(readRosterStatus) %>% bind_rows()
-batter_season_results <- readBatterSeasonResults(paste0(REPORT_DIR, "reports_2020/")
+batter_season_results <- readBatterSeasonResults(paste0(REPORT_DIR, "reports_2022/")
                                                  , season = LATEST_SEASON)
-pitcher_season_results <- readPitcherSeasonResults(paste0(REPORT_DIR, "reports_2020/")
+pitcher_season_results <- readPitcherSeasonResults(paste0(REPORT_DIR, "reports_2022/")
                                                  , season = LATEST_SEASON)
 
 # Get Fielding Value ------------------------------------------------------

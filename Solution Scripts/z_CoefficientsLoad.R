@@ -38,11 +38,11 @@ coef_lh_perc <- read_csv("MAPPING_DATA/coef_lh_perc.csv", col_type = "cdd")
 if (max(coef_wOBA$Season) < LATEST_SEASON) {
   fg_guts <- read_html("http://www.fangraphs.com/guts.aspx?type=cn")
   coef_wOBA <- fg_guts %>% 
-    html_node(css = "#GutsBoard1_dg1_ctl00") %>%
+    html_element(css = "rgMasterTable") %>%
     html_table() %>%
     select(Season, lg_wOBA = wOBA, wOBAScale:wHR) %>%
     mutate(Season = Season + 1)# previously
-  write_csv(coef_wOBA, paste0(MAPPINGS_DIR, "wOBACoef.csv"))
+  write_csv(coef_wOBA, paste0("MAPPING_DATA/", "wOBACoef.csv"))
 }
 
 # Tidy coefficient data ---------------------------------------------------

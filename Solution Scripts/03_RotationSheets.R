@@ -1,8 +1,7 @@
 ##############################################################
-# RotationSheets.R
+# 03_RotationSheets.R
 #
-# Take organization schedule and create team by team 
-# schedules for rotation sheets
+# Run this to create blank rotation sheets
 ##############################################################
 
 rm(list = ls())
@@ -13,7 +12,7 @@ library(openxlsx)
 
 # Read in schedule information --------------------------------------------
 
-LATEST_SEASON <- 2022
+LATEST_SEASON <- 2023
 
 ### Find all Raw data files
 RAW_DIR <- "RAW_DATA/PFBL/Schedules/schedule_"
@@ -25,25 +24,7 @@ schedule <- read_csv(sched_filepath, col_types = "cccc") %>%
          , GameID = row_number()
          , Date = as.Date(Date, format = "%m/%d/%Y"))
 
-teams <- unique(schedule$Away)
-
-al_league <- c("Highland Engineers"
-               ,"Iowa Farmers"
-               ,"Middleburg Mudcats"
-               , "Winston-Salem Pirates"    
-               ,"West Side Wizards"
-               ,"Holland Mothmen"
-               ,"Delaware Destroyers"
-               ,"Lansing Aces"
-               ,"Great Lakes Bay Grunts"
-               ,"Portland Columbias"       
-               ,"Essexville Eruption"
-               ,"Houston Mockingbirds"
-              ## ,"Newark Force" 
-               ,"Tri City Tornados"
-               ,"Frisco Beer Snobs")
-
-nl_league <- teams[!teams %in% al_league & !is.na(teams) & teams != 'Org schedule -']
+teams <- sort(unique(schedule$Away))
 
 teamSchedule <- function(TEAMNAME, data) {
   data %>%
@@ -71,7 +52,7 @@ readFinalRotation <- function(filepath, sheet, include_teams = FALSE) {
   data <- read_excel(filepath
                      , col_names = c('Date', 'GameID', 'Away', 'AwayPitcher', 'Home', 'HomePitcher')
                      , sheet = sheet
-                     , range = "A2:F183"
+                     , range = "A2:F193"
                      , col_types = c('date', 'numeric', 'text', 'text', 'text', 'text'))
   
   ## Check for option to include team names for error checking
@@ -114,10 +95,7 @@ writeRotationSheet <- function(filename, team_list, schedule_data, final = FALSE
   saveWorkbook(wb, file = filename, overwrite = TRUE)
 }
 
-
-
 # Write Rotation Sheets for each league -----------------------------------
 
-writeRotationSheet(paste0("OUTPUT_NEW/AL",LATEST_SEASON,"_RotationTemplate.xlsx"), al_league, schedule)
-writeRotationSheet(paste0("OUTPUT_NEW/NL",LATEST_SEASON,"_RotationTemplate.xlsx"), nl_league, schedule)
+#writeRotationSheet(paste0("OUTPUT_NEW/PFBL",LATEST_SEASON,"_RotationTemplate.xlsx"), teams, schedule)
 

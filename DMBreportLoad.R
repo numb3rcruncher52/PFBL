@@ -64,14 +64,16 @@ readPlayerStatsSplit <- function(directory, season, type = 'Profile', split) {
   
   final_stats <- bind_rows(batter, pitcher) %>%
     mutate(split = split,
-           season = season) %>%
-    arrange(ID, desc(AB)) %>%
-    distinct(ID, role, .keep_all = TRUE)
+           season = season)
   
   # Change the type of fields as necessary
   cols.num <- c("ID", "AVG", "OBP", "SLG", "OPS", "AB", "SNG", "DBL", "TRI",
                 "HR", "UBB", "HBP", "SF")
   final_stats[cols.num] <- sapply(final_stats[cols.num],as.numeric)
+  
+  final_stats <- final_stats %>%
+    arrange(ID, desc(AB)) %>%
+    distinct(ID, role, .keep_all = TRUE)
   
   return(final_stats)
 }
