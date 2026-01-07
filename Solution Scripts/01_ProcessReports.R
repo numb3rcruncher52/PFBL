@@ -10,7 +10,7 @@ library(tidyverse)
 source("./DMBreportLoad.R")
 
 ## Define a directory to look for raw DMB reports
-LATEST_SEASON <- 2024
+LATEST_SEASON <- 2026
 ## "01_New Season" "02_Pre Draft" "03_Post Draft" "04_Post Free Agency"
 ## "05_Season Start" "06_Midseason"
 TIMEFRAME <- "01_New Season"
@@ -37,3 +37,7 @@ write_csv(dmb_stats
           , paste0("RAW_DATA/PFBL/DMBStats/dmb_stats_",LATEST_SEASON,"_",TIMEFRAME))
 write_csv(schedule
           , paste0("RAW_DATA/PFBL/Schedules/schedule_",LATEST_SEASON))
+
+write_csv(rosters
+          , paste0("PROCESSED_DATA/pfbl_rosters.csv"))
+

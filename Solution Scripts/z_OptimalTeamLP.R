@@ -44,7 +44,7 @@ optimalBattersLP <- function(ratings) {
            , const.rhs = append(b1,b3)
   )
   
-  print(l$objval)
+ # print(l$objval)
   
   test_rating <- test_rating %>%
     mutate(opt_pa = round(l$solution,0)) %>%

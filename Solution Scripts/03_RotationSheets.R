@@ -12,17 +12,32 @@ library(openxlsx)
 
 # Read in schedule information --------------------------------------------
 
-LATEST_SEASON <- 2023
+LATEST_SEASON <- 2026
 
 ### Find all Raw data files
-RAW_DIR <- "RAW_DATA/PFBL/Schedules/schedule_"
-sched_filepath <- paste0(RAW_DIR, LATEST_SEASON)
+#RAW_DIR <- "RAW_DATA/PFBL/Schedules/schedule_"
+#sched_filepath <- paste0(RAW_DIR, LATEST_SEASON)
+sched_filepath <- paste0("schedule_",LATEST_SEASON,".csv")
+col_names <- c("GameID", "Date", "double_header", "visit_team", "home_team"
+               , "season_type", "played", "col_h", "col_i")
 
-schedule <- read_csv(sched_filepath, col_types = "cccc") %>%
-  mutate(Away = str_sub(Away, 6, 100)
-         , Home = str_sub(Home, 6, 100)
-         , GameID = row_number()
-         , Date = as.Date(Date, format = "%m/%d/%Y"))
+## Create teams to join the team IDs to
+teams <- read_csv("/Users/maxlyons/R/PFBL/MAPPING_DATA/dim_team.csv") %>%
+  filter(Season == LATEST_SEASON)
+
+teams_a <- teams %>%
+  select(Away = TeamName
+         , visit_team = team_id)
+
+teams_h <- teams %>%
+  select(Home = TeamName
+         , home_team = team_id)
+
+schedule <- read_csv(sched_filepath, col_names = col_names) %>%
+  left_join(teams_a, by= "visit_team") %>%
+  left_join(teams_h, by = "home_team") %>%
+  mutate(Date = as.Date(Date, format = "%m/%d/%y")) %>% 
+  select(GameID, Date, Away, Home)
 
 teams <- sort(unique(schedule$Away))
 
@@ -57,7 +72,7 @@ readFinalRotation <- function(filepath, sheet, include_teams = FALSE) {
   
   ## Check for option to include team names for error checking
   if (include_teams) {
-    data <- data %>% select(GameID, Away, Home, AwayPitcher, HomePitcher) 
+    data <- data %>% select(Date, GameID, Away, Home, AwayPitcher, HomePitcher) 
   }
   else {
     data <- data %>% select(GameID, AwayPitcher, HomePitcher)
@@ -97,5 +112,5 @@ writeRotationSheet <- function(filename, team_list, schedule_data, final = FALSE
 
 # Write Rotation Sheets for each league -----------------------------------
 
-#writeRotationSheet(paste0("OUTPUT_NEW/PFBL",LATEST_SEASON,"_RotationTemplate.xlsx"), teams, schedule)
+writeRotationSheet(paste0("OUTPUT_NEW/PFBL",LATEST_SEASON,"_RotationTemplate.xlsx"), teams, schedule)
 

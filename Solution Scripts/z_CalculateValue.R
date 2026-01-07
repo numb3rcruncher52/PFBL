@@ -74,11 +74,12 @@ cleanPlayerRatings <- function(batter_ratings, pitcher_ratings) {
   }
   
   cleanPitcherRatings <- function(pitcher_ratings) {
+    ## 2024 started bringing in Starter Durability ratings
     starters <- pitcher_ratings %>%
       filter(!is.na(INN),
              INN >= 20,
-             GS > 0) %>%
-      mutate(max_GS = pmin(round(GS * 1.33,0), 36)
+             (season >= 2024 & !is.na(SDur)) | (season < 2024 & GS > 0)) %>%
+      mutate(max_GS = pmin(round(GS * 1.2,0), 36)
              , POS = 'SP'
              , role = 'pitcher')
     
@@ -179,6 +180,34 @@ calcPlaytimeLimits <- function(ratings) {
   ratings %>%
     calcValue() %>%
     mutate(min_INN = round(ifelse(role == "batter", NA, INN * 0.7),0)
+           , max_INN = round(ifelse(role == "batter", NA, INN * 1.20),0)
+           , min_PA = ifelse(role == "batter"
+                             ,ifelse(total_PA < 200, 0, round(0.7*PA,0))
+                             , ifelse(INN < 50, 0, round(min_INN*PA_PER_INN,0)))
+           , max_PA = ifelse(role == "batter"
+                             ,round(ifelse(split == 'LH'
+                                           , ifelse(total_PA >= 502 | 
+                                                      OPS < .600
+                                                    , LH_PA_FULL
+                                                    , pmin(PA*1.20,LH_PA_FULL))
+                                           , ifelse(total_PA >= 502 | 
+                                                      OPS < .600
+                                                    , RH_PA_FULL
+                                                    , pmin(PA*1.20, RH_PA_FULL))),0)
+                             ## Otherwise it's a pitcher
+                             , round(ifelse(POS == 'SP'
+                                            , max_GS * PA_PER_START
+                                            , max_INN * PA_PER_INN
+                             )
+                             ))
+           
+    )
+}
+
+calcPlaytimeLimitsOLD <- function(ratings) {
+  ratings %>%
+    calcValue() %>%
+    mutate(min_INN = round(ifelse(role == "batter", NA, INN * 0.7),0)
            , max_INN = round(ifelse(role == "batter", NA, INN * 1.33),0)
            , min_PA = ifelse(role == "batter"
                            ,ifelse(total_PA < 200, 0, round(0.7*PA,0))
@@ -209,7 +238,7 @@ calcValue <- function(ratings) {
     mutate(value_PA = RAA_PA + wRAA + run_raa / TOTAL_PA_FULL
            , PA_PER_INN = total_PA / INN
            , PA_PER_START = ifelse(Starts == 0, NA,
-                                   ifelse(POS == 'SW', INN_PER_START, INN / Starts) * PA_PER_INN)
+                                   ifelse(Games!=Starts, INN_PER_START, INN / Starts) * PA_PER_INN)
            , lh_perc_RP = ifelse(split == 'LH', lh_perc_RP, 1 - lh_perc_RP)
            , lh_perc_SP = ifelse(split == 'LH', lh_perc_SP, 1 - lh_perc_SP)
            , value_INN = PA_PER_INN * lh_perc_RP * wRAA

@@ -8,7 +8,7 @@ rm(list=ls())
 
 library(tidyverse)
 
-LATEST_SEASON <- 2024
+LATEST_SEASON <- 2026
 
 ## update MAPPING_DATA/dim_team.csv before beginning
 

@@ -8,8 +8,12 @@ rm(list=ls())
 
 library(tidyverse)
 
-template <- read_csv("/Users/maxlyons/R/PFBL/MAPPING_DATA/schedule_template.csv", col_types = "cccc") %>%
-  filter(visitor != 'OFF')
+LATEST_SEASON <- 2025
+
+template <- read_csv("/Users/maxlyons/R/PFBL/MAPPING_DATA/schedule_template_2025.csv", col_types = "cccc") %>%
+  filter(visitor != 'OFF') %>%
+  ## Replace year with current season 
+  mutate(date = str_sub(date, 1, -3) %>% str_c(str_sub(LATEST_SEASON - 1, -2)))
 teams <- read_csv("/Users/maxlyons/R/PFBL/MAPPING_DATA/dim_team.csv")
 
 ## Replace The divisions we have in PFBL and the letter assigned to that division 
@@ -20,10 +24,13 @@ teams <- read_csv("/Users/maxlyons/R/PFBL/MAPPING_DATA/dim_team.csv")
 #specific interleague opponents alternate between home and away series each season.  
 #As the spreadsheet is set up, N is always at E, E is always at S, S is always at W, and W is always at N.
 
-LATEST_SEASON <- 2024
-
 season_teams <- teams %>%
   filter(Season == LATEST_SEASON) %>%
+  ## If season is even, AL East = E and AL West = W
+  ## If season is odd, AL East = W and AL West = E 
+  mutate(Division = case_when(LATEST_SEASON %% 2 == 1 & Division == 'E' ~ 'W'
+                              , LATEST_SEASON %% 2 == 1 & Division == 'W' ~ 'E'
+                              , .default = Division)) %>%
   group_by(Division) %>%
   mutate(team_num = sample.int(7,7),
          team_code = paste0(Division, team_num)) %>%
@@ -59,5 +66,5 @@ final_schedule <- template %>%
 
 ## Write output without headers
 write_csv(final_schedule, 
-          "schedule_2024.csv",
+          paste0("schedule_",LATEST_SEASON,".csv"),
           col_names = FALSE)
